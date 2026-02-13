@@ -1,12 +1,12 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, HTTPException
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 from pathlib import Path
-from pydantic import BaseModel, Field, ConfigDict
-from typing import List
+from pydantic import BaseModel, Field, ConfigDict, EmailStr
+from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
 
@@ -28,7 +28,7 @@ api_router = APIRouter(prefix="/api")
 
 # Define Models
 class StatusCheck(BaseModel):
-    model_config = ConfigDict(extra="ignore")  # Ignore MongoDB's _id field
+    model_config = ConfigDict(extra="ignore")
     
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     client_name: str
@@ -36,6 +36,34 @@ class StatusCheck(BaseModel):
 
 class StatusCheckCreate(BaseModel):
     client_name: str
+
+class ContactSubmission(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    email: EmailStr
+    phone: Optional[str] = None
+    company: Optional[str] = None
+    message: str
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class ContactSubmissionCreate(BaseModel):
+    name: str
+    email: EmailStr
+    phone: Optional[str] = None
+    company: Optional[str] = None
+    message: str
+
+class NewsletterSubscription(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    email: EmailStr
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class NewsletterSubscriptionCreate(BaseModel):
+    email: EmailStr
 
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
@@ -65,6 +93,33 @@ async def get_status_checks():
             check['timestamp'] = datetime.fromisoformat(check['timestamp'])
     
     return status_checks
+
+@api_router.post("/contact", response_model=ContactSubmission)
+async def submit_contact_form(input: ContactSubmissionCreate):
+    contact_dict = input.model_dump()
+    contact_obj = ContactSubmission(**contact_dict)
+    
+    doc = contact_obj.model_dump()
+    doc['timestamp'] = doc['timestamp'].isoformat()
+    
+    _ = await db.contact_submissions.insert_one(doc)
+    return contact_obj
+
+@api_router.post("/newsletter", response_model=NewsletterSubscription)
+async def subscribe_newsletter(input: NewsletterSubscriptionCreate):
+    # Check if email already exists
+    existing = await db.newsletter_subscriptions.find_one({"email": input.email}, {"_id": 0})
+    if existing:
+        raise HTTPException(status_code=400, detail="Email already subscribed")
+    
+    subscription_dict = input.model_dump()
+    subscription_obj = NewsletterSubscription(**subscription_dict)
+    
+    doc = subscription_obj.model_dump()
+    doc['timestamp'] = doc['timestamp'].isoformat()
+    
+    _ = await db.newsletter_subscriptions.insert_one(doc)
+    return subscription_obj
 
 # Include the router in the main app
 app.include_router(api_router)
