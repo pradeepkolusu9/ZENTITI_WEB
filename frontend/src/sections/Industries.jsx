@@ -25,7 +25,7 @@ export const Industries = () => {
             key={index}
             data-testid={`industry-card-${index}`}
             variants={staggerItem}
-            className="group bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 hover:border-blue-300"
+            className="group bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg dark:shadow-slate-900/50 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-500"
             whileHover={{
               y: -8,
               scale: 1.02,
@@ -36,10 +36,10 @@ export const Industries = () => {
             <div className="flex items-start space-x-4">
               <IconBox icon={industry.icon} size="md" gradient="blue" />
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                   {industry.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
                   {industry.description}
                 </p>
               </div>
