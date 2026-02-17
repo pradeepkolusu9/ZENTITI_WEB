@@ -1,25 +1,25 @@
 import React from "react";
-import Header from "../components/Header";
-import HeroSection from "../components/HeroSection";
-import AboutSection from "../components/AboutSection";
-import ServicesSection from "../components/ServicesSection";
-import IndustriesSection from "../components/IndustriesSection";
-import InsightsSection from "../components/InsightsSection";
-import CareersSection from "../components/CareersSection";
-import ContactSection from "../components/ContactSection";
-import Footer from "../components/Footer";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { Hero } from "@/sections/Hero";
+import { About } from "@/sections/About";
+import { Services } from "@/sections/Services";
+import { Industries } from "@/sections/Industries";
+import { Insights } from "@/sections/Insights";
+import { Careers } from "@/sections/Careers";
+import { Contact } from "@/sections/Contact";
 
 const HomePage = () => {
   return (
     <div className="min-h-screen bg-white">
-      <Header />
-      <HeroSection />
-      <AboutSection />
-      <ServicesSection />
-      <IndustriesSection />
-      <InsightsSection />
-      <CareersSection />
-      <ContactSection />
+      <Navbar />
+      <Hero />
+      <About />
+      <Services />
+      <Industries />
+      <Insights />
+      <Careers />
+      <Contact />
       <Footer />
     </div>
   );
