@@ -1,6 +1,8 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/common/Button";
 import { ArrowRight } from "lucide-react";
+import { heroTextContainer, wordReveal } from "@/utils/animations";
 
 export const Hero = () => {
   const scrollToContact = () => {
@@ -9,6 +11,8 @@ export const Hero = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const heroWords = ["Transforming", "Business", "Through", "Technology"];
 
   return (
     <section
@@ -29,40 +33,86 @@ export const Hero = () => {
       </div>
 
       <div className="relative z-10 container mx-auto px-6 text-center">
-        <h1
+        <motion.h1
           data-testid="hero-headline"
           className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
           style={{ fontFamily: "'Manrope', sans-serif" }}
+          initial="hidden"
+          animate="visible"
+          variants={heroTextContainer}
         >
-          Transforming Business
+          {heroWords.slice(0, 2).map((word, i) => (
+            <motion.span
+              key={i}
+              variants={wordReveal}
+              className="inline-block mr-4"
+            >
+              {word}
+            </motion.span>
+          ))}
           <br />
-          Through Technology
-        </h1>
-        <p
+          {heroWords.slice(2).map((word, i) => (
+            <motion.span
+              key={i + 2}
+              variants={wordReveal}
+              className="inline-block mr-4"
+            >
+              {word}
+            </motion.span>
+          ))}
+        </motion.h1>
+
+        <motion.p
           data-testid="hero-subtext"
           className="text-lg sm:text-xl text-white/90 mb-10 max-w-3xl mx-auto leading-relaxed"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
         >
           We deliver world-class IT solutions that drive innovation, efficiency, and growth
           for enterprises across the globe.
-        </p>
-        <Button
-          data-testid="hero-cta-button"
-          onClick={scrollToContact}
-          size="lg"
-          variant="primary"
-          icon={<ArrowRight className="h-5 w-5" />}
-          iconPosition="right"
-          className="bg-white text-blue-600 hover:bg-gray-100 shadow-2xl"
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.0 }}
         >
-          Get in Touch
-        </Button>
+          <Button
+            data-testid="hero-cta-button"
+            onClick={scrollToContact}
+            size="lg"
+            variant="primary"
+            icon={<ArrowRight className="h-5 w-5" />}
+            iconPosition="right"
+            className="bg-white text-blue-600 hover:bg-gray-100 shadow-2xl"
+          >
+            Get in Touch
+          </Button>
+        </motion.div>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+      <motion.div 
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ 
+          duration: 2, 
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      >
         <div className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-3 bg-white/70 rounded-full"></div>
+          <motion.div 
+            className="w-1 h-3 bg-white/70 rounded-full"
+            animate={{ y: [0, 12, 0] }}
+            transition={{ 
+              duration: 2, 
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
