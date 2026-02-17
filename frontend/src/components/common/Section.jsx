@@ -46,14 +46,14 @@ export const Section = ({
             {title && (
               <h2
                 data-testid={`${id}-title`}
-                className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4"
+                className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4"
                 style={{ fontFamily: "'Manrope', sans-serif" }}
               >
                 {title}
               </h2>
             )}
             {subtitle && (
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
                 {subtitle}
               </p>
             )}
