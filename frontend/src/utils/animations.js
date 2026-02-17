@@ -1,5 +1,28 @@
 // Animation Variants Library for Framer Motion
 
+// ========== MOBILE DETECTION ==========
+
+export const isMobile = () => {
+  if (typeof window === 'undefined') return false;
+  return window.innerWidth < 768;
+};
+
+export const shouldReduceMotion = () => {
+  if (typeof window === 'undefined') return false;
+  
+  // Check if mobile
+  if (isMobile()) return true;
+  
+  // Check user preference
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  return prefersReducedMotion;
+};
+
+// Helper to get animation props based on screen size
+export const getResponsiveAnimation = (desktopVariants, mobileVariants = {}) => {
+  return shouldReduceMotion() ? mobileVariants : desktopVariants;
+};
+
 // ========== SECTION ANIMATIONS ==========
 
 export const fadeInUp = {
