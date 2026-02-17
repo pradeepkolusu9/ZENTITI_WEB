@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/common/Button";
+import { ThemeToggle } from "@/components/common/ThemeToggle";
 import { slideDown } from "@/utils/animations";
 
 export const Navbar = () => {
@@ -43,7 +44,7 @@ export const Navbar = () => {
       variants={slideDown}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-md"
+          ? "bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-md"
           : "bg-transparent"
       }`}
     >
@@ -63,51 +64,56 @@ export const Navbar = () => {
             >
               <span className="text-white font-bold text-xl">Z</span>
             </motion.div>
-            <span className={`text-2xl font-bold ${isScrolled ? "text-gray-900" : "text-white"}`}>
+            <span className={`text-2xl font-bold ${isScrolled ? "text-gray-900 dark:text-white" : "text-white"}`}>
               Zentiti Inc
             </span>
           </motion.div>
 
-          <nav className="hidden lg:flex items-center space-x-8">
-            {navItems.map((item, index) => (
-              <motion.button
-                key={item.id}
-                data-testid={`nav-${item.id}`}
-                onClick={() => scrollToSection(item.id)}
-                className={`text-sm font-medium transition-colors hover:text-blue-600 ${
-                  isScrolled ? "text-gray-700" : "text-white/90"
-                }`}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {item.label}
-              </motion.button>
-            ))}
-          </nav>
+          <div className="flex items-center space-x-4">
+            <nav className="hidden lg:flex items-center space-x-8">
+              {navItems.map((item, index) => (
+                <motion.button
+                  key={item.id}
+                  data-testid={`nav-${item.id}`}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400 ${
+                    isScrolled ? "text-gray-700 dark:text-gray-300" : "text-white/90"
+                  }`}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {item.label}
+                </motion.button>
+              ))}
+            </nav>
 
-          <Button
-            data-testid="mobile-menu-toggle"
-            variant="ghost"
-            size="sm"
-            className="lg:hidden p-2"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? (
-              <X className={isScrolled ? "text-gray-900" : "text-white"} />
-            ) : (
-              <Menu className={isScrolled ? "text-gray-900" : "text-white"} />
-            )}
-          </Button>
+            {/* Theme Toggle */}
+            <ThemeToggle />
+
+            <Button
+              data-testid="mobile-menu-toggle"
+              variant="ghost"
+              size="sm"
+              className="lg:hidden p-2"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? (
+                <X className={isScrolled ? "text-gray-900 dark:text-white" : "text-white"} />
+              ) : (
+                <Menu className={isScrolled ? "text-gray-900 dark:text-white" : "text-white"} />
+              )}
+            </Button>
+          </div>
         </div>
 
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div 
               data-testid="mobile-menu" 
-              className="lg:hidden mt-4 pb-4 bg-white rounded-lg shadow-lg overflow-hidden"
+              className="lg:hidden mt-4 pb-4 bg-white dark:bg-slate-800 rounded-lg shadow-lg overflow-hidden"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
@@ -119,7 +125,7 @@ export const Navbar = () => {
                     key={item.id}
                     data-testid={`mobile-nav-${item.id}`}
                     onClick={() => scrollToSection(item.id)}
-                    className="text-left text-gray-700 hover:text-blue-600 py-2 px-4 rounded-md hover:bg-gray-50 transition-colors"
+                    className="text-left text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2 px-4 rounded-md hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
