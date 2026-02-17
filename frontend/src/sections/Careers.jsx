@@ -26,35 +26,35 @@ export const Careers = () => {
       >
         <motion.div 
           variants={staggerItem}
-          className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 text-center"
+          className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md dark:shadow-slate-900/50 hover:shadow-lg transition-shadow duration-300 text-center"
         >
           <IconBox icon={Users} size="md" gradient="blue" className="mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
             {CAREER_BENEFITS[0].title}
           </h3>
-          <p className="text-gray-600 text-sm">{CAREER_BENEFITS[0].description}</p>
+          <p className="text-gray-600 dark:text-gray-300 text-sm">{CAREER_BENEFITS[0].description}</p>
         </motion.div>
 
         <motion.div 
           variants={staggerItem}
-          className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 text-center"
+          className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md dark:shadow-slate-900/50 hover:shadow-lg transition-shadow duration-300 text-center"
         >
           <IconBox icon={Award} size="md" gradient="blue" className="mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
             {CAREER_BENEFITS[1].title}
           </h3>
-          <p className="text-gray-600 text-sm">{CAREER_BENEFITS[1].description}</p>
+          <p className="text-gray-600 dark:text-gray-300 text-sm">{CAREER_BENEFITS[1].description}</p>
         </motion.div>
 
         <motion.div 
           variants={staggerItem}
-          className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 text-center"
+          className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md dark:shadow-slate-900/50 hover:shadow-lg transition-shadow duration-300 text-center"
         >
           <IconBox icon={Briefcase} size="md" gradient="blue" className="mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
             {CAREER_BENEFITS[2].title}
           </h3>
-          <p className="text-gray-600 text-sm">{CAREER_BENEFITS[2].description}</p>
+          <p className="text-gray-600 dark:text-gray-300 text-sm">{CAREER_BENEFITS[2].description}</p>
         </motion.div>
       </motion.div>
 
