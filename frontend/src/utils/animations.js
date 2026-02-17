@@ -23,42 +23,38 @@ export const getResponsiveAnimation = (desktopVariants, mobileVariants = {}) => 
   return shouldReduceMotion() ? mobileVariants : desktopVariants;
 };
 
-// ========== PREMIUM ANIMATIONS ==========
+// ========== PREMIUM ANIMATIONS (OPTIMIZED) ==========
 
-// Premium fade in with blur and scale
+// Optimized fade in - NO BLUR for performance
 export const premiumFadeIn = {
   hidden: { 
     opacity: 0, 
-    y: 60,
-    scale: 0.95,
-    filter: "blur(10px)"
+    y: 40,
+    scale: 0.98
   },
   visible: { 
     opacity: 1, 
     y: 0,
     scale: 1,
-    filter: "blur(0px)",
     transition: { 
-      duration: 0.8, 
-      ease: [0.19, 1, 0.22, 1]  // Custom easing curve
+      duration: 0.5, 
+      ease: [0.22, 1, 0.36, 1]
     }
   }
 };
 
-// Premium scale with blur
+// Optimized scale - NO BLUR
 export const premiumScale = {
   hidden: { 
     opacity: 0,
-    scale: 0.8,
-    filter: "blur(20px)"
+    scale: 0.9
   },
   visible: { 
     opacity: 1,
     scale: 1,
-    filter: "blur(0px)",
     transition: { 
-      duration: 1,
-      ease: [0.19, 1, 0.22, 1]
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1]
     }
   }
 };
