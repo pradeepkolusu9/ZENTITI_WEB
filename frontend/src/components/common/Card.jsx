@@ -19,20 +19,16 @@ export const Card = ({
   
   const hoverAnimation = hoverEffect ? {
     whileHover: {
-      y: -8,
-      scale: 1.02,
-      boxShadow: "0 20px 60px rgba(59, 130, 246, 0.3)",
-      transition: { duration: 0.3, ease: "easeOut" }
-    },
-    transition: { duration: 0.3 }
+      y: -4,
+      transition: { duration: 0.2, ease: "easeOut" }
+    }
   } : {};
 
   return (
     <MotionDiv
       className={cn(
-        "bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 overflow-hidden transition-all duration-300",
-        hoverEffect && "cursor-pointer hover:border-blue-400 dark:hover:border-blue-500",
-        !hoverEffect && "shadow-md dark:shadow-lg dark:shadow-slate-900/50",
+        "bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 overflow-hidden shadow-md dark:shadow-slate-900/50",
+        hoverEffect && "cursor-pointer hover:shadow-xl hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-200",
         className
       )}
       onClick={onClick}
