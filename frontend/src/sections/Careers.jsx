@@ -59,7 +59,7 @@ export const Careers = () => {
       </motion.div>
 
       <div className="mb-10">
-        <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Open Positions</h3>
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">Open Positions</h3>
         <motion.div 
           className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto"
           variants={staggerContainer}
