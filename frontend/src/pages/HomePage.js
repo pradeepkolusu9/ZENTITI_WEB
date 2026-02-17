@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { Hero } from "@/sections/Hero";
+import { PremiumHero } from "@/sections/PremiumHero";
 import { About } from "@/sections/About";
 import { StatsSection } from "@/sections/StatsSection";
 import { Services } from "@/sections/Services";
@@ -16,7 +16,7 @@ const HomePage = () => {
     <div className="min-h-screen bg-white dark:bg-slate-900">
       <ScrollProgress />
       <Navbar />
-      <Hero />
+      <PremiumHero />
       <StatsSection />
       <About />
       <Services />
