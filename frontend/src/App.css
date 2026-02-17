@@ -15,10 +15,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .App {
   min-height: 100vh;
+  transition: background-color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -27,6 +29,21 @@ h1, h2, h3, h4, h5, h6 {
 
 section {
   position: relative;
+  transition: background-color 0.3s ease;
+}
+
+/* Smooth theme transitions */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+/* Exclude animations and transforms from theme transitions */
+* {
+  transition-property: background-color, border-color, color, fill, stroke !important;
 }
 
 @keyframes fadeInUp {
@@ -65,7 +82,7 @@ textarea:focus-visible {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: hsl(var(--background));
 }
 
 ::-webkit-scrollbar-thumb {
