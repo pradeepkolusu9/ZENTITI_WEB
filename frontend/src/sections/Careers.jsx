@@ -105,7 +105,7 @@ export const Careers = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.4 }}
       >
-        <p className="text-gray-600 mb-4">Don't see a position that fits?</p>
+        <p className="text-gray-600 dark:text-gray-300 mb-4">Don't see a position that fits?</p>
         <Button
           data-testid="general-application-button"
           variant="primary"
