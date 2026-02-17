@@ -30,9 +30,9 @@ export const Card = ({
   return (
     <MotionDiv
       className={cn(
-        "bg-white rounded-xl border border-gray-200 overflow-hidden transition-all duration-300",
-        hoverEffect && "cursor-pointer hover:border-blue-400",
-        !hoverEffect && "shadow-md",
+        "bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 overflow-hidden transition-all duration-300",
+        hoverEffect && "cursor-pointer hover:border-blue-400 dark:hover:border-blue-500",
+        !hoverEffect && "shadow-md dark:shadow-lg dark:shadow-slate-900/50",
         className
       )}
       onClick={onClick}
