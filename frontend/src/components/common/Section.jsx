@@ -4,9 +4,9 @@ import { cn } from "@/lib/utils";
 import { fadeInUp, defaultViewport } from "@/utils/animations";
 
 const backgroundVariants = {
-  white: "bg-white",
-  gray: "bg-gradient-to-b from-gray-50 to-white",
-  gradient: "bg-gradient-to-b from-white to-gray-50",
+  white: "bg-white dark:bg-slate-900",
+  gray: "bg-gradient-to-b from-gray-50 to-white dark:from-slate-900 dark:to-slate-800",
+  gradient: "bg-gradient-to-b from-white to-gray-50 dark:from-slate-800 dark:to-slate-900",
 };
 
 export const Section = ({
