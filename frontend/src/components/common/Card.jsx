@@ -80,13 +80,13 @@ export const Card = ({
         )}
 
         {title && (
-          <h3 className="text-xl font-semibold text-gray-900 mb-3 transition-colors duration-300 group-hover:text-blue-600">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">
             {title}
           </h3>
         )}
 
         {description && (
-          <p className="text-gray-600 leading-relaxed mb-4">
+          <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
             {description}
           </p>
         )}
