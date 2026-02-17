@@ -1,6 +1,8 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { buttonHover, buttonTap } from "@/utils/animations";
 
 const buttonVariants = {
   primary: "bg-blue-600 text-white hover:bg-blue-700 shadow-lg hover:shadow-xl",
@@ -29,24 +31,38 @@ export const Button = ({
   const isDisabled = disabled || loading;
 
   return (
-    <button
+    <motion.button
       className={cn(
-        "inline-flex items-center justify-center font-medium rounded-full transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100",
+        "inline-flex items-center justify-center font-medium rounded-full transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed",
         buttonVariants[variant],
         buttonSizes[size],
         className
       )}
       disabled={isDisabled}
+      whileHover={!isDisabled ? buttonHover : {}}
+      whileTap={!isDisabled ? buttonTap : {}}
       {...props}
     >
       {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
       {!loading && icon && iconPosition === "left" && (
-        <span className="mr-2">{icon}</span>
+        <motion.span 
+          className="mr-2"
+          animate={{ x: [0, -2, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        >
+          {icon}
+        </motion.span>
       )}
       {children}
       {!loading && icon && iconPosition === "right" && (
-        <span className="ml-2">{icon}</span>
+        <motion.span 
+          className="ml-2"
+          animate={{ x: [0, 2, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        >
+          {icon}
+        </motion.span>
       )}
-    </button>
+    </motion.button>
   );
 };
