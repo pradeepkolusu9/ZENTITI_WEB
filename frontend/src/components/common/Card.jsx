@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 export const Card = ({
@@ -14,32 +15,54 @@ export const Card = ({
   children,
   ...props
 }) => {
+  const MotionDiv = hoverEffect ? motion.div : "div";
+  
+  const hoverAnimation = hoverEffect ? {
+    whileHover: {
+      y: -8,
+      scale: 1.02,
+      boxShadow: "0 20px 60px rgba(59, 130, 246, 0.3)",
+      transition: { duration: 0.3, ease: "easeOut" }
+    },
+    transition: { duration: 0.3 }
+  } : {};
+
   return (
-    <div
+    <MotionDiv
       className={cn(
         "bg-white rounded-xl border border-gray-200 overflow-hidden transition-all duration-300",
-        hoverEffect && "hover:shadow-2xl hover:-translate-y-2 hover:border-blue-400 cursor-pointer",
+        hoverEffect && "cursor-pointer hover:border-blue-400",
         !hoverEffect && "shadow-md",
         className
       )}
       onClick={onClick}
+      {...hoverAnimation}
       {...props}
     >
       {image && (
         <div className="relative h-48 overflow-hidden">
-          <img
+          <motion.img
             src={image}
             alt={title}
-            className={cn(
-              "w-full h-full object-cover",
-              hoverEffect && "transition-transform duration-500 group-hover:scale-110"
-            )}
+            className="w-full h-full object-cover"
+            whileHover={hoverEffect ? { scale: 1.1 } : {}}
+            transition={{ duration: 0.5 }}
           />
           {badge && (
             <div className="absolute top-4 left-4">
-              <span className="bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+              <motion.span
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ 
+                  type: "spring", 
+                  stiffness: 200,
+                  damping: 15,
+                  delay: 0.2
+                }}
+                className="bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full"
+              >
                 {badge}
-              </span>
+              </motion.span>
             </div>
           )}
         </div>
@@ -47,13 +70,17 @@ export const Card = ({
 
       <div className="p-6">
         {icon && (
-          <div className="mb-4">
+          <motion.div 
+            className="mb-4"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
+          >
             {icon}
-          </div>
+          </motion.div>
         )}
 
         {title && (
-          <h3 className="text-xl font-semibold text-gray-900 mb-3">
+          <h3 className="text-xl font-semibold text-gray-900 mb-3 transition-colors duration-300 group-hover:text-blue-600">
             {title}
           </h3>
         )}
@@ -72,6 +99,6 @@ export const Card = ({
           {footer}
         </div>
       )}
-    </div>
+    </MotionDiv>
   );
 };
