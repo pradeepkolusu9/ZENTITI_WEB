@@ -81,7 +81,7 @@ export const Careers = () => {
                   <Badge variant="primary">{job.department}</Badge>
                   <Badge variant="outline">{job.type}</Badge>
                 </div>
-                <p className="text-sm text-gray-600 mb-4">{job.location}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">{job.location}</p>
                 <Button
                   data-testid={`apply-job-${index}`}
                   variant="outline"
