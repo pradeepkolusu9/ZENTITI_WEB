@@ -23,6 +23,46 @@ export const getResponsiveAnimation = (desktopVariants, mobileVariants = {}) => 
   return shouldReduceMotion() ? mobileVariants : desktopVariants;
 };
 
+// ========== PREMIUM ANIMATIONS ==========
+
+// Premium fade in with blur and scale
+export const premiumFadeIn = {
+  hidden: { 
+    opacity: 0, 
+    y: 60,
+    scale: 0.95,
+    filter: "blur(10px)"
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: { 
+      duration: 0.8, 
+      ease: [0.19, 1, 0.22, 1]  // Custom easing curve
+    }
+  }
+};
+
+// Premium scale with blur
+export const premiumScale = {
+  hidden: { 
+    opacity: 0,
+    scale: 0.8,
+    filter: "blur(20px)"
+  },
+  visible: { 
+    opacity: 1,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: { 
+      duration: 1,
+      ease: [0.19, 1, 0.22, 1]
+    }
+  }
+};
+
 // ========== SECTION ANIMATIONS ==========
 
 export const fadeInUp = {
