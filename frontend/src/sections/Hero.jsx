@@ -77,6 +77,7 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.0 }}
+          className="flex justify-center"
         >
           <Button
             data-testid="hero-cta-button"
@@ -85,7 +86,7 @@ export const Hero = () => {
             variant="primary"
             icon={<ArrowRight className="h-5 w-5" />}
             iconPosition="right"
-            className="bg-white text-blue-600 hover:bg-gray-100 shadow-2xl"
+            className="bg-white text-blue-600 hover:bg-gray-100 shadow-2xl w-full sm:w-auto"
           >
             Get in Touch
           </Button>
