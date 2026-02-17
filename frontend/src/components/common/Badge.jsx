@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { badgeBounce } from "@/utils/animations";
 
 const badgeVariants = {
   primary: "bg-blue-600 text-white",
@@ -10,6 +9,19 @@ const badgeVariants = {
   warning: "bg-amber-600 text-white",
   info: "bg-cyan-600 text-white",
   outline: "border-2 border-blue-600 text-blue-600 bg-transparent",
+};
+
+const badgeBounceVariants = {
+  hidden: { scale: 0, opacity: 0 },
+  visible: { 
+    scale: 1, 
+    opacity: 1,
+    transition: { 
+      type: "spring", 
+      stiffness: 200,
+      damping: 15
+    }
+  }
 };
 
 export const Badge = ({
@@ -24,7 +36,7 @@ export const Badge = ({
   const animationProps = animate ? {
     initial: "hidden",
     animate: "visible",
-    variants: badgeBounce,
+    variants: badgeBounceVariants,
   } : {};
 
   return (
