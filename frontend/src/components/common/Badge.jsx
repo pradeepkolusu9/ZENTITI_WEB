@@ -1,5 +1,7 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { badgeBounce } from "@/utils/animations";
 
 const badgeVariants = {
   primary: "bg-blue-600 text-white",
@@ -14,18 +16,28 @@ export const Badge = ({
   variant = "primary",
   children,
   className,
+  animate = true,
   ...props
 }) => {
+  const Component = animate ? motion.span : "span";
+  
+  const animationProps = animate ? {
+    initial: "hidden",
+    animate: "visible",
+    variants: badgeBounce,
+  } : {};
+
   return (
-    <span
+    <Component
       className={cn(
         "inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full",
         badgeVariants[variant],
         className
       )}
+      {...animationProps}
       {...props}
     >
       {children}
-    </span>
+    </Component>
   );
 };
