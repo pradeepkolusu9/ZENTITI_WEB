@@ -1,7 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { iconHover } from "@/utils/animations";
 
 const sizeVariants = {
   sm: "w-10 h-10",
@@ -26,24 +24,16 @@ export const IconBox = ({
   const IconComponent = icon;
 
   return (
-    <motion.div
+    <div
       className={cn(
         "rounded-xl flex items-center justify-center",
         sizeVariants[size],
         gradientVariants[gradient],
         className
       )}
-      whileHover={iconHover}
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ 
-        type: "spring", 
-        stiffness: 200,
-        damping: 15
-      }}
       {...props}
     >
       {IconComponent && <IconComponent className="text-white h-7 w-7" />}
-    </motion.div>
+    </div>
   );
 };

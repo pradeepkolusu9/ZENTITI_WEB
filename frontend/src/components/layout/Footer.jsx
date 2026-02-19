@@ -4,11 +4,12 @@ import { Input } from "@/components/ui/input";
 import { Linkedin, Twitter, Facebook, Instagram } from "lucide-react";
 import { toast } from "sonner";
 import axios from "axios";
+import { ZentitiLogo } from "@/components/common/ZentitiLogo";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-export const Footer = () => {
+export const Footer = React.memo(() => {
   const [email, setEmail] = useState("");
   const [isSubscribing, setIsSubscribing] = useState(false);
 
@@ -38,7 +39,7 @@ export const Footer = () => {
       { label: "Contact", href: "#contact" },
     ],
     services: [
-      { label: "Cloud Solutions", href: "#services" },
+      { label: "Cloud Migration", href: "#services" },
       { label: "API Development", href: "#services" },
       { label: "AI & Machine Learning", href: "#services" },
     ],
@@ -61,15 +62,12 @@ export const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
           <div className="lg:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">Z</span>
-              </div>
-              <span className="text-2xl font-bold">Zentiti Inc</span>
+            <div className="mb-4">
+              <ZentitiLogo white height="36px" />
             </div>
             <p className="text-gray-400 mb-6 max-w-sm">
-              Transforming businesses through innovative technology solutions. Partner with us for
-              your digital transformation journey.
+              Reduce delivery costs, automate workflows, and ship enterprise initiatives up to 2x
+              faster with Zentiti.
             </p>
 
             <div>
@@ -173,4 +171,6 @@ export const Footer = () => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = "Footer";

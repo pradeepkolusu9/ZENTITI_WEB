@@ -37,10 +37,10 @@ export const Button = ({
         buttonSizes[size],
         className
       )}
+      whileHover={!isDisabled ? { scale: 1.02 } : undefined}
+      whileTap={!isDisabled ? { scale: 0.99 } : undefined}
+      transition={{ duration: 0.15, ease: "easeOut" }}
       disabled={isDisabled}
-      whileHover={!isDisabled ? { scale: 1.02 } : {}}
-      whileTap={!isDisabled ? { scale: 0.98 } : {}}
-      transition={{ duration: 0.15 }}
       {...props}
     >
       {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}

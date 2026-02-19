@@ -3,33 +3,33 @@ import { Cloud, Code, Brain, Shield, TrendingUp, Database, Building2, Heart, Sho
 export const SERVICES = [
   {
     icon: Cloud,
-    title: "Cloud Solutions",
-    description: "Seamless migration and management of cloud infrastructure with AWS, Azure, and Google Cloud Platform.",
+    title: "Cloud Migration",
+    description: "Migrate core workloads in 12 weeks and cut infrastructure spend by up to 28%.",
   },
   {
     icon: Code,
     title: "API Development",
-    description: "Design and build robust, scalable APIs that power modern applications and enable seamless integrations.",
+    description: "Automate workflow handoffs with APIs that reduce manual coordination time by 40%.",
   },
   {
     icon: Brain,
     title: "AI & Machine Learning",
-    description: "Leverage cutting-edge AI and ML technologies to unlock insights and automate business processes.",
+    description: "Automate repetitive decisions to reduce cycle time by 30% across critical operations.",
   },
   {
     icon: Shield,
     title: "Cybersecurity",
-    description: "Comprehensive security solutions to protect your digital assets and ensure compliance with industry standards.",
+    description: "Reduce security incident response time by 45% with continuous monitoring and controls.",
   },
   {
     icon: TrendingUp,
-    title: "Digital Transformation",
-    description: "Strategic consulting and implementation to modernize legacy systems and accelerate digital initiatives.",
+    title: "Deployment Acceleration",
+    description: "Release business features 2x faster with deployment pipelines and environment automation.",
   },
   {
     icon: Database,
     title: "Data Analytics",
-    description: "Transform raw data into actionable insights with advanced analytics, BI tools, and data visualization.",
+    description: "Track cost and margin in real time to improve decision speed and protect profitability.",
   },
 ];
 
@@ -37,32 +37,32 @@ export const INDUSTRIES = [
   {
     icon: Building2,
     title: "Banking & Finance",
-    description: "Digital banking, payment processing, and financial analytics solutions",
+    description: "Reduce loan and payment processing time by up to 35%.",
   },
   {
     icon: Heart,
     title: "Healthcare",
-    description: "HIPAA-compliant systems, telemedicine, and patient management platforms",
+    description: "Cut patient scheduling delays by 30% with workflow automation.",
   },
   {
     icon: ShoppingBag,
     title: "Retail & E-commerce",
-    description: "Omnichannel experiences, inventory management, and customer analytics",
+    description: "Reduce stockouts and deployment delays to protect revenue during peak demand.",
   },
   {
     icon: Factory,
     title: "Manufacturing",
-    description: "Smart factories, supply chain optimization, and IoT integration",
+    description: "Automate plant workflows to reduce downtime and improve throughput.",
   },
   {
     icon: Shield,
     title: "Insurance",
-    description: "Policy management, claims processing, and risk assessment systems",
+    description: "Speed up claims turnaround by 25% with automated intake and routing.",
   },
   {
     icon: Smartphone,
     title: "Telecommunications",
-    description: "Network management, customer service platforms, and 5G solutions",
+    description: "Improve service deployment speed and reduce churn with better support workflows.",
   },
 ];
 
@@ -118,10 +118,10 @@ export const JOBS = [
 ];
 
 export const COMPANY_VALUES = [
-  "Innovation-driven solutions",
-  "Client-centric approach",
+  "Reduce operational costs with measurable delivery",
+  "Automate workflows that slow down teams",
   "Excellence in execution",
-  "Sustainable growth",
+  "Faster deployment with lower delivery risk",
 ];
 
 export const CAREER_BENEFITS = [
@@ -152,3 +152,55 @@ export const CONTACT_INFO = {
     sunday: "Sunday: Closed",
   },
 };
+
+export const CLIENT_LOGOS = [
+  { name: "NovaBank" },
+  { name: "HealthBridge" },
+  { name: "RetailSphere" },
+  { name: "ManuCore" },
+  { name: "InsureGrid" },
+  { name: "TeleWave" },
+];
+
+export const TESTIMONIALS = [
+  {
+    quote: "Zentiti helped us reduce processing time by 35%.",
+    author: "VP Operations, NovaBank",
+  },
+  {
+    quote: "Their team automated our manual workflows in 10 weeks and reduced deployment delays by 42%.",
+    author: "Director of Transformation, HealthBridge",
+  },
+];
+
+export const TRUST_STATS = [
+  { label: "Projects Delivered", value: "20+" },
+  { label: "Client Satisfaction", value: "95%" },
+];
+
+export const CASE_STUDIES = [
+  {
+    client: "NovaBank",
+    sector: "Financial Services",
+    outcome: "Reduced loan processing cycle time by 43% in 90 days",
+    impact: "Saved $2.1M in annual operating costs",
+    summary:
+      "Automated document workflows and risk scoring with AI to eliminate manual handoffs and accelerate approvals.",
+  },
+  {
+    client: "HealthBridge",
+    sector: "Healthcare",
+    outcome: "Improved patient scheduling utilization by 37%",
+    impact: "Increased quarterly revenue by 22%",
+    summary:
+      "Integrated predictive scheduling and no-show prevention across multi-location clinics for better capacity usage.",
+  },
+  {
+    client: "RetailSphere",
+    sector: "Retail & E-commerce",
+    outcome: "Cut inventory stockouts by 51%",
+    impact: "Delivered 18% margin uplift within two quarters",
+    summary:
+      "Deployed demand forecasting and replenishment automation to improve sell-through and protect revenue.",
+  },
+];

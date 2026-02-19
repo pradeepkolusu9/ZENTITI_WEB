@@ -38,7 +38,7 @@ const Footer = () => {
       { label: "Contact", href: "#contact" },
     ],
     services: [
-      { label: "Cloud Solutions", href: "#services" },
+      { label: "Cloud Migration", href: "#services" },
       { label: "API Development", href: "#services" },
       { label: "AI & Machine Learning", href: "#services" },
     ],
@@ -73,8 +73,8 @@ const Footer = () => {
               <span className="text-2xl font-bold">Zentiti Inc</span>
             </div>
             <p className="text-gray-400 mb-6 max-w-sm">
-              Transforming businesses through innovative technology solutions. Partner with us for
-              your digital transformation journey.
+              Reduce delivery costs, automate workflows, and ship enterprise initiatives up to 2x
+              faster with Zentiti.
             </p>
 
             <div>

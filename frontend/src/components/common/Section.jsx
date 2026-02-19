@@ -1,7 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { fadeInUp, defaultViewport, shouldReduceMotion } from "@/utils/animations";
 
 const backgroundVariants = {
   white: "bg-white dark:bg-slate-900",
@@ -15,21 +13,13 @@ export const Section = ({
   subtitle,
   background = "white",
   children,
-  animate = true,
   className,
   ...props
 }) => {
-  const reduceMotion = shouldReduceMotion();
-  const shouldAnimate = animate && !reduceMotion;
-
   return (
-    <motion.section
+    <section
       id={id}
       data-testid={`${id}-section`}
-      initial={shouldAnimate ? "hidden" : "visible"}
-      whileInView="visible"
-      viewport={defaultViewport}
-      variants={shouldAnimate ? fadeInUp : {}}
       className={cn(
         "py-16 sm:py-20 md:py-24",
         backgroundVariants[background],
@@ -39,13 +29,7 @@ export const Section = ({
     >
       <div className="container mx-auto px-4 sm:px-6">
         {(title || subtitle) && (
-          <motion.div
-            className="text-center mb-12 sm:mb-16"
-            initial={shouldAnimate ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={defaultViewport}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
+          <div className="text-center mb-12 sm:mb-16">
             {title && (
               <h2
                 data-testid={`${id}-title`}
@@ -60,18 +44,13 @@ export const Section = ({
                 {subtitle}
               </p>
             )}
-          </motion.div>
+          </div>
         )}
 
-        <motion.div
-          initial={shouldAnimate ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={defaultViewport}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
+        <div>
           {children}
-        </motion.div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 };

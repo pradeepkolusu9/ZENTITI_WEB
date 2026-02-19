@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "@/index.css";
 import App from "@/App";
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@/shared/ui";
 import { ThemeProvider } from "next-themes";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
