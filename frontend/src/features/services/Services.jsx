@@ -408,21 +408,42 @@ export const Services = () => {
       <div style={{
         display:"flex",alignItems:"flex-start",
         maxWidth:"1040px",margin:"0 auto",
+        flexDirection: ["column", "row"][0], // Will be overridden by media query
+        gap: ["16px", "0"][0], // Will be overridden by media query
       }}>
-        {STEPS.map((step, i) => (
-          <div
-            key={step.num}
-            style={{ display:"flex", alignItems:"flex-start", flex:1, minWidth:0 }}
-          >
-            <Card
-              step={step}
-              active={isActive(i)}
-              onClick={() => click(i)}
-              delay={i * 0.09 + 0.15}
-            />
-            {i < 4 && <Arrow lit={isLit(i)} id={i} />}
-          </div>
-        ))}
+        <style>{`
+          @media (max-width: 767px) {
+            .services-flow-row {
+              flex-direction: column !important;
+              gap: 16px !important;
+            }
+            .services-flow-row > div {
+              width: 100% !important;
+            }
+            .services-arrow {
+              display: none !important;
+            }
+          }
+        `}</style>
+        <div className="services-flow-row" style={{
+          display:"flex",alignItems:"flex-start",
+          maxWidth:"1040px",margin:"0 auto",
+        }}>
+          {STEPS.map((step, i) => (
+            <div
+              key={step.num}
+              style={{ display:"flex", alignItems:"flex-start", flex:1, minWidth:0 }}
+            >
+              <Card
+                step={step}
+                active={isActive(i)}
+                onClick={() => click(i)}
+                delay={i * 0.09 + 0.15}
+              />
+              {i < 4 && <Arrow lit={isLit(i)} id={i} className="services-arrow" />}
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* hint */}

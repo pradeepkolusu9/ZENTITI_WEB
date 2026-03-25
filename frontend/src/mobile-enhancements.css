@@ -1,0 +1,146 @@
+/* Additional Mobile Enhancements for Zentiti Website */
+
+/* 1. Better Touch Targets */
+.btn-mobile {
+  min-height: 48px; /* iOS recommendation */
+  padding: 12px 24px;
+}
+
+/* 2. Safe Area Support for iPhone X+ */
+@supports (padding: max(0px)) {
+  .safe-area-top {
+    padding-top: max(20px, env(safe-area-inset-top));
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
+  }
+}
+
+/* 3. Pull-to-refresh indicator */
+.pull-to-refresh {
+  position: fixed;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: top 0.3s ease;
+  z-index: 100;
+}
+
+.pull-to-refresh.active {
+  top: 20px;
+}
+
+/* 4. Better input handling on mobile */
+input, textarea, select {
+  font-size: 16px; /* Prevents zoom on iOS */
+}
+
+/* 5. Sticky headers on mobile */
+@media (max-width: 767px) {
+  .sticky-mobile {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: var(--bg-page);
+  }
+}
+
+/* 6. Horizontal scroll containers for mobile */
+.horizontal-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* 7. Better image handling */
+.img-mobile {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* 8. Mobile-specific animations */
+@media (max-width: 767px) {
+  .mobile-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+/* 9. Loading states for mobile */
+.skeleton-mobile {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* 10. Better modal handling on mobile */
+@media (max-width: 767px) {
+  .modal-mobile {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    margin: 0;
+  }
+}
+
+/* 11. Touch feedback */
+.touch-feedback {
+  position: relative;
+  overflow: hidden;
+}
+
+.touch-feedback::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+
+.touch-feedback.active::after {
+  width: 200px;
+  height: 200px;
+}
+
+/* 12. Better form layouts on mobile */
+@media (max-width: 767px) {
+  .form-mobile {
+    padding: 16px;
+  }
+  
+  .form-mobile .form-group {
+    margin-bottom: 16px;
+  }
+  
+  .form-mobile button {
+    width: 100%;
+    margin-top: 8px;
+  }
+}

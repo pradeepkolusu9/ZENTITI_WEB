@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export const CaseStudies = () => {
   return (
     <section
-      id="case-studies"
+      id="conversion-case-studies"
       className="relative py-24 sm:py-32 overflow-hidden"
       style={{ background: "var(--bg-page)" }}
     >

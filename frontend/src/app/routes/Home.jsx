@@ -8,7 +8,7 @@ const Challenge = lazy(() => import("@/features/challenge/Challenge").then((modu
 const About = lazy(() => import("@/features/about/About").then((module) => ({ default: module.About })));
 const CoreValues = lazy(() => import("@/features/coreValues/CoreValues").then((module) => ({ default: module.CoreValues })));
 const Industries = lazy(() => import("@/features/industries/Industries").then((module) => ({ default: module.Industries })));
-// const Services = lazy(() => import("@/features/services/Services").then((module) => ({ default: module.Services })));
+const Services = lazy(() => import("@/features/services/Services").then((module) => ({ default: module.Services })));
 const MuleSoftCOE = lazy(() => import("@/features/mulesoft/MuleSoftCOE").then((module) => ({ default: module.MuleSoftCOE })));
 const SolutionAccelerators = lazy(() => import("@/features/accelerators/SolutionAccelerators").then((module) => ({ default: module.SolutionAccelerators })));
 const ProductVisual = lazy(() => import("@/features/conversion/ProductVisual").then((module) => ({ default: module.ProductVisual })));
@@ -99,7 +99,7 @@ const Home = () => {
         <DeferredSection minHeight={300}>
           <Industries />
         </DeferredSection>
-        {/* Session 4: MuleSoft COE */}
+        {/* Session 5: MuleSoft COE */}
         <DeferredSection minHeight={300}>
           <MuleSoftCOE />
         </DeferredSection>

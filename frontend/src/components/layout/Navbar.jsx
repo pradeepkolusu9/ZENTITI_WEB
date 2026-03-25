@@ -34,15 +34,13 @@ const NAV_GROUPS = [
 
   {
 
-    label: "Solutions",   id: "services",
+    label: "Services",   id: "services",
 
     children: [
 
-      { label: "MuleSoft COE",    id: "mulesoft-coe"     },
+      { label: "Managing Services", id: "staffing-services" },
 
       { label: "Staffing Services",id: "staffing-services"},
-
-      { label: "Accelerators",    id: "accelerators"     },
 
     ],
 
@@ -119,13 +117,12 @@ export const Navbar = React.memo(() => {
 
 
   const scrollTo = (id) => {
-
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
     setIsMobileMenuOpen(false);
-
     setOpenDropdown(null);
-
   };
 
 
@@ -338,37 +335,37 @@ export const Navbar = React.memo(() => {
 
 
 
-            <ThemeToggle />
+            <div className="flex items-center gap-2">
 
+              <ThemeToggle />
 
+              <Button
 
-            {/* Mobile hamburger */}
+                variant="ghost"
 
-            <Button
+                size="sm"
 
-              data-testid="mobile-menu-toggle"
+                className="lg:hidden p-2 md:p-2.5"
 
-              variant="ghost"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
 
-              size="sm"
+                style={{minHeight: '44px', minWidth: '44px'}}
 
-              className="lg:hidden p-2"
+              >
 
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                {isMobileMenuOpen ? (
 
-            >
+                  <X className={isScrolled ? "text-[var(--nav-text)]" : "text-white"} style={{width: '24px', height: '24px'}} />
 
-              {isMobileMenuOpen ? (
+                ) : (
 
-                <X className={isScrolled ? "text-[var(--nav-text)]" : "text-white"} />
+                  <Menu className={isScrolled ? "text-[var(--nav-text)]" : "text-white"} style={{width: '24px', height: '24px'}} />
 
-              ) : (
+                )}
 
-                <Menu className={isScrolled ? "text-[var(--nav-text)]" : "text-white"} />
+              </Button>
 
-              )}
-
-            </Button>
+            </div>
 
           </div>
 

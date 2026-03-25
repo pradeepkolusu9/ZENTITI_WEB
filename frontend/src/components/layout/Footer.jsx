@@ -112,17 +112,6 @@ export const Footer = () => {
                   </p>
                 </div>
               </div>
-              
-              <div className="flex items-center space-x-2">
-                <Mail className="w-4 h-4 flex-shrink-0" style={{ color: "var(--accent-blue)" }} />
-                <a 
-                  href="mailto:info@zentiti.com" 
-                  className="text-xs transition-colors hover:text-blue-500"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  info@zentiti.com
-                </a>
-              </div>
             </div>
           </div>
         </div>

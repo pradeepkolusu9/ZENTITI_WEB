@@ -86,10 +86,9 @@ export const About = () => {
 .abody { margin-top: 16px; font-size: 15px; line-height: 1.6; color: var(--text-secondary); max-width: 480px; }
 
 /* Vision */
-.vc { position: relative; margin-top: 32px; padding: 18px 20px 18px 22px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border-default); box-shadow: var(--shadow-card); cursor: default; transition: transform 0.25s cubic-bezier(.22,1,.36,1), box-shadow 0.25s ease; }
-.vc:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
+.vc { position: relative; margin-top: 32px; padding: 18px 20px 18px 22px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border-default); }
 .vc::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 12px 0 0 12px; background: linear-gradient(180deg, var(--ember), #f97316); }
-.vlbl { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ember); }
+.vlbl { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ember); margin-bottom: 4px; }
 .vtxt { margin-top: 4px; font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
 
 /* Locations */
@@ -127,6 +126,20 @@ export const About = () => {
               </FadeIn>
 
               <FadeIn delay={0.2}>
+                <div className="fcard" style={{
+                  background: "var(--brand-blue)15",
+                  border: "1px solid var(--brand-blue)40",
+                }}>
+                  <p className="flbl" style={{
+                    color: "var(--brand-blue)",
+                  }}>OUR ROOTS</p>
+                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                    Zentiti was launched in 2024 as a strategic extension of Synersys Technologies, a trusted name in Networking and Cybersecurity consulting. While Synersys continues to lead in network engineering and security, Zentiti was purpose-built to meet the growing demand for Data Integrations, APIs, and Agentic AI. Together, we are 300+ consultants strong, united by shared foundations in business functions like HR, IT, Finance and Operations. This common fabric gives Zentiti the agility of a startup with the operational maturity of an established organization.
+                  </p>
+                </div>
+              </FadeIn>
+
+              <FadeIn delay={0.28}>
                 <div className="vc">
                   <p className="vlbl">Our Vision</p>
                   <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
@@ -136,7 +149,7 @@ export const About = () => {
                 </div>
               </FadeIn>
 
-              <FadeIn delay={0.28}>
+              <FadeIn delay={0.31}>
                 <p className="lhdr">Locations</p>
                 <div className="ltags">
                   {CITIES.map((c) => (
@@ -145,26 +158,25 @@ export const About = () => {
                 </div>
               </FadeIn>
 
-              <FadeIn delay={0.31}>
-                <div className="fcard" style={{
-                  background: "var(--brand-blue)15",
-                  border: "1px solid var(--brand-blue)40",
-                }}>
-                  <p className="flbl" style={{
-                    color: "var(--brand-blue)",
-                  }}>Legacy</p>
-                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                    Founded in 2024, Zentiti is a specialized Data & AI innovation company dedicated to engineering the next generation of enterprise intelligence. As the specialized arm of our cybersecurity parent organization, Synersys Group, we leverage a decade of technical excellence to build AI solutions that are secure by design and production-ready by default.
-                  </p>
-                </div>
-              </FadeIn>
-
               <FadeIn delay={0.34}>
                 <div className="fcard">
                   <p className="flbl">AI Agentic Foundry</p>
-                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                    We research, develop and engineer intelligent agents tailored to complex business use cases. We bridge the gap between experimental AI and enterprise-grade deployment, integrating seamlessly with your existing systems to deliver measurable business outcomes in just 60-90 days. At Zentiti, we don't just build models; we engineer the autonomous future of your business.
-                  </p>
+                  <div className="space-y-4 text-sm text-[var(--text-secondary)]">
+                    <p className="leading-relaxed">
+                      Part lab, part factory. The Agentic Foundry is where we explore what's next in AI and put it to work. Our team evaluates emerging agentic technologies, testing frameworks, models, and patterns to separate real capability from hype. When a use case is validated, the Foundry shifts into production mode, engineering contextual AI agents tailored to each client's environment. This is our way of ensuring that every agent we deliver is grounded in hands-on experimentation, not just theory.
+                    </p>
+                    <p className="leading-relaxed">
+                      But we don't just build agents for our clients. We run on them. The Foundry also powers intelligent agents across our internal business functions, making us a truly agentic enterprise.
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-6 flex justify-center px-6">
+                  <img 
+                    src="/ai_agentic_foundry.png" 
+                    alt="AI Agentic Foundry" 
+                    className="rounded-lg shadow-lg max-w-full h-auto"
+                    style={{ maxHeight: "400px" }}
+                  />
                 </div>
               </FadeIn>
             </div>

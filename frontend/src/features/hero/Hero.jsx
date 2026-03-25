@@ -79,26 +79,29 @@ const HeroOrbit = () => {
   return (
     <div style={{
       position: "relative",
-      width: 480,
-      height: 480,
+      width: "100%",
+      maxWidth: 480,
+      height: "auto",
+      aspectRatio: "1",
       flexShrink: 0,
     }}>
       {[
-        { size: 420, opacity: 0.018 },
-        { size: 310, opacity: 0.04  },
-        { size: 200, opacity: 0.08  },
+        { size: "87.5%", opacity: 0.018 },
+        { size: "64.5%", opacity: 0.04  },
+        { size: "41.5%", opacity: 0.08  },
       ].map(({ size, opacity }) => (
         <div key={size} style={{
           position: "absolute", top: "50%", left: "50%",
           width: size, height: size,
           borderRadius: "50%",
           background: `rgba(214,78,26,${opacity})`,
-          animation: `haloBreath ${3 + size * 0.003}s ease-in-out infinite`,
+          animation: `haloBreath ${3 + parseInt(size) * 0.03}s ease-in-out infinite`,
           pointerEvents: "none",
+          transform: "translate(-50%, -50%)",
         }}/>
       ))}
 
-      {[240, 390].map((size) => (
+      {["50%", "81%"].map((size) => (
         <div key={size} style={{
           position: "absolute", top: "50%", left: "50%",
           transform: "translate(-50%,-50%)",
@@ -113,11 +116,11 @@ const HeroOrbit = () => {
       <div style={{
         position: "absolute", top: "50%", left: "50%",
         transform: "translate(-50%,-50%)",
-        width: 112, height: 112,
+        width: "23%", height: "23%",
         borderRadius: "50%",
         background: "linear-gradient(145deg, #e05a20, #b83a0e)",
         display: "flex", alignItems: "center", justifyContent: "center",
-        fontSize: 40,
+        fontSize: "clamp(24px, 5vw, 40px)",
         zIndex: 20,
         animation: "centerPulse 2.6s ease-out infinite",
       }}>
@@ -127,7 +130,7 @@ const HeroOrbit = () => {
       <div style={{
         position: "absolute",
         top: "50%", left: "50%",
-        width: 240, height: 240,
+        width: "50%", height: "50%",
         borderRadius: "50%",
         animation: `spinCW ${INNER_DUR}s linear infinite`,
       }}>
@@ -145,14 +148,14 @@ const HeroOrbit = () => {
                 position: "absolute",
                 left: pos.left,
                 top:  pos.top,
-                width: 50, height: 50,
+                width: "10.5%", height: "10.5%",
                 borderRadius: 14,
                 background: isHov
                   ? "rgba(255,255,255,0.14)"
                   : "rgba(255,255,255,0.07)",
                 border: `1px solid rgba(255,255,255,${isHov ? 0.22 : 0.1})`,
                 display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: 22,
+                fontSize: "clamp(16px, 3.5vw, 22px)",
                 cursor: "pointer",
                 backdropFilter: "blur(10px)",
                 boxShadow: isHov
@@ -207,7 +210,7 @@ const HeroOrbit = () => {
       <div style={{
         position: "absolute",
         top: "50%", left: "50%",
-        width: 390, height: 390,
+        width: "81%", height: "81%",
         borderRadius: "50%",
         animation: `spinCCW ${OUTER_DUR}s linear infinite`,
       }}>
@@ -225,8 +228,8 @@ const HeroOrbit = () => {
                 position: "absolute",
                 left: pos.left,
                 top:  pos.top,
-                width:  node.orange ? 58 : 52,
-                height: node.orange ? 58 : 52,
+                width:  node.orange ? "12%" : "10.5%",
+                height: node.orange ? "12%" : "10.5%",
                 borderRadius: 16,
                 background: node.orange
                   ? isHov
@@ -239,7 +242,7 @@ const HeroOrbit = () => {
                   ? `1px solid rgba(255,120,60,${isHov ? 0.5 : 0.3})` 
                   : `1px solid rgba(255,255,255,${isHov ? 0.22 : 0.1})`,
                 display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: 22,
+                fontSize: "clamp(16px, 3.5vw, 22px)",
                 cursor: "pointer",
                 backdropFilter: "blur(10px)",
                 boxShadow: node.orange
@@ -297,7 +300,7 @@ const HeroOrbit = () => {
 
       <div style={{
         position: "absolute",
-        bottom: -44,
+        bottom: -20,
         left: "50%",
         transform: "translateX(-50%)",
         whiteSpace: "nowrap",
@@ -344,21 +347,21 @@ export const Hero = () => {
       {/* Ambient glow */}
       <div className="pointer-events-none absolute left-1/2 top-1/3 z-[1] h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange-600/15 blur-[100px]" />
 
-      <div className="relative z-10 w-full px-6 py-24 sm:py-28">
-        <div className="grid items-center gap-14 lg:grid-cols-[60fr_40fr] max-w-7xl mx-auto">
+      <div className="relative z-10 w-full px-4 sm:px-6 py-16 sm:py-20 md:py-24">
+        <div className="grid items-center gap-8 lg:gap-14 lg:grid-cols-[60fr_40fr] max-w-7xl mx-auto">
           <div className="text-left">
             <motion.span
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="mb-6 inline-block rounded-full border border-orange-500/30 bg-gradient-to-r from-orange-500/20 to-orange-600/10 px-5 py-2 text-xs font-bold uppercase tracking-[0.25em] text-orange-300 shadow-lg shadow-orange-500/20"
+              className="mb-4 sm:mb-6 inline-block rounded-full border border-orange-500/30 bg-gradient-to-r from-orange-500/20 to-orange-600/10 px-3 sm:px-5 py-1.5 sm:py-2 text-xs font-bold uppercase tracking-[0.15em] sm:tracking-[0.25em] text-orange-300 shadow-lg shadow-orange-500/20"
             >
-              ✨ Unlock the Power of AI
+              ✨ Unlock AI Power
             </motion.span>
 
             <motion.h1
               data-testid="hero-headline"
-              className="mb-6 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl"
+              className="mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.1] sm:leading-[1.05] tracking-tight"
               style={{ fontFamily: "'Manrope', sans-serif" }}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -368,7 +371,7 @@ export const Hero = () => {
                 Smart Integration &{" "}
               </span>
               <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(217,76,26,0.5)]">
-                AI Partner for Modern Enterprise
+                AI for Enterprise
               </span>
             </motion.h1>
 
@@ -377,7 +380,7 @@ export const Hero = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-              className="mb-6 max-w-xl text-lg font-semibold leading-relaxed text-slate-300 sm:text-xl"
+              className="mb-4 sm:mb-6 max-w-lg text-base sm:text-lg font-semibold leading-relaxed text-slate-300"
             >
               Built for Scale. Ready for Intelligence.
             </motion.p>
@@ -387,7 +390,7 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.18, ease: "easeOut" }}
-              className="flex flex-col justify-start gap-4 sm:flex-row mt-8"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10"
             >
               <Button
                 data-testid="hero-cta-button"
@@ -415,7 +418,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.22, ease: "easeOut" }}
-            className="hidden lg:block"
+            className="block"
           >
             <HeroOrbit />
           </motion.div>

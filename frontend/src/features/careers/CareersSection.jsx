@@ -4,10 +4,11 @@ import { Home, BookOpen, Zap, Users, Clock, TrendingUp, Monitor, ArrowRight } fr
 import { ApplicationModal } from "@/features/careers/ApplicationModal";
 
 const CHECKLIST = [
-  "Remote first culture with flexible work arrangements",
-  "Continuous learning with certification support",
-  "Work on cutting edge integration and AI projects",
-  "Collaborative team of senior specialists",
+  "Grow every day. A learning-first culture where curiosity is encouraged and development never stops.",
+  "Build what's next. Innovate alongside our clients to solve problems that matter, not just implement solutions.",
+  "Move fast, ship faster. A nimble startup where your ideas go from whiteboard to production without red tape.",
+  "Work where you thrive. Hybrid arrangements that trust you to do your best work, wherever that is.",
+  "Make a real impact. Small team, big voice. Every contribution is visible, valued, and shapes what we build.",
 ];
 
 const REASONS = [
@@ -152,7 +153,19 @@ export const CareersSection = () => {
                   style={{ listStyle: "none" }}
                 >
                   <CheckIcon />
-                  {item}
+                  <span>
+                    {item.split('.').map((part, index) => (
+                      <span key={index}>
+                        {index === 0 ? (
+                          <span style={{ color: "var(--ember)", fontWeight: 600 }}>
+                            {part}
+                          </span>
+                        ) : (
+                          <>{index > 0 ? '.' : ''}{part}</>
+                        )}
+                      </span>
+                    ))}
+                  </span>
                 </motion.li>
               ))}
             </ul>
