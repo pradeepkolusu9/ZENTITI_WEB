@@ -1,5 +1,4 @@
 import React from "react";
-import { CalendarDays } from "lucide-react";
 import { Button } from "@/shared/ui";
 
 const CALENDLY_URL = "https://calendly.com/zentiti/strategy-call";
@@ -20,7 +19,6 @@ export const StickyCTA = () => {
           type="button"
           size="md"
           variant="primary"
-          icon={<CalendarDays className="h-4 w-4" />}
           className="w-full whitespace-nowrap bg-cyan-500 text-slate-900 hover:bg-cyan-400 sm:w-auto"
           onClick={openCalendly}
         >

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { CalendarDays, X } from "lucide-react";
+import { X } from "lucide-react";
 import { toast } from "sonner";
 import { Button, Input, Textarea } from "@/shared/ui";
 
@@ -62,7 +62,6 @@ export const HeaderLeadCta = () => {
           type="button"
           size="sm"
           variant="primary"
-          icon={<CalendarDays className="h-4 w-4" />}
           className="bg-cyan-500 text-slate-900 shadow-lg hover:bg-cyan-400"
           onClick={() => setIsOpen(true)}
         >

@@ -4,6 +4,8 @@ from fastapi import APIRouter, Depends
 
 from app.db import database
 from app.models.schemas import (
+    CareersApplication,
+    CareersApplicationCreate,
     ContactSubmission,
     ContactSubmissionCreate,
     NewsletterSubscription,
@@ -52,3 +54,10 @@ async def subscribe_newsletter(
     payload: NewsletterSubscriptionCreate, service: LeadServiceDep
 ) -> NewsletterSubscription:
     return await service.subscribe_newsletter(payload)
+
+
+@api_router.post("/careers/apply", response_model=CareersApplication)
+async def submit_careers_application(
+    payload: CareersApplicationCreate, service: LeadServiceDep
+) -> CareersApplication:
+    return await service.submit_careers_application(payload)

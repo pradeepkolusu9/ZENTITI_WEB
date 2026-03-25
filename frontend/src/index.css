@@ -2,133 +2,432 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    margin: 0;
-    font-family:
-        -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-        "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-        sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ============================================================
+   ZENTITI — ULTRA-RICH DESIGN SYSTEM
+   Philosophy: monochrome depth + ember orange as the weapon
+   5 colors: Ember · Abyss · Deep Slate · Pearl · Frost
+   Orange rule: CTAs only · headline accent · active nav
+   ============================================================ */
+
+@layer base {
+  :root {
+    /* ── THE 5 COLORS ─────────────────────────────────────── */
+    --ember:       #E8521A;   /* Orange — appears max 8% of screen  */
+    --ember-deep:  #B83E10;   /* Darker orange — hover states only  */
+    --ember-glow:  #FF6B2B;   /* Lighter orange — headline gradient */
+    --abyss:       #080D18;   /* Darkest bg                         */
+    --deep-slate:  #0F1826;   /* Card bg in dark mode               */
+    --pearl:       #F2F5FC;   /* Light mode page bg                 */
+    --frost:       #E0E8F5;   /* Light mode card / section alt      */
+
+    /* ── shadcn/ui tokens — Light Mode ───────────────────── */
+    --background:           213 40% 95%;
+    --foreground:           222 60% 7%;
+    --card:                 0 0% 100%;
+    --card-foreground:      222 60% 7%;
+    --popover:              0 0% 100%;
+    --popover-foreground:   222 60% 7%;
+    --primary:              222 60% 7%;
+    --primary-foreground:   213 40% 95%;
+    --secondary:            213 40% 90%;
+    --secondary-foreground: 222 60% 7%;
+    --muted:                213 40% 90%;
+    --muted-foreground:     215 16% 42%;
+    --accent:               213 40% 90%;
+    --accent-foreground:    222 60% 7%;
+    --destructive:          0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border:               213 30% 86%;
+    --input:                213 30% 86%;
+    --ring:                 18 82% 51%;
+    --radius:               0.5rem;
+    --chart-1: 18 82% 51%;
+    --chart-2: 221 83% 53%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+
+    /* ── Semantic light-mode tokens ──────────────────────── */
+    --bg-page:           var(--pearl);
+    --bg-section-alt:    var(--frost);
+    --bg-card:           #FFFFFF;
+    --bg-card-hover:     #F7FAFF;
+
+    --text-primary:      #080D18;
+    --text-secondary:    #3D4E6B;
+    --text-muted:        #7A8BA8;
+    --text-inverse:      #F2F5FC;
+
+    --border-default:    rgba(8, 13, 24, 0.08);
+    --border-strong:     rgba(8, 13, 24, 0.15);
+    --border-ember:      rgba(232, 82, 26, 0.30);
+
+    --shadow-card:       0 1px 3px rgba(8,13,24,0.06), 0 4px 12px rgba(8,13,24,0.05);
+    --shadow-card-hover: 0 6px 24px rgba(8,13,24,0.11);
+    --shadow-ember:      0 8px 24px rgba(232,82,26,0.25);
+
+    /* accent — darkened for WCAG AA on white */
+    --accent-ember:      #B83E10;
+
+    /* Nav */
+    --nav-bg:            rgba(242, 245, 252, 0.94);
+    --nav-border:        rgba(8, 13, 24, 0.07);
+    --nav-text:          #1E2D47;
+    --nav-text-hover:    var(--ember);
+
+    /* Pills */
+    --pill-bg:           rgba(232, 82, 26, 0.07);
+    --pill-text:         #B83E10;
+    --pill-border:       rgba(232, 82, 26, 0.22);
+
+    /* Icon — monochrome in light, no color */
+    --icon-bg:           rgba(8, 13, 24, 0.06);
+    --icon-text:         #3D4E6B;
+    --icon-bg-active:    rgba(232, 82, 26, 0.10);
+    --icon-text-active:  #B83E10;
+
+    /* Aliases for backward compat */
+    --brand-orange:       var(--ember);
+    --brand-orange-light: var(--ember-glow);
+    --brand-orange-dark:  var(--ember-deep);
+    --brand-blue:         #2563EB;
+    --brand-blue-light:   #5B8EF5;
+    --brand-blue-dark:    #1A4FBF;
+    --bg-card-hover:      #F7FAFF;
+  }
+
+  .dark {
+    /* ── shadcn/ui tokens — Dark Mode ────────────────────── */
+    --background:           222 60% 7%;
+    --foreground:           213 40% 95%;
+    --card:                 220 45% 12%;
+    --card-foreground:      213 40% 95%;
+    --popover:              220 45% 12%;
+    --popover-foreground:   213 40% 95%;
+    --primary:              18 82% 51%;
+    --primary-foreground:   222 60% 7%;
+    --secondary:            220 45% 15%;
+    --secondary-foreground: 213 40% 95%;
+    --muted:                220 45% 15%;
+    --muted-foreground:     215 20% 52%;
+    --accent:               18 82% 51%;
+    --accent-foreground:    222 60% 7%;
+    --destructive:          0 84.2% 60.2%;
+    --destructive-foreground: 213 40% 95%;
+    --border:               220 45% 15%;
+    --input:                220 45% 15%;
+    --ring:                 18 82% 51%;
+    --chart-1: 18 82% 51%;
+    --chart-2: 221 83% 53%;
+    --chart-3: 47 96% 53%;
+    --chart-4: 280 87% 65%;
+    --chart-5: 339 90% 68%;
+
+    /* ── Semantic dark-mode tokens ───────────────────────── */
+    --bg-page:           var(--abyss);
+    --bg-section-alt:    var(--deep-slate);
+    --bg-card:           #0F1826;
+    --bg-card-hover:     #162030;
+
+    --text-primary:      #E8F0FF;
+    --text-secondary:    #7A94B8;
+    --text-muted:        #3D526E;
+    --text-inverse:      #080D18;
+
+    --border-default:    rgba(255, 255, 255, 0.06);
+    --border-strong:     rgba(255, 255, 255, 0.11);
+    --border-ember:      rgba(232, 82, 26, 0.28);
+
+    --shadow-card:       0 1px 3px rgba(0,0,0,0.5);
+    --shadow-card-hover: 0 6px 28px rgba(0,0,0,0.6);
+    --shadow-ember:      0 8px 28px rgba(232,82,26,0.30);
+
+    --accent-ember:      var(--ember);
+
+    --nav-bg:            rgba(8, 13, 24, 0.94);
+    --nav-border:        rgba(255, 255, 255, 0.06);
+    --nav-text:          rgba(232, 240, 255, 0.7);
+    --nav-text-hover:    var(--ember);
+
+    --pill-bg:           rgba(232, 82, 26, 0.10);
+    --pill-text:         #FF6B2B;
+    --pill-border:       rgba(232, 82, 26, 0.24);
+
+    /* Icon — monochrome in dark too */
+    --icon-bg:           rgba(255, 255, 255, 0.05);
+    --icon-text:         rgba(232, 240, 255, 0.5);
+    --icon-bg-active:    rgba(232, 82, 26, 0.12);
+    --icon-text-active:  #FF6B2B;
+
+    --brand-orange:       var(--ember);
+    --brand-orange-light: var(--ember-glow);
+    --brand-orange-dark:  var(--ember-deep);
+    --brand-blue:         #2563EB;
+    --brand-blue-light:   #5B8EF5;
+    --brand-blue-dark:    #1A4FBF;
+    --bg-card-hover:      #162030;
+  }
+}
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+@layer base {
+  * { @apply border-border; box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: auto; }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Manrope', sans-serif;
+    letter-spacing: -0.03em;
+  }
+
+  section { position: relative; }
+  code { font-family: source-code-pro, Menlo, Monaco, Consolas, monospace; }
+  button, a { cursor: pointer; }
+
+  button:focus-visible, a:focus-visible {
+    outline: 2px solid var(--ember);
+    outline-offset: 2px;
+  }
+  input:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--ember);
+    outline-offset: 0;
+  }
+
+  [data-debug-wrapper="true"] { display: contents !important; }
+  [data-debug-wrapper="true"] > * {
+    margin-left: inherit; margin-right: inherit;
+    margin-top: inherit; margin-bottom: inherit;
+    padding-left: inherit; padding-right: inherit;
+    padding-top: inherit; padding-bottom: inherit;
+    column-gap: inherit; row-gap: inherit; gap: inherit;
+    border-left-width: inherit; border-right-width: inherit;
+    border-top-width: inherit; border-bottom-width: inherit;
+    border-left-style: inherit; border-right-style: inherit;
+    border-top-style: inherit; border-bottom-style: inherit;
+    border-left-color: inherit; border-right-color: inherit;
+    border-top-color: inherit; border-bottom-color: inherit;
+  }
 }
 
-code {
-    font-family:
-        source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(232, 82, 26, 0.4);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--ember); }
+
+/* ============================================================
+   COMPONENT CLASSES
+   ============================================================ */
+@layer components {
+
+  /* ── Cards ── */
+  .z-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-default);
+    box-shadow: var(--shadow-card);
+    border-radius: 14px;
+    transition: box-shadow 0.25s ease, transform 0.25s ease,
+                border-color 0.25s ease;
+  }
+  .z-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-3px);
+    border-color: var(--border-strong);
+  }
+
+  /* Card top accent — ember orange only */
+  .z-card-top {
+    border-top: 2px solid var(--ember);
+  }
+  /* Card top — neutral (non-featured cards) */
+  .z-card-top-muted {
+    border-top: 2px solid var(--border-default);
+  }
+
+  /* ── Section pills ── */
+  .z-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 20px;
+    background: var(--pill-bg);
+    border: 1px solid var(--pill-border);
+    border-radius: 100px;
+    color: var(--pill-text);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* ── Icon badges — monochrome, no color ── */
+  .z-icon {
+    background: var(--icon-bg);
+    color: var(--icon-text);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-default);
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  /* Active / featured icon — ember tint */
+  .z-icon-active {
+    background: var(--icon-bg-active);
+    color: var(--icon-text-active);
+    border-color: var(--border-ember);
+  }
+
+  /* ── Buttons ── */
+  .z-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ember);
+    color: #fff;
+    border: none;
+    border-radius: 100px;
+    padding: 12px 28px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.01em;
+    transition: background 0.2s ease, transform 0.15s ease,
+                box-shadow 0.2s ease;
+  }
+  .z-btn-primary:hover {
+    background: var(--ember-deep);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-ember);
+  }
+
+  .z-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-strong);
+    border-radius: 100px;
+    padding: 12px 28px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .z-btn-ghost:hover {
+    border-color: var(--ember);
+    color: var(--accent-ember);
+  }
+
+  /* ── Navbar ── */
+  .z-navbar {
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--nav-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  /* ── Section backgrounds ── */
+  .z-section     { background-color: var(--bg-page); }
+  .z-section-alt { background-color: var(--bg-section-alt); }
+
+  /* ── Step badges ── */
+  .z-step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: var(--bg-card-hover);
+    color: var(--text-muted);
+    border: 1px solid var(--border-default);
+    transition: background 0.2s, color 0.2s;
+  }
+  .z-step-num.active {
+    background: var(--ember);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 4px 14px rgba(232,82,26,0.35);
+  }
+
+  /* ── Stat numbers — ember accent on symbol ── */
+  .z-stat-num {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--text-primary);
+  }
+  .z-stat-num em {
+    font-style: normal;
+    color: var(--ember);
+  }
+
+  /* ── Divider line ── */
+  .z-divider {
+    height: 1px;
+    background: var(--border-default);
+    border: none;
+  }
+  .z-divider-ember {
+    height: 2px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      var(--ember) 30%,
+      var(--ember) 70%,
+      transparent 100%);
+    opacity: 0.25;
+    border: none;
+    border-radius: 2px;
+  }
 }
 
-@layer base {
-    :root {
-        --background: 0 0% 100%;
-        --foreground: 0 0% 3.9%;
-        --card: 0 0% 100%;
-        --card-foreground: 0 0% 3.9%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 3.9%;
-        --primary: 0 0% 9%;
-        --primary-foreground: 0 0% 98%;
-        --secondary: 0 0% 96.1%;
-        --secondary-foreground: 0 0% 9%;
-        --muted: 0 0% 96.1%;
-        --muted-foreground: 0 0% 45.1%;
-        --accent: 0 0% 96.1%;
-        --accent-foreground: 0 0% 9%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 89.8%;
-        --input: 0 0% 89.8%;
-        --ring: 0 0% 3.9%;
-        --chart-1: 12 76% 61%;
-        --chart-2: 173 58% 39%;
-        --chart-3: 197 37% 24%;
-        --chart-4: 43 74% 66%;
-        --chart-5: 27 87% 67%;
-        --radius: 0.5rem;
-    }
-    .dark {
-        /* Dark Blue/Gray Theme - Professional, Not Pure Black */
-        --background: 222 47% 11%;          /* #0f172a slate-900 */
-        --foreground: 210 40% 98%;          /* #f8fafc slate-50 */
-        
-        /* Cards with subtle elevation */
-        --card: 222 47% 15%;                /* #1e293b slate-800 */
-        --card-foreground: 210 40% 98%;     /* #f8fafc */
-        
-        /* Popover */
-        --popover: 222 47% 15%;
-        --popover-foreground: 210 40% 98%;
-        
-        /* Primary - Blue accent */
-        --primary: 217 91% 60%;             /* #3b82f6 blue-500 */
-        --primary-foreground: 222 47% 11%;
-        
-        /* Secondary/Muted - Slightly lighter */
-        --secondary: 217 33% 17%;           /* #1e293b */
-        --secondary-foreground: 210 40% 98%;
-        --muted: 217 33% 17%;
-        --muted-foreground: 215 20% 65%;    /* #94a3b8 slate-400 */
-        
-        /* Accent */
-        --accent: 217 91% 60%;              /* Blue accent */
-        --accent-foreground: 222 47% 11%;
-        
-        /* Destructive */
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 210 40% 98%;
-        
-        /* Borders - Subtle */
-        --border: 217 33% 17%;              /* #334155 slate-700 */
-        --input: 217 33% 17%;
-        
-        /* Focus ring - Blue */
-        --ring: 217 91% 60%;
-        
-        /* Charts */
-        --chart-1: 217 91% 60%;
-        --chart-2: 142 76% 36%;
-        --chart-3: 47 96% 53%;
-        --chart-4: 280 87% 65%;
-        --chart-5: 339 90% 68%;
-    }
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes gradient-shift {
+  0%,100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
 }
 
-@layer base {
-    * {
-        @apply border-border;
-    }
-    body {
-        @apply bg-background text-foreground;
-    }
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  50%      { transform: translateY(-20px); }
 }
+.animate-float { animation: float 6s ease-in-out infinite; }
 
-@layer base {
-    [data-debug-wrapper="true"] {
-        display: contents !important;
-    }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
 
-    [data-debug-wrapper="true"] > * {
-        margin-left: inherit;
-        margin-right: inherit;
-        margin-top: inherit;
-        margin-bottom: inherit;
-        padding-left: inherit;
-        padding-right: inherit;
-        padding-top: inherit;
-        padding-bottom: inherit;
-        column-gap: inherit;
-        row-gap: inherit;
-        gap: inherit;
-        border-left-width: inherit;
-        border-right-width: inherit;
-        border-top-width: inherit;
-        border-bottom-width: inherit;
-        border-left-style: inherit;
-        border-right-style: inherit;
-        border-top-style: inherit;
-        border-bottom-style: inherit;
-        border-left-color: inherit;
-        border-right-color: inherit;
-        border-top-color: inherit;
-        border-bottom-color: inherit;
-    }
+.gpu-accelerated { will-change: transform; transform: translateZ(0); }
+.theme-transition {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }

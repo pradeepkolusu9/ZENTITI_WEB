@@ -13,7 +13,7 @@ export const ZentitiLogo = ({ white = false, height = "36px", className = "" }) 
     src="/logo.png"
     alt="Zentiti"
     style={{ height, width: "auto" }}
-    className={`${white ? "brightness-0 invert" : ""} ${className}`.trim()}
+    className={className}
   />
 );
 

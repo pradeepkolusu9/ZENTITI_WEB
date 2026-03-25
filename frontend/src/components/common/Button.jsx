@@ -4,7 +4,7 @@ import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = {
-  primary: "bg-blue-600 text-white hover:bg-blue-700 shadow-lg hover:shadow-xl",
+  primary: "bg-orange-600 text-white hover:bg-orange-700 shadow-lg hover:shadow-xl",
   secondary: "bg-gray-600 text-white hover:bg-gray-700 shadow-md hover:shadow-lg",
   outline: "border-2 border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950",
   ghost: "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800",

@@ -11,7 +11,7 @@ export const Testimonials = () => {
       data-testid="testimonials-section"
       className="relative overflow-hidden bg-gradient-to-b from-slate-50 to-white py-20 dark:from-slate-900 dark:to-slate-800 sm:py-28"
     >
-      <div className="container mx-auto px-4 sm:px-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mx-auto mb-14 max-w-2xl text-center">
           <motion.span
             initial={{ opacity: 0, y: 6 }}
@@ -48,7 +48,7 @@ export const Testimonials = () => {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.15 }}
+          viewport={{ once: true, amount: 0.3 }}
         >
           {TESTIMONIALS.map((testimonial, index) => (
             <motion.article

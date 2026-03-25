@@ -13,7 +13,7 @@ function App() {
   useSmoothScroll();
 
   return (
-    <div className="App">
+    <div className="App theme-transition">
       <HelmetProvider>
         <BrowserRouter>
           <Suspense fallback={<div className="min-h-screen" />}>

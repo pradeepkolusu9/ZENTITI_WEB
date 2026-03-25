@@ -4,6 +4,8 @@ from fastapi import HTTPException
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
 from app.models.schemas import (
+    CareersApplication,
+    CareersApplicationCreate,
     ContactSubmission,
     ContactSubmissionCreate,
     NewsletterSubscription,
@@ -57,3 +59,10 @@ class LeadService:
         doc["timestamp"] = doc["timestamp"].isoformat()
         await self.db.newsletter_subscriptions.insert_one(doc)
         return subscription_obj
+
+    async def submit_careers_application(self, payload: CareersApplicationCreate) -> CareersApplication:
+        application_obj = CareersApplication(**payload.model_dump())
+        doc = application_obj.model_dump()
+        doc["timestamp"] = doc["timestamp"].isoformat()
+        await self.db.careers_applications.insert_one(doc)
+        return application_obj

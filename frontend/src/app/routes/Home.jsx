@@ -1,15 +1,21 @@
 import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { Hero } from "@/features/hero/Hero";
 import { usePageSeo } from "@/shared/hooks/usePageSeo";
-import { Footer, Navbar } from "@/shared/ui";
+import { Navbar } from "@/shared/ui";
+import { Footer } from "@/components/layout/Footer";
 
+const Challenge = lazy(() => import("@/features/challenge/Challenge").then((module) => ({ default: module.Challenge })));
 const About = lazy(() => import("@/features/about/About").then((module) => ({ default: module.About })));
-const HowWeHelp = lazy(() => import("@/features/conversion/HowWeHelp").then((module) => ({ default: module.HowWeHelp })));
-const Services = lazy(() => import("@/features/services/Services").then((module) => ({ default: module.Services })));
-const ProductVisual = lazy(() => import("@/features/conversion/ProductVisual").then((module) => ({ default: module.ProductVisual })));
-const SolutionAccelerators = lazy(() => import("@/features/accelerators/SolutionAccelerators").then((module) => ({ default: module.SolutionAccelerators })));
+const CoreValues = lazy(() => import("@/features/coreValues/CoreValues").then((module) => ({ default: module.CoreValues })));
 const Industries = lazy(() => import("@/features/industries/Industries").then((module) => ({ default: module.Industries })));
-const Testimonials = lazy(() => import("@/features/conversion/Testimonials").then((module) => ({ default: module.Testimonials })));
+// const Services = lazy(() => import("@/features/services/Services").then((module) => ({ default: module.Services })));
+const MuleSoftCOE = lazy(() => import("@/features/mulesoft/MuleSoftCOE").then((module) => ({ default: module.MuleSoftCOE })));
+const SolutionAccelerators = lazy(() => import("@/features/accelerators/SolutionAccelerators").then((module) => ({ default: module.SolutionAccelerators })));
+const ProductVisual = lazy(() => import("@/features/conversion/ProductVisual").then((module) => ({ default: module.ProductVisual })));
+const CaseStudies = lazy(() => import("@/features/caseStudies/CaseStudies").then((module) => ({ default: module.CaseStudies })));
+const EngagementModel = lazy(() => import("@/features/engagement/EngagementModel").then((module) => ({ default: module.EngagementModel })));
+const StaffingServices = lazy(() => import("@/features/staffing/StaffingServices").then((module) => ({ default: module.StaffingServices })));
+const CareersSection = lazy(() => import("@/features/careers/CareersSection").then((module) => ({ default: module.CareersSection })));
 const FinalCtaSection = lazy(() => import("@/features/conversion/FinalCtaSection").then((module) => ({ default: module.FinalCtaSection })));
 
 const DeferredSection = ({ children, minHeight = 480 }) => {
@@ -80,28 +86,45 @@ const Home = () => {
       <div className="min-h-screen bg-white dark:bg-slate-900">
         <Navbar />
         <Hero />
-        <DeferredSection minHeight={400}>
+        {/* Session 2: Challenge / About Zentiti */}
+        <DeferredSection minHeight={300}>
+          <Challenge />
+        </DeferredSection>
+        <DeferredSection minHeight={300}>
           <About />
         </DeferredSection>
         <DeferredSection minHeight={300}>
-          <HowWeHelp />
+          <CoreValues />
         </DeferredSection>
-        <DeferredSection minHeight={400}>
-          <Services />
-        </DeferredSection>
-        <DeferredSection minHeight={500}>
-          <ProductVisual />
-        </DeferredSection>
-        <DeferredSection minHeight={600}>
-          <SolutionAccelerators />
-        </DeferredSection>
-        <DeferredSection minHeight={400}>
+        <DeferredSection minHeight={300}>
           <Industries />
         </DeferredSection>
-        <DeferredSection minHeight={320}>
-          <Testimonials />
+        {/* Session 4: MuleSoft COE */}
+        <DeferredSection minHeight={300}>
+          <MuleSoftCOE />
         </DeferredSection>
-        <DeferredSection minHeight={280}>
+        <DeferredSection minHeight={300}>
+          <SolutionAccelerators />
+        </DeferredSection>
+        <DeferredSection minHeight={300}>
+          <CaseStudies />
+        </DeferredSection>
+        {/* Session 5: Approach */}
+        <DeferredSection minHeight={300}>
+          <EngagementModel />
+        </DeferredSection>
+        <DeferredSection minHeight={300}>
+          <ProductVisual />
+        </DeferredSection>
+        {/* Session 6: Staffing Services */}
+        <DeferredSection minHeight={300}>
+          <StaffingServices />
+        </DeferredSection>
+        {/* Session 7: Careers */}
+        <DeferredSection minHeight={300}>
+          <CareersSection />
+        </DeferredSection>
+        <DeferredSection minHeight={250}>
           <FinalCtaSection />
         </DeferredSection>
         <Footer />

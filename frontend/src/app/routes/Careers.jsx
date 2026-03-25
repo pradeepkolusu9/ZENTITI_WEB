@@ -1,7 +1,8 @@
 import React from "react";
 import { CareersSection } from "@/features/careers/CareersSection";
 import { usePageSeo } from "@/shared/hooks/usePageSeo";
-import { Footer, Navbar } from "@/shared/ui";
+import { Navbar } from "@/shared/ui";
+import { Footer } from "@/components/layout/Footer";
 
 const Careers = () => {
   const pageSeo = usePageSeo({
