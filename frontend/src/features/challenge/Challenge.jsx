@@ -208,7 +208,8 @@ export const Challenge = () => {
           className="relative mt-6 overflow-hidden rounded-2xl px-10 py-8
             flex items-center justify-center"
           style={{
-            background: "#0F1826",   /* Deep slate - dark in both modes */
+            background: "var(--bg-card)",
+            border: "1px solid var(--border-strong)",
           }}
         >
           {/* Ember glow behind text */}
@@ -220,7 +221,7 @@ export const Challenge = () => {
 
           <p
             className="relative text-lg font-bold leading-snug tracking-tight sm:text-xl text-center"
-            style={{ color: "#E8F0FF", fontFamily: "'Manrope', sans-serif" }}
+            style={{ color: "var(--text-primary)", fontFamily: "'Manrope', sans-serif" }}
           >
             Integration is the{" "}
             <em className="not-italic" style={{ color: "var(--ember)" }}>

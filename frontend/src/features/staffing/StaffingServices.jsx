@@ -117,7 +117,7 @@ export const StaffingServices = () => {
                   fontSize: "clamp(1.4rem, 2.8vw, 2.2rem)",
                 }}
               >
-                The right talent, when you need it.
+                The <em className="not-italic" style={{ color: "var(--ember)" }}>right</em> talent, when you need it.
               </motion.h2>
 
               {/* Orange underline */}
@@ -153,8 +153,7 @@ export const StaffingServices = () => {
                     className="flex items-start gap-4"
                   >
                     <div
-                      className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center
-                        text-sm font-bold"
+                      className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center text-sm font-bold"
                       style={{
                         background: "var(--bg-section-alt)",
                         color: "var(--ember)",
@@ -164,10 +163,7 @@ export const StaffingServices = () => {
                       {point.num}
                     </div>
                     <div>
-                      <p
-                        className="text-base font-bold text-[var(--text-primary)] mb-1"
-                        style={{ fontFamily: "'Manrope', sans-serif" }}
-                      >
+                      <p className="text-base font-bold text-[var(--text-primary)] mb-1" style={{ fontFamily: "'Manrope', sans-serif" }}>
                         {point.title}
                       </p>
                       <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
@@ -225,7 +221,7 @@ export const StaffingServices = () => {
               fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)",
             }}
           >
-            Talent across the full technology spectrum
+            Talent <em className="not-italic" style={{ color: "var(--ember)" }}>across</em> a wide technology spectrum
           </motion.h3>
 
           {/* 6-box grid */}

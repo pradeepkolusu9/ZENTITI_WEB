@@ -5,7 +5,14 @@ import { X, ChevronDown, ArrowRight } from "lucide-react";
 /* ─── Nav structure ─── */
 const MOBILE_ITEMS = [
   { id: "hero", label: "Home" },
-  { id: "managed-services-anchor", label: "Managed Services" },
+  {
+    id: "services",
+    label: "Services",
+    children: [
+      { id: "managed-services-anchor", label: "Managed Services" },
+      { id: "staffing-services-anchor", label: "Staffing Services" },
+    ],
+  },
   {
     id: "approach",
     label: "Approach",

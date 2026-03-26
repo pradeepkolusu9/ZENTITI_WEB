@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState, useCallback, memo } from "react";
 
 const LOCATIONS = [
-  { city: "Austin", country: "Texas, USA", coords: [-97.7431, 30.2672] },
+  { city: "Austin", country: "Texas, USA", coords: [-97.7431, 30.2672], label: "Headquarters" },
+  { city: "Hyderabad", country: "Telangana, India", coords: [78.4867, 17.385], label: "GCC" },
   { city: "Chicago", country: "Illinois, USA", coords: [-87.6298, 41.8781] },
   { city: "Ft. Lauderdale", country: "Florida, USA", coords: [-80.1373, 26.1224] },
   { city: "McLean", country: "Virginia, USA", coords: [-77.1773, 38.9339] },
@@ -12,7 +13,6 @@ const LOCATIONS = [
   { city: "Charlotte", country: "N. Carolina, USA", coords: [-80.8431, 35.2271] },
   { city: "Dallas", country: "Texas, USA", coords: [-96.797, 32.7767] },
   { city: "San Francisco", country: "California, USA", coords: [-122.4194, 37.7749] },
-  { city: "Hyderabad", country: "Telangana, India", coords: [78.4867, 17.385] },
 ];
 
 const CITIES = LOCATIONS.map((l) => l.city);
@@ -152,8 +152,15 @@ export const About = () => {
               <FadeIn delay={0.31}>
                 <p className="lhdr">Locations</p>
                 <div className="ltags">
-                  {CITIES.map((c) => (
-                    <span key={c} className="ltag">{c}</span>
+                  {LOCATIONS.map((l) => (
+                    <span key={l.city} className="ltag">
+                      {l.city}
+                      {l.label && (
+                        <span style={{ marginLeft: 5, fontSize: 11, fontWeight: 600, color: "var(--ember)", opacity: 0.85 }}>
+                          [{l.label}]
+                        </span>
+                      )}
+                    </span>
                   ))}
                 </div>
               </FadeIn>
@@ -179,10 +186,10 @@ export const About = () => {
                   <img 
                     src="/ai_agentic_foundry.png" 
                     alt="AI Agentic Foundry" 
-                    className="rounded-lg shadow-lg w-full h-auto min-h-[400px] sm:min-h-[500px]"
+                    className="rounded-lg shadow-lg w-full h-72 sm:h-auto sm:min-h-[500px]"
                     style={{ 
-                      maxHeight: "none", 
-                      objectFit: "contain"
+                      objectFit: "cover",
+                      objectPosition: "center top",
                     }}
                   />
                 </div>

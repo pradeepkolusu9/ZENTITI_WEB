@@ -134,41 +134,46 @@ export const CareersSection = () => {
               transition={{ duration: 0.4, delay: 0.08 }}
               className="text-lg leading-relaxed text-[var(--text-secondary)] mb-10 max-w-lg"
             >
-              We're always looking for exceptional MuleSoft developers, architects and AI
-              specialists who want to work on challenging problems
-              with industry leading clients.
+              We're always looking for exceptional MuleSoft developers, Architects and AI
+              specialists who love to build innovative solutions to real-world problems.
             </motion.p>
 
             {/* Checklist */}
-            <ul className="mb-10 flex flex-col gap-3">
-              {CHECKLIST.map((item, i) => (
-                <motion.li
-                  key={item}
-                  initial={{ opacity: 0, x: -8 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.1 + i * 0.07 }}
-                  className="flex items-center gap-3 text-base
-                    text-[var(--text-primary)]"
-                  style={{ listStyle: "none" }}
-                >
-                  <CheckIcon />
-                  <span>
-                    {item.split('.').map((part, index) => (
-                      <span key={index}>
-                        {index === 0 ? (
-                          <span style={{ color: "var(--ember)", fontWeight: 600 }}>
-                            {part}
-                          </span>
-                        ) : (
-                          <>{index > 0 ? '.' : ''}{part}</>
-                        )}
-                      </span>
-                    ))}
-                  </span>
-                </motion.li>
-              ))}
-            </ul>
+            <div className="flex flex-col gap-6 mb-10">
+              {CHECKLIST.map((item, i) => {
+                const dotIdx = item.indexOf('.');
+                const title = dotIdx !== -1 ? item.slice(0, dotIdx) : item;
+                const desc = dotIdx !== -1 ? item.slice(dotIdx + 1).trim() : '';
+                const num = String(i + 1).padStart(2, '0');
+                return (
+                  <motion.div
+                    key={item}
+                    initial={{ opacity: 0, x: -12 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.15 + i * 0.08 }}
+                    className="flex items-start gap-4"
+                  >
+                    <div
+                      className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center text-sm font-bold"
+                      style={{
+                        background: "var(--bg-section-alt)",
+                        color: "var(--ember)",
+                        border: "1px solid var(--border-default)",
+                      }}
+                    >
+                      {num}
+                    </div>
+                    <div>
+                      <p className="text-base font-bold text-[var(--text-primary)] mb-1" style={{ fontFamily: "'Manrope', sans-serif" }}>
+                        {title}
+                      </p>
+                      {desc && <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{desc}</p>}
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
 
             {/* CTA button */}
             <motion.button

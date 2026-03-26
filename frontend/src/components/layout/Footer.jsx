@@ -20,142 +20,62 @@ export const Footer = () => {
         borderTop: "1px solid var(--border-default)"
       }}
     >
-      <div className="container mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          
-          {/* Company Logo & Info */}
-          <div className="space-y-4">
-            <img 
-                  src="/logo.png" 
-                  alt="Zentiti"
-                  className="h-9 w-auto"
-                />
-            
-            <p className="text-xs leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+      <div className="container mx-auto px-6 py-10 max-w-4xl">
+
+        {/* Top row: brand left, contact right */}
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+
+          {/* Left — brand */}
+          <div className="flex flex-col gap-3">
+            <img src="/logo.png" alt="Zentiti" className="h-8 w-auto" />
+            <p className="text-xs leading-relaxed max-w-[220px]" style={{ color: "var(--text-secondary)" }}>
               Transforming enterprise integration challenges into intelligent solutions.
             </p>
-
-            <div className="flex space-x-4 sm:space-x-3">
-              <a 
-                href="#" 
-                className="w-14 h-14 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center transition-all hover:scale-105"
-                style={{ 
-                  background: "var(--bg-card)",
-                  border: "1px solid var(--border-default)"
-                }}
+            <div className="flex gap-4 mt-1">
+              <a
+                href="#"
+                className="transition-opacity hover:opacity-70"
               >
-                <Linkedin className="w-7 h-7 sm:w-5 sm:h-5" style={{ color: "var(--accent-blue)" }} />
+                <Linkedin className="w-5 h-5" style={{ color: "var(--text-muted)" }} />
               </a>
-              <a 
-                href="#" 
-                className="w-14 h-14 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center transition-all hover:scale-105"
-                style={{ 
-                  background: "var(--bg-card)",
-                  border: "1px solid var(--border-default)"
-                }}
+              <a
+                href="mailto:info@zentiti.com"
+                className="transition-opacity hover:opacity-70"
               >
-                <Twitter className="w-7 h-7 sm:w-5 sm:h-5" style={{ color: "var(--accent-blue)" }} />
-              </a>
-              <a 
-                href="#" 
-                className="w-14 h-14 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center transition-all hover:scale-105"
-                style={{ 
-                  background: "var(--bg-card)",
-                  border: "1px solid var(--border-default)"
-                }}
-              >
-                <Mail className="w-7 h-7 sm:w-5 sm:h-5" style={{ color: "var(--accent-blue)" }} />
+                <Mail className="w-5 h-5" style={{ color: "var(--text-muted)" }} />
               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--text-primary)" }}>
-              Quick Links
-            </h4>
-            <div className="grid grid-cols-2 gap-2">
-              <button 
-                onClick={() => scrollTo("about")} 
-                className="text-xs transition-colors hover:text-[var(--accent-blue)] text-left cursor-pointer" 
-                style={{ color: "var(--text-secondary)" }}
-              >
-                About Us
-              </button>
-              <button 
-                onClick={() => scrollTo("industries")} 
-                className="text-xs transition-colors hover:text-[var(--accent-blue)] text-left cursor-pointer" 
-                style={{ color: "var(--text-secondary)" }}
-              >
-                Services
-              </button>
-              <button 
-                onClick={() => scrollTo("case-studies")} 
-                className="text-xs transition-colors hover:text-[var(--accent-blue)] text-left cursor-pointer" 
-                style={{ color: "var(--text-secondary)" }}
-              >
-                Case Studies
-              </button>
-              <button 
-                onClick={() => scrollTo("careers")} 
-                className="text-xs transition-colors hover:text-[var(--accent-blue)] text-left cursor-pointer" 
-                style={{ color: "var(--text-secondary)" }}
-              >
-                Careers
-              </button>
-            </div>
-          </div>
-
-          {/* Contact Info */}
-          <div className="space-y-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--text-primary)" }}>
+          {/* Right — contact */}
+          <div className="flex flex-col gap-3">
+            <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--text-primary)" }}>
               Contact
-            </h4>
-            <div className="space-y-3">
-              <div className="flex items-start space-x-2">
-                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "var(--accent-blue)" }} />
-                <div>
-                  <p className="text-xs" style={{ color: "var(--text-secondary)" }}>
-                    locations
-                  </p>
-                  <p className="text-xs" style={{ color: "var(--text-muted)" }}>
-                    1464 E Whitestone Blvd, Ste 1902, Cedar Park, TX 78613
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-2">
-                <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "var(--accent-blue)" }} />
-                <div>
-                  <p className="text-xs" style={{ color: "var(--text-secondary)" }}>
-                    email
-                  </p>
-                  <p className="text-xs" style={{ color: "var(--text-muted)" }}>
-                    info@zentiti.com
-                  </p>
-                </div>
+            </p>
+            <div className="flex items-start gap-2">
+              <MapPin className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: "var(--accent-blue)" }} />
+              <div>
+                <p className="text-xs font-medium" style={{ color: "var(--text-secondary)" }}>Headquarters</p>
+                <p className="text-xs" style={{ color: "var(--text-muted)" }}>
+                  1464 E Whitestone Blvd, Ste 1902<br />Cedar Park, TX 78613
+                </p>
               </div>
             </div>
+            <div className="flex items-center gap-2">
+              <Mail className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "var(--accent-blue)" }} />
+              <p className="text-xs" style={{ color: "var(--text-muted)" }}>info@zentiti.com</p>
+            </div>
           </div>
+
         </div>
 
-        {/* Bottom Bar */}
-        <div 
-          className="mt-6 pt-4 border-t flex flex-col md:flex-row justify-between items-center"
-          style={{ borderColor: "var(--border-default)" }}
-        >
-          <p className="text-xs" style={{ color: "var(--text-muted)" }}>
+        {/* Bottom bar */}
+        <div className="mt-8 pt-4 border-t" style={{ borderColor: "var(--border-default)" }}>
+          <p className="text-xs text-center" style={{ color: "var(--text-muted)" }}>
             © {currentYear} Zentiti Inc. All rights reserved.
           </p>
-          
-          <div className="flex space-x-4 mt-2 md:mt-0">
-            <a href="#" className="text-xs transition-colors hover:text-blue-500" style={{ color: "var(--text-muted)" }}>
-              Privacy
-            </a>
-            <a href="#" className="text-xs transition-colors hover:text-blue-500" style={{ color: "var(--text-muted)" }}>
-              Terms
-            </a>
-          </div>
         </div>
+
       </div>
     </footer>
   );

@@ -10,7 +10,7 @@ export const Industries = () => {
   background: var(--bg-section-alt);
   font-family: 'Inter', system-ui, sans-serif;
   color: var(--text-primary);
-  padding: 40px 32px 80px;
+  padding: 12px 32px 80px;
   position: relative;
   overflow: hidden;
 }

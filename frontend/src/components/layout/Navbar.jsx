@@ -28,7 +28,7 @@ const NAV_GROUPS = [
   {
     label: "Services",   id: "services",
     children: [
-      { label: "MANAGED SERVICES", id: "managed-services-anchor" },
+      { label: "Managed Services", id: "managed-services-anchor" },
       { label: "Staffing Services",id: "staffing-services-anchor"},
     ],
   },

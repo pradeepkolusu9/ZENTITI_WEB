@@ -99,15 +99,16 @@ const Home = () => {
         <DeferredSection minHeight={300}>
           <Industries />
         </DeferredSection>
-        {/* Session 5: MuleSoft COE */}
+        {/* Session 5: Solution Accelerators */}
+        <DeferredSection minHeight={300}>
+          <SolutionAccelerators />
+        </DeferredSection>
+        {/* Session 5b: MuleSoft COE */}
         <div id="managed-services-anchor" style={{ scrollMarginTop: "96px" }}>
           <DeferredSection minHeight={300}>
             <MuleSoftCOE />
           </DeferredSection>
         </div>
-        <DeferredSection minHeight={300}>
-          <SolutionAccelerators />
-        </DeferredSection>
         <DeferredSection minHeight={300}>
           <CaseStudies />
         </DeferredSection>

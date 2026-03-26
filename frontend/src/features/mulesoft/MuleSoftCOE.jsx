@@ -165,7 +165,7 @@ export const MuleSoftCOE = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.4 }}
           >
-          MANAGED SERVICES
+          Managed Services
         </motion.span>
 
         {/* ══════════════════════════════════════════
@@ -237,6 +237,7 @@ export const MuleSoftCOE = () => {
         {/* ══════════════════════════════════════════
             SUB-SECTION 2: MuleSoft Center of Excellence
             ══════════════════════════════════════════ */}
+        <div className="pt-10 mb-4 border-t" style={{ borderColor: "var(--border-strong)" }} />
         <div className="mb-10 max-w-2xl">
           <motion.h2
             initial={{ opacity: 0, y: 12 }}
@@ -258,69 +259,13 @@ export const MuleSoftCOE = () => {
 
                   </div>
 
-        {/* ── Animated stat counters ── */}
-        <div className="grid grid-cols-2 gap-4 mb-10">
-          <StatCard value={100} suffix="%" label="MuleSoft certified engineers" delay={0} inView={inView} />
-          <StatCard value={10} suffix="+" label="MuleSoft implementations" delay={0.1} inView={inView} />
-        </div>
-
-        {/* ── Bento grid (3 cards = 3 columns on desktop) ── */}
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 mb-8 auto-rows-fr">
-          {BENTO.map((card, i) => {
-            const Icon = card.icon;
-            const isH = hovered === card.id;
-
-            return (
-              <motion.div
-                key={card.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.4, delay: 0.05 * i }}
-                onMouseEnter={() => setHovered(card.id)}
-                onMouseLeave={() => setHovered(null)}
-                className="relative flex flex-col gap-3 rounded-2xl p-6 cursor-default"
-                style={{
-                  background: "var(--bg-card)",
-                  border: isH ? "1px solid var(--border-ember)" : "1px solid var(--border-strong)",
-                  boxShadow: isH ? "var(--shadow-card-hover)" : "var(--shadow-card)",
-                  transform: isH ? "translateY(-4px)" : "translateY(0)",
-                  transition: "all 0.22s ease",
-                }}
-              >
-                <div
-                  className="absolute top-0 left-[15%] right-[15%] h-[2px] rounded-b-sm
-                    transition-opacity duration-200"
-                  style={{ background: "var(--ember)", opacity: isH ? 0.8 : 0 }}
-                />
-
-                <div className="z-icon h-10 w-10">
-                  <Icon className="h-5 w-5" />
-                </div>
-
-                <div>
-                  <div
-                    className="text-sm font-bold text-[var(--text-primary)] leading-snug mb-1"
-                    style={{ fontFamily: "'Manrope',sans-serif" }}
-                  >
-                    {card.title}
-                  </div>
-                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                    {card.desc}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-
         {/* ── Scrolling recognition marquee ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="rounded-2xl overflow-hidden"
+          className="rounded-2xl overflow-hidden mb-10"
           style={{
             background: "var(--bg-card)",
             border: "1px solid var(--border-strong)",
@@ -388,6 +333,63 @@ export const MuleSoftCOE = () => {
             />
           </div>
         </motion.div>
+
+        {/* ── Animated stat counters ── */}
+        <div className="grid grid-cols-2 gap-4 mb-10">
+          <StatCard value={100} suffix="%" label="MuleSoft certified engineers" delay={0} inView={inView} />
+          <StatCard value={10} suffix="+" label="MuleSoft implementations" delay={0.1} inView={inView} />
+        </div>
+
+        {/* ── Bento grid (3 cards = 3 columns on desktop) ── */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 mb-8 auto-rows-fr">
+          {BENTO.map((card, i) => {
+            const Icon = card.icon;
+            const isH = hovered === card.id;
+
+            return (
+              <motion.div
+                key={card.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.4, delay: 0.05 * i }}
+                onMouseEnter={() => setHovered(card.id)}
+                onMouseLeave={() => setHovered(null)}
+                className="relative flex flex-col gap-3 rounded-2xl p-6 cursor-default"
+                style={{
+                  background: "var(--bg-card)",
+                  border: isH ? "1px solid var(--border-ember)" : "1px solid var(--border-strong)",
+                  boxShadow: isH ? "var(--shadow-card-hover)" : "var(--shadow-card)",
+                  transform: isH ? "translateY(-4px)" : "translateY(0)",
+                  transition: "all 0.22s ease",
+                }}
+              >
+                <div
+                  className="absolute top-0 left-[15%] right-[15%] h-[2px] rounded-b-sm
+                    transition-opacity duration-200"
+                  style={{ background: "var(--ember)", opacity: isH ? 0.8 : 0 }}
+                />
+
+                <div className="z-icon h-10 w-10">
+                  <Icon className="h-5 w-5" />
+                </div>
+
+                <div>
+                  <div
+                    className="text-sm font-bold text-[var(--text-primary)] leading-snug mb-1"
+                    style={{ fontFamily: "'Manrope',sans-serif" }}
+                  >
+                    {card.title}
+                  </div>
+                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                    {card.desc}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
 
       </div>
     </section>
