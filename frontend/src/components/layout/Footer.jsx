@@ -123,6 +123,17 @@ export const Footer = () => {
                   </p>
                 </div>
               </div>
+              <div className="flex items-start space-x-2">
+                <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "var(--accent-blue)" }} />
+                <div>
+                  <p className="text-xs" style={{ color: "var(--text-secondary)" }}>
+                    email
+                  </p>
+                  <p className="text-xs" style={{ color: "var(--text-muted)" }}>
+                    info@zentiti.com
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

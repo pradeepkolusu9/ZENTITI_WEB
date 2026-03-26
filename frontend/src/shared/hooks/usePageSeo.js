@@ -45,7 +45,7 @@ const buildDefaultSchema = (baseUrl) => {
       "@id": orgId,
       name: SITE_NAME,
       url: baseUrl,
-      email: "contact@zentiti.com",
+      email: "info@zentiti.com",
       logo: `${baseUrl}/og-image.svg`,
       sameAs: [
         "https://www.linkedin.com/",
