@@ -18,7 +18,7 @@ const VALUES = [
   },
   {
     title: "Work Hard, Play Hard",
-    desc: "We work hard to achieve the highest results in our projects and, at the same time, create a healthy work environment where people can have fun.",
+    desc: "We are committed to achieving excellence in our projects while cultivating a healthy, collaborative, and engaging work environment where people can thrive.",
     icon: Target,
     image:
       "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=320&fit=crop&crop=faces",
@@ -39,7 +39,7 @@ const VALUES = [
   },
   {
     title: "Team Before Me",
-    desc: "We pride ourselves on the success of the team in its entirety rather than concentrating on personal achievement and concern with the overall objectives.",
+    desc: "We pride ourselves on the success of the team as a whole, rather than focusing on individual achievements, with a strong emphasis on overall objectives.",
     icon: Users,
     image:
       "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&h=320&fit=crop&crop=faces",
@@ -346,9 +346,7 @@ export const CoreValues = () => {
               textAlign: "center",
             }}
           >
-            The following core values define who we are, how we work, and what we
-stand for as we help enterprises transform their integration
-challenges into opportunities.
+            Our core values define our identity, guide our approach, and underpin how we enable enterprises to transform integration challenges into opportunities.
           </motion.p>
         </div>
 

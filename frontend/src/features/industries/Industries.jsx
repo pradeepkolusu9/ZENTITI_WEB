@@ -248,7 +248,7 @@ export const Industries = () => {
             <div className="ind-divider"></div>
             <p className="ind-card-name">Education</p>
             <p className="ind-card-desc">
-              Multi-database to Salesforce integrations and automated student lifecycle management.
+              Integration of multiple databases with Salesforce, along with automated student lifecycle management.
             </p>
           </div>
         </motion.div>

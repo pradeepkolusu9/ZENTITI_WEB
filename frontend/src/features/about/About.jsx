@@ -179,13 +179,10 @@ export const About = () => {
                   <img 
                     src="/ai_agentic_foundry.png" 
                     alt="AI Agentic Foundry" 
-                    className="rounded-lg shadow-lg w-full h-auto"
+                    className="rounded-lg shadow-lg w-full h-auto min-h-[400px] sm:min-h-[500px]"
                     style={{ 
                       maxHeight: "none", 
-                      minHeight: "500px", 
-                      objectFit: "contain",
-                      width: "100%",
-                      height: "auto"
+                      objectFit: "contain"
                     }}
                   />
                 </div>

@@ -103,13 +103,6 @@ export const Footer = () => {
               >
                 Careers
               </button>
-              <button 
-                onClick={() => scrollTo("contact")} 
-                className="text-xs transition-colors hover:text-[var(--accent-blue)] text-left cursor-pointer" 
-                style={{ color: "var(--text-secondary)" }}
-              >
-                Contact
-              </button>
             </div>
           </div>
 

@@ -16,12 +16,12 @@ const painPoints = [
   },
   {
     title: "30–40% Engineering Tax",
-    description: "Engineering effort lost to manual system re-wiring",
+    description: "Engineering effort lost to manual system rewiring",
     icon: RefreshCw,
   },
   {
     title: "Cloud Blockers",
-    description: "Cloud efforts stall when legacy systems are unwired",
+    description: "Cloud efforts stall when legacy systems lack integration",
     icon: Cloud,
   },
 ];
@@ -85,8 +85,8 @@ export const Challenge = () => {
             transition={{ duration: 0.4, delay: 0.1 }}
             className="mt-5 text-lg leading-relaxed text-[var(--text-secondary)]"
           >
-            Every enterprise AI initiative hits the same wall not strategy, not talent.
-            Integration debt.
+            Fragmentation slows AI execution.{" "}
+            Every enterprise AI initiative hits the same wall. Not strategy. Not talent. Integration debt.
           </motion.p>
         </div>
 

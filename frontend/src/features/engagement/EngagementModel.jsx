@@ -310,7 +310,7 @@ export const EngagementModel = () => {
             transition={{ duration: 0.4, delay: 0.1 }}
             className="mt-5 text-lg leading-relaxed text-[var(--text-secondary)]"
           >
-            A structured 5-step approach delivering measurable outcomes in 60–90 days.
+            A streamlined 5-step framework delivering impactful results in 60–90 days.
           </motion.p>
         </div>
 

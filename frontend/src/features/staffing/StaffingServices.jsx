@@ -10,7 +10,7 @@ const KEY_POINTS = [
   {
     num: "02",
     title: "Technology-agnostic breadth",
-    desc: "From integration specialists to Java, cloud, data, Salesforce, SAP, Oracle, and more",
+    desc: "From integration specialists to Java, Cloud, Data, Salesforce, SAP, Oracle, and more",
   },
   {
     num: "03",

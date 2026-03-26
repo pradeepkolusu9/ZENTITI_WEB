@@ -362,7 +362,7 @@ export const CaseStudies = () => {
             Case <span className="cs-heading-accent">Studies</span>
           </h2>
           <p className="cs-subtext">
-            Real-world solutions delivering measurable business outcomes across industries.
+            Real-world solutions delivering tangible business outcomes across industries.
           </p>
         </div>
 
