@@ -13,8 +13,8 @@ const CASES = [
     stat: "40%",
     statLabel: "reduction in maintenance",
     title: "Integration Migration @ Scale",
-    challenge: "300+ point-to-point integrations on legacy IBM middleware with no skill or software support.",
-    solution: "Migrated to MuleSoft & converting 300+ legacy connections to API-led architecture.",
+    challenge: "300+ point-to-point integrations on legacy IBM middleware with limited skills and no software support.",
+    solution: "Migration to MuleSoft & converting 300+ legacy connections to API-led architecture.",
     outcome: "Future-ready data tech stack with 40% reduction in integration maintenance costs.",
   },
   {
@@ -361,7 +361,7 @@ export const CaseStudies = () => {
           <h2 className="cs-heading">
             Case <span className="cs-heading-accent">Studies</span>
           </h2>
-          <p className="cs-subtext whitespace-nowrap">
+          <p className="cs-subtext">
             Real-world solutions delivering measurable business outcomes across industries.
           </p>
         </div>

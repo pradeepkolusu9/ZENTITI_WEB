@@ -4,6 +4,13 @@ import { Linkedin, Twitter, Mail, MapPin, Phone } from "lucide-react";
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const scrollTo = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <footer 
       data-testid="footer" 
@@ -68,22 +75,42 @@ export const Footer = () => {
               Quick Links
             </h4>
             <div className="grid grid-cols-2 gap-2">
-              <a href="#about" className="text-xs transition-colors hover:text-blue-500" style={{ color: "var(--text-secondary)" }}>
+              <button 
+                onClick={() => scrollTo("about")} 
+                className="text-xs transition-colors hover:text-[var(--accent-blue)] text-left cursor-pointer" 
+                style={{ color: "var(--text-secondary)" }}
+              >
                 About Us
-              </a>
-              <a href="#services" className="text-xs transition-colors hover:text-blue-500" style={{ color: "var(--text-secondary)" }}>
+              </button>
+              <button 
+                onClick={() => scrollTo("industries")} 
+                className="text-xs transition-colors hover:text-[var(--accent-blue)] text-left cursor-pointer" 
+                style={{ color: "var(--text-secondary)" }}
+              >
                 Services
-              </a>
-              <a href="#case-studies" className="text-xs transition-colors hover:text-blue-500" style={{ color: "var(--text-secondary)" }}>
+              </button>
+              <button 
+                onClick={() => scrollTo("case-studies")} 
+                className="text-xs transition-colors hover:text-[var(--accent-blue)] text-left cursor-pointer" 
+                style={{ color: "var(--text-secondary)" }}
+              >
                 Case Studies
-              </a>
-              <a href="#careers" className="text-xs transition-colors hover:text-blue-500" style={{ color: "var(--text-secondary)" }}>
+              </button>
+              <button 
+                onClick={() => scrollTo("careers")} 
+                className="text-xs transition-colors hover:text-[var(--accent-blue)] text-left cursor-pointer" 
+                style={{ color: "var(--text-secondary)" }}
+              >
                 Careers
-              </a>
-              <a href="#contact" className="text-xs transition-colors hover:text-blue-500" style={{ color: "var(--text-secondary)" }}>
+              </button>
+              <button 
+                onClick={() => scrollTo("contact")} 
+                className="text-xs transition-colors hover:text-[var(--accent-blue)] text-left cursor-pointer" 
+                style={{ color: "var(--text-secondary)" }}
+              >
                 Contact
-              </a>
-                          </div>
+              </button>
+            </div>
           </div>
 
           {/* Contact Info */}
@@ -99,7 +126,7 @@ export const Footer = () => {
                     locations
                   </p>
                   <p className="text-xs" style={{ color: "var(--text-muted)" }}>
-                    Austin, Chicago, London, New York, San Francisco, Toronto, Singapore & more
+                    1464 E Whitestone Blvd, Ste 1902, Cedar Park, TX 78613
                   </p>
                 </div>
               </div>

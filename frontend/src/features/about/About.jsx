@@ -134,7 +134,7 @@ export const About = () => {
                     color: "#2563EB",
                   }}>OUR ROOTS</p>
                   <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                    Zentiti was launched in 2024 as a strategic extension of Synersys Technologies, a trusted name in Networking and Cybersecurity consulting. While Synersys continues to lead in network engineering and security, Zentiti was purpose-built to meet the growing demand for Data Integrations, APIs, and Agentic AI. Together, we are 300+ consultants strong, united by shared foundations in business functions like HR, IT, Finance and Operations. This common fabric gives Zentiti the agility of a startup with the operational maturity of an established organization.
+                    Zentiti was launched in 2024 as a strategic extension of Synersys Technologies, a trusted name in Networking and Cybersecurity consulting. While Synersys continues to lead in network engineering and Cybersecurity, Zentiti was purpose-built to meet the growing demand for Data Integrations, APIs, and Agentic AI. Together, we are 300+ consultants strong, united by shared foundations in business functions like HR, IT, Finance and Operations. This common fabric gives Zentiti the agility of a startup with the operational maturity of an established organization.
                   </p>
                 </div>
               </FadeIn>
@@ -175,12 +175,18 @@ export const About = () => {
                     </p>
                   </div>
                 </div>
-                <div className="mt-6 flex justify-center px-6">
+                <div className="mt-6 flex justify-center px-2 sm:px-6">
                   <img 
                     src="/ai_agentic_foundry.png" 
                     alt="AI Agentic Foundry" 
-                    className="rounded-lg shadow-lg max-w-full h-auto"
-                    style={{ maxHeight: "400px" }}
+                    className="rounded-lg shadow-lg w-full h-auto"
+                    style={{ 
+                      maxHeight: "none", 
+                      minHeight: "500px", 
+                      objectFit: "contain",
+                      width: "100%",
+                      height: "auto"
+                    }}
                   />
                 </div>
               </FadeIn>

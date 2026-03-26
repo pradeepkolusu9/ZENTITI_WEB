@@ -206,20 +206,20 @@ export const Challenge = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="relative mt-6 overflow-hidden rounded-2xl px-10 py-8
-            flex flex-col sm:flex-row items-center justify-between gap-6"
+            flex items-center justify-center"
           style={{
             background: "#0F1826",   /* Deep slate - dark in both modes */
           }}
         >
           {/* Ember glow behind text */}
           <div
-            className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2
+            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
               w-64 h-32 rounded-full opacity-20"
             style={{ background: "var(--ember)", filter: "blur(60px)" }}
           />
 
           <p
-            className="relative text-lg font-bold leading-snug tracking-tight sm:text-xl"
+            className="relative text-lg font-bold leading-snug tracking-tight sm:text-xl text-center"
             style={{ color: "#E8F0FF", fontFamily: "'Manrope', sans-serif" }}
           >
             Integration is the{" "}
@@ -228,20 +228,6 @@ export const Challenge = () => {
             </em>{" "}
             slowing AI-enabled acceleration.
           </p>
-
-          <button
-            className="relative shrink-0 rounded-full px-6 py-3 text-sm font-bold
-              whitespace-nowrap cursor-pointer transition-all duration-200 hover:scale-105"
-            style={{
-              background: "var(--ember)",
-              color: "#fff",
-              boxShadow: "var(--shadow-ember)",
-              border: "none",
-            }}
-            onClick={() => setIsContactModalOpen(true)}
-          >
-            Book Consultation
-          </button>
         </motion.div>
 
       </div>

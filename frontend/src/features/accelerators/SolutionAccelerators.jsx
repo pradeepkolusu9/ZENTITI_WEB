@@ -283,7 +283,11 @@ export const SolutionAccelerators = () => {
             style={{ fontFamily: "'Manrope',sans-serif",
               fontSize: "clamp(1.6rem,3.5vw,2.4rem)" }}
           >
-            MuleSoft Custom{" "}
+            MuleSoft{" "}
+            <em className="not-italic bg-clip-text text-transparent"
+              style={{ backgroundImage: "linear-gradient(90deg,var(--ember),var(--ember-glow))" }}>
+              Custom
+            </em>{" "}
             <em className="not-italic bg-clip-text text-transparent"
               style={{ backgroundImage: "linear-gradient(90deg,var(--ember),var(--ember-glow))" }}>
               Accelerators
@@ -456,8 +460,9 @@ export const SolutionAccelerators = () => {
                       transition: "all 0.25s ease",
                     }}
                     onClick={() => {
-                      if (videoUrl) {
-                        window.open(videoUrl, "_blank");
+                      if (card.videoUrl) {
+                        setActive(card.id);
+                        setIsVideoModalOpen(true);
                       }
                     }}
                     whileHover={{ scale: 1.02 }}

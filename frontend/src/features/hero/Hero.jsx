@@ -368,10 +368,10 @@ export const Hero = () => {
               transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
             >
               <span className="bg-gradient-to-r from-white via-slate-100 to-white bg-clip-text text-transparent drop-shadow-2xl">
-                Smart Integration &{" "}
+                Smart Integration &amp; AI Partner for{" "}
               </span>
               <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(217,76,26,0.5)]">
-                AI for Enterprise
+                the Modern Enterprise
               </span>
             </motion.h1>
 
