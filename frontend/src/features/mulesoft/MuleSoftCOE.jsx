@@ -165,7 +165,7 @@ export const MuleSoftCOE = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.4 }}
           >
-          Managing Services
+          MANAGED SERVICES
         </motion.span>
 
         {/* ══════════════════════════════════════════

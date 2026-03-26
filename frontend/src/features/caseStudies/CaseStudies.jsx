@@ -127,7 +127,7 @@ const css = `
   }
 
   .cs-heading {
-    font-size: clamp(34px, 4vw, 52px);
+    font-size: clamp(1.4rem, 2.8vw, 2.2rem);
     font-weight: 800;
     line-height: 1.06;
     letter-spacing: -0.03em;
@@ -283,8 +283,8 @@ const css = `
   .cs-block-s .cs-block-label { color: var(--accent-blue, #1A4A8A); }
   .cs-block-s .cs-block-dot   { background: var(--accent-blue, #2E6AC8); }
 
-  .cs-block-o { background: var(--accent-green, rgba(34,197,94,0.15)); border-color: var(--accent-green, rgba(34,197,94,0.25)); }
-  .cs-block-o .cs-block-label { color: var(--accent-green, #166534); }
+  .cs-block-o { background: var(--accent-green, rgba(34,197,94,0.25)); border-color: var(--accent-green, rgba(34,197,94,0.35)); }
+  .cs-block-o .cs-block-label { color: var(--accent-green, #059669); }
   .cs-block-o .cs-block-dot   { background: var(--accent-green, #22c55e); }
 
   /* ── Animation ── */
@@ -359,7 +359,7 @@ export const CaseStudies = () => {
         <div className="cs-header">
           <span className="z-pill mb-6 text-lg font-semibold">Zentiti in action</span>
           <h2 className="cs-heading">
-            Case <span className="cs-heading-accent">Studies.</span>
+            Case <span className="cs-heading-accent">Studies</span>
           </h2>
           <p className="cs-subtext whitespace-nowrap">
             Real-world solutions delivering measurable business outcomes across industries.

@@ -28,36 +28,36 @@ export const Footer = () => {
               Transforming enterprise integration challenges into intelligent solutions.
             </p>
 
-            <div className="flex space-x-3">
+            <div className="flex space-x-4 sm:space-x-3">
               <a 
                 href="#" 
-                className="w-8 h-8 rounded-lg flex items-center justify-center transition-all hover:scale-105"
+                className="w-14 h-14 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center transition-all hover:scale-105"
                 style={{ 
                   background: "var(--bg-card)",
                   border: "1px solid var(--border-default)"
                 }}
               >
-                <Linkedin className="w-4 h-4" style={{ color: "var(--accent-blue)" }} />
+                <Linkedin className="w-7 h-7 sm:w-5 sm:h-5" style={{ color: "var(--accent-blue)" }} />
               </a>
               <a 
                 href="#" 
-                className="w-8 h-8 rounded-lg flex items-center justify-center transition-all hover:scale-105"
+                className="w-14 h-14 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center transition-all hover:scale-105"
                 style={{ 
                   background: "var(--bg-card)",
                   border: "1px solid var(--border-default)"
                 }}
               >
-                <Twitter className="w-4 h-4" style={{ color: "var(--accent-blue)" }} />
+                <Twitter className="w-7 h-7 sm:w-5 sm:h-5" style={{ color: "var(--accent-blue)" }} />
               </a>
               <a 
                 href="#" 
-                className="w-8 h-8 rounded-lg flex items-center justify-center transition-all hover:scale-105"
+                className="w-14 h-14 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center transition-all hover:scale-105"
                 style={{ 
                   background: "var(--bg-card)",
                   border: "1px solid var(--border-default)"
                 }}
               >
-                <Mail className="w-4 h-4" style={{ color: "var(--accent-blue)" }} />
+                <Mail className="w-7 h-7 sm:w-5 sm:h-5" style={{ color: "var(--accent-blue)" }} />
               </a>
             </div>
           </div>
@@ -83,16 +83,7 @@ export const Footer = () => {
               <a href="#contact" className="text-xs transition-colors hover:text-blue-500" style={{ color: "var(--text-secondary)" }}>
                 Contact
               </a>
-              <a 
-                href="https://calendly.com/zentiti/strategy-call"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-medium transition-colors hover:text-blue-500"
-                style={{ color: "var(--accent-blue)" }}
-              >
-                Schedule Call
-              </a>
-            </div>
+                          </div>
           </div>
 
           {/* Contact Info */}

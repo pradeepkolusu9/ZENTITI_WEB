@@ -36,7 +36,7 @@ export const Challenge = () => {
       className="relative py-24 sm:py-32 overflow-hidden"
       style={{ background: "var(--bg-page)" }}
     >
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
+      <div className="relative z-10 mx-auto max-w-7xl px-7">
 
         {/* ── Header — left-aligned for richness, not centered ── */}
         <div className="mb-16 max-w-2xl">
@@ -63,7 +63,7 @@ export const Challenge = () => {
               text-[var(--text-primary)]"
             style={{
               fontFamily: "'Manrope', sans-serif",
-              fontSize: "clamp(2.2rem, 4.5vw, 3.6rem)",
+              fontSize: "clamp(1.4rem, 2.8vw, 2.2rem)",
             }}
           >
             Fragmentation{" "}

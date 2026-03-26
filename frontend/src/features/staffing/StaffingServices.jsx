@@ -111,11 +111,10 @@ export const StaffingServices = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: 0.05 }}
-                className="font-extrabold leading-[1.08] tracking-[-0.04em]
-                  text-[var(--text-primary)] mb-4"
+                className="font-extrabold leading-[1.08] tracking-[-0.04em] text-[var(--text-primary)] mb-4"
                 style={{
                   fontFamily: "'Manrope', sans-serif",
-                  fontSize: "clamp(2rem, 4vw, 3rem)",
+                  fontSize: "clamp(1.4rem, 2.8vw, 2.2rem)",
                 }}
               >
                 The right talent, when you need it.

@@ -388,7 +388,7 @@ export const Services = () => {
         </div>
 
         <h2 style={{
-          fontSize:"clamp(1.9rem,3.5vw,2.9rem)",fontWeight:"800",
+          fontSize:"clamp(1.4rem, 2.8vw, 2.2rem)",fontWeight:"800",
           color:"#fff",letterSpacing:"-0.04em",
           margin:"0 0 12px",lineHeight:1.1,
         }}>

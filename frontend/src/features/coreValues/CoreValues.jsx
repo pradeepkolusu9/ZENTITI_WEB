@@ -309,12 +309,12 @@ export const CoreValues = () => {
           <motion.h2
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.05 }}
             className="mt-5 font-extrabold leading-[1.08] tracking-[-0.04em] text-[var(--text-primary)]"
             style={{
               fontFamily: "'Manrope', sans-serif",
-              fontSize: "clamp(2.2rem, 4.5vw, 3.6rem)",
+              fontSize: "clamp(1.4rem, 2.8vw, 2.2rem)",
               textAlign: "center",
             }}
           >

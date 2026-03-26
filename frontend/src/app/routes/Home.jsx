@@ -100,9 +100,11 @@ const Home = () => {
           <Industries />
         </DeferredSection>
         {/* Session 5: MuleSoft COE */}
-        <DeferredSection minHeight={300}>
-          <MuleSoftCOE />
-        </DeferredSection>
+        <div id="managed-services-anchor" style={{ scrollMarginTop: "96px" }}>
+          <DeferredSection minHeight={300}>
+            <MuleSoftCOE />
+          </DeferredSection>
+        </div>
         <DeferredSection minHeight={300}>
           <SolutionAccelerators />
         </DeferredSection>
@@ -117,9 +119,11 @@ const Home = () => {
           <ProductVisual />
         </DeferredSection>
         {/* Session 6: Staffing Services */}
-        <DeferredSection minHeight={300}>
-          <StaffingServices />
-        </DeferredSection>
+        <div id="staffing-services-anchor" style={{ scrollMarginTop: "96px" }}>
+          <DeferredSection minHeight={300}>
+            <StaffingServices />
+          </DeferredSection>
+        </div>
         {/* Session 7: Careers */}
         <DeferredSection minHeight={300}>
           <CareersSection />

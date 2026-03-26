@@ -120,18 +120,18 @@ export const About = () => {
               </FadeIn>
 
               <FadeIn delay={0.14}>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed whitespace-nowrap">
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
                   Zentiti is a specialized Data & AI innovation company dedicated to engineering the next generation of enterprise intelligence.
                 </p>
               </FadeIn>
 
               <FadeIn delay={0.2}>
                 <div className="fcard" style={{
-                  background: "var(--brand-blue)15",
-                  border: "1px solid var(--brand-blue)40",
+                  background: "rgba(37, 99, 235, 0.15)",
+                  border: "1px solid rgba(37, 99, 235, 0.40)",
                 }}>
                   <p className="flbl" style={{
-                    color: "var(--brand-blue)",
+                    color: "#2563EB",
                   }}>OUR ROOTS</p>
                   <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
                     Zentiti was launched in 2024 as a strategic extension of Synersys Technologies, a trusted name in Networking and Cybersecurity consulting. While Synersys continues to lead in network engineering and security, Zentiti was purpose-built to meet the growing demand for Data Integrations, APIs, and Agentic AI. Together, we are 300+ consultants strong, united by shared foundations in business functions like HR, IT, Finance and Operations. This common fabric gives Zentiti the agility of a startup with the operational maturity of an established organization.
@@ -159,8 +159,13 @@ export const About = () => {
               </FadeIn>
 
               <FadeIn delay={0.34}>
-                <div className="fcard">
-                  <p className="flbl">AI Agentic Foundry</p>
+                <div className="fcard" style={{
+                  background: "rgba(232, 82, 26, 0.15)",
+                  border: "1px solid rgba(232, 82, 26, 0.40)",
+                }}>
+                  <p className="flbl" style={{
+                    color: "#E8521A",
+                  }}>AI Agentic Foundry</p>
                   <div className="space-y-4 text-sm text-[var(--text-secondary)]">
                     <p className="leading-relaxed">
                       Part lab, part factory. The Agentic Foundry is where we explore what's next in AI and put it to work. Our team evaluates emerging agentic technologies, testing frameworks, models, and patterns to separate real capability from hype. When a use case is validated, the Foundry shifts into production mode, engineering contextual AI agents tailored to each client's environment. This is our way of ensuring that every agent we deliver is grounded in hands-on experimentation, not just theory.

@@ -1,5 +1,44 @@
 /* Additional Mobile Enhancements for Zentiti Website */
 
+/* Mobile layout parity (keep desktop look, prevent breakage) */
+@media (max-width: 767px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  section,
+  main,
+  header,
+  footer {
+    max-width: 100%;
+  }
+
+  .container,
+  [class*="container"] {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  img,
+  svg,
+  video,
+  canvas {
+    max-width: 100%;
+    height: auto;
+  }
+
+  button,
+  a[role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
 /* 1. Better Touch Targets */
 .btn-mobile {
   min-height: 48px; /* iOS recommendation */

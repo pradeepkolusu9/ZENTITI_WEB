@@ -455,13 +455,16 @@ export const SolutionAccelerators = () => {
                       color: isActive ? accent : "var(--text-secondary)",
                       transition: "all 0.25s ease",
                     }}
+                    onClick={() => {
+                      if (videoUrl) {
+                        window.open(videoUrl, "_blank");
+                      }
+                    }}
                     whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.97 }}
-                    onClick={() => setIsVideoModalOpen(true)}
+                    whileTap={{ scale: 0.98 }}
                   >
-                    <Play className="h-3.5 w-3.5" />
+                    <Play className="w-4 h-4" />
                     Watch Demo
-                    <ArrowRight className="h-3.5 w-3.5" />
                   </motion.button>
                 </div>
               </motion.article>

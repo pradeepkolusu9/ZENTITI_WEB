@@ -115,7 +115,7 @@ export const Industries = () => {
           <h2 className="ind-heading">
             Sectors we <span>serve</span>
           </h2>
-          <p className="ind-subtext whitespace-nowrap">
+          <p className="ind-subtext">
             Measurable outcomes across regulated and high-growth industries delivered in 60–90 days.
           </p>
         </motion.div>

@@ -409,7 +409,7 @@ export const Hero = () => {
                 onClick={() => scrollToSection("case-studies")}
                 className="border border-white/15 text-white bg-[var(--brand-blue)] hover:bg-[var(--brand-blue-dark)] hover:-translate-y-0.5 hover:border-white/30"
               >
-                See Our Approach
+                See Our Work
               </Button>
             </motion.div>
           </div>

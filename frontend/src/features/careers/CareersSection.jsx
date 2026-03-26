@@ -111,7 +111,7 @@ export const CareersSection = () => {
                 text-[var(--text-primary)] mb-5"
               style={{
                 fontFamily: "'Manrope', sans-serif",
-                fontSize: "clamp(2.2rem, 4.5vw, 3.6rem)",
+                fontSize: "clamp(1.4rem, 2.8vw, 2.2rem)",
               }}
             >
               Join our{" "}
@@ -182,8 +182,8 @@ export const CareersSection = () => {
               className="flex items-center gap-2 rounded-xl px-6 py-3
                 text-sm font-bold text-[var(--text-primary)]"
               style={{
-                background: "transparent",
-                border: "1px solid var(--border-strong)",
+                background: "rgba(232, 82, 26, 0.15)",
+                border: "1px solid rgba(232, 82, 26, 0.40)",
                 fontFamily: "'Manrope', sans-serif",
                 cursor: "pointer",
               }}
@@ -193,76 +193,7 @@ export const CareersSection = () => {
             </motion.button>
           </div>
 
-          {/* ── RIGHT — Why card ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.12 }}
-            className="rounded-2xl p-7 w-full lg:w-[380px] lg:ml-auto"
-            style={{
-              background: "var(--bg-card)",
-              border: "1px solid var(--border-strong)",
-            }}
-          >
-            <p
-              className="mb-6 text-base font-bold text-[var(--text-primary)]"
-              style={{ fontFamily: "'Manrope', sans-serif" }}
-            >
-              Why engineers choose Zentiti
-            </p>
-
-            <div className="flex flex-col">
-              {REASONS.map((reason, i) => {
-                const Icon = reason.icon;
-                return (
-                  <motion.div
-                    key={reason.title}
-                    initial={{ opacity: 0, x: 12 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.35, delay: 0.18 + i * 0.09 }}
-                    className="flex items-start gap-4"
-                    style={
-                      i > 0
-                        ? {
-                            marginTop: 20,
-                            paddingTop: 20,
-                            borderTop: "1px solid var(--border-default)",
-                          }
-                        : {}
-                    }
-                  >
-                    {/* Icon box */}
-                    <div
-                      className="flex h-9 w-9 flex-shrink-0 items-center
-                        justify-center rounded-lg"
-                      style={{
-                        background: "var(--bg-section-alt)",
-                        border: "1px solid var(--border-default)",
-                        color: "var(--ember)",
-                      }}
-                    >
-                      <Icon className="h-4 w-4" />
-                    </div>
-
-                    <div>
-                      <p
-                        className="mb-1 text-sm font-bold text-[var(--text-primary)]"
-                        style={{ fontFamily: "'Manrope', sans-serif" }}
-                      >
-                        {reason.title}
-                      </p>
-                      <p className="text-sm leading-relaxed text-[var(--text-secondary)]">
-                        {reason.desc}
-                      </p>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </motion.div>
-
+          
         </div>
       </div>
 

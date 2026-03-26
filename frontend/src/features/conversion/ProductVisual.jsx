@@ -91,10 +91,9 @@ const css = `
   }
 
   .pv-heading {
-    font-size: clamp(34px, 4vw, 52px);
+    font-size: clamp(1.4rem, 2.8vw, 2.2rem);
     font-weight: 800;
     line-height: 1.06;
-    letter-spacing: -0.03em;
     color: var(--text-primary);
     margin-bottom: 16px;
   }

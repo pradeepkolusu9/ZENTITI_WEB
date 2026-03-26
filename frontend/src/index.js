@@ -3,8 +3,7 @@
 // Must run BEFORE React renders
 (function() {
   const storageKey = 'zentiti-theme';
-  const theme = localStorage.getItem(storageKey) || 
-                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const theme = localStorage.getItem(storageKey) || 'dark';
   
   // Apply theme class to html element immediately
   if (theme === 'dark') {
@@ -20,6 +19,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "@/index.css";
+import "@/mobile-enhancements.css";
 import App from "@/App";
 import { Toaster } from "@/shared/ui";
 import { ThemeProvider } from "next-themes";
@@ -29,7 +29,7 @@ root.render(
   <React.StrictMode>
     <ThemeProvider
       attribute="class"
-      defaultTheme="system"
+      defaultTheme="dark"
       enableSystem
       storageKey="zentiti-theme"
       disableTransitionOnChange={false}
