@@ -45,9 +45,10 @@ export const Industries = () => {
 }
 .ind-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ember); }
 .ind-heading {
-  font-size: clamp(34px, 4vw, 52px); font-weight: 800;
-  line-height: 1.06; letter-spacing: -0.03em;
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem); font-weight: 800;
+  line-height: 1.08; letter-spacing: -0.04em;
   color: var(--text-primary); margin-bottom: 16px;
+  font-family: 'Manrope', sans-serif;
 }
 .ind-heading span { color: var(--ember); }
 .ind-subtext { font-size: 15px; font-weight: 400; color: var(--text-secondary); line-height: 1.7; max-width: 520px; }
