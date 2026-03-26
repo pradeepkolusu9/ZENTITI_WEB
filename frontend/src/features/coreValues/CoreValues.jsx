@@ -32,7 +32,7 @@ const VALUES = [
   },
   {
     title: "Grow Together",
-    desc: "We truly believe in the growth of our workforce as well as the expansion of the company, which is why we embrace both individual and career growth.",
+    desc: "We truly believe in the growth of our workforce and the expansion of our company, which is why we support both personal and professional growth.",
     icon: TrendingUp,
     image:
       "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=320&fit=crop&crop=faces",
