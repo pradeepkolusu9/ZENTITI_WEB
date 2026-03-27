@@ -140,11 +140,11 @@ export const MuleSoftCOE = () => {
 
   return (
     <section
-      id="mulesoft-coe"
+      id="managed-services-anchor"
       data-testid="mulesoft-coe-section"
       ref={sectionRef}
       className="relative overflow-hidden pt-6 sm:pt-8 pb-8 sm:pb-12"
-      style={{ background: "var(--bg-section-alt)" }}
+      style={{ background: "var(--bg-section-alt)", scrollMarginTop: "96px" }}
     >
       {/* Ember glow */}
       <div

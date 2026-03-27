@@ -71,7 +71,7 @@ export const About = () => {
     <>
       <style>{`
 /* About section specific styles using main theme variables */
-.abt { padding: 48px 0 64px; background: var(--bg-page); }
+.abt { padding: 48px 0 64px; background: var(--bg-page); overflow-x: hidden; scroll-margin-top: 96px; }
 .abt-c { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
 .abt-g { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: start; max-width: 1000px; }
 
@@ -182,14 +182,16 @@ export const About = () => {
                     </p>
                   </div>
                 </div>
-                <div className="mt-6 flex justify-center px-2 sm:px-6">
+                <div className="mt-6">
                   <img 
                     src="/ai_agentic_foundry.png" 
                     alt="AI Agentic Foundry" 
-                    className="rounded-lg shadow-lg w-full h-72 sm:h-auto sm:min-h-[500px]"
+                    className="rounded-lg shadow-lg"
                     style={{ 
-                      objectFit: "cover",
-                      objectPosition: "center top",
+                      display: "block",
+                      width: "100%",
+                      maxWidth: "100%",
+                      height: "auto",
                     }}
                   />
                 </div>

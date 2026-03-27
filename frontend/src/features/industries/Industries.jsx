@@ -114,7 +114,7 @@ export const Industries = () => {
         >
           <span className="z-pill mb-6 text-lg font-semibold">Industries</span>
           <h2 className="ind-heading">
-            Sectors we <span>serve</span>
+            Sectors we <span>Serve</span>
           </h2>
           <p className="ind-subtext">
             Measurable outcomes across regulated and high-growth industries delivered in 60–90 days.

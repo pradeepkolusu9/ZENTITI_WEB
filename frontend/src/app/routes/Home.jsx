@@ -96,19 +96,19 @@ const Home = () => {
         <DeferredSection minHeight={300}>
           <CoreValues />
         </DeferredSection>
-        <DeferredSection minHeight={300}>
-          <Industries />
-        </DeferredSection>
+        <div id="industries" style={{ scrollMarginTop: "96px" }}>
+          <DeferredSection minHeight={300}>
+            <Industries />
+          </DeferredSection>
+        </div>
         {/* Session 5: Solution Accelerators */}
         <DeferredSection minHeight={300}>
           <SolutionAccelerators />
         </DeferredSection>
         {/* Session 5b: MuleSoft COE */}
-        <div id="managed-services-anchor" style={{ scrollMarginTop: "96px" }}>
-          <DeferredSection minHeight={300}>
-            <MuleSoftCOE />
-          </DeferredSection>
-        </div>
+        <DeferredSection minHeight={300}>
+          <MuleSoftCOE />
+        </DeferredSection>
         <DeferredSection minHeight={300}>
           <CaseStudies />
         </DeferredSection>

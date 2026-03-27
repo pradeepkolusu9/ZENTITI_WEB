@@ -298,7 +298,7 @@ const HeroOrbit = () => {
         })}
       </div>
 
-      <div style={{
+      <div className="hidden sm:block" style={{
         position: "absolute",
         bottom: -20,
         left: "50%",
@@ -427,7 +427,7 @@ export const Hero = () => {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 cursor-pointer"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 cursor-pointer sm:bottom-8"
         initial={{ opacity: 0, y: -6 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.8 }}

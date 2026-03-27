@@ -261,7 +261,7 @@ export const EngagementModel = () => {
       id="engagement-model"
       data-testid="engagement-model-section"
       className="relative overflow-hidden pt-12 sm:pt-16 pb-24 sm:pb-32"
-      style={{ background: "var(--bg-section-alt)" }}
+      style={{ background: "var(--bg-section-alt)", scrollMarginTop: "96px" }}
     >
       <style>{KEYFRAMES}</style>
 
