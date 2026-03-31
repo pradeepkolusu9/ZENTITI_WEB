@@ -53,7 +53,8 @@ const CARDS = [
     highlight: "Zero alert fatigue",
     features: ["Bridge Mule flows & email server", "Rule-based suppression logic", "Centralized alert governance"],
     icon: Mail,
-    videoUrl: "/videos/Zentiti Event Sequencing Connector Demo.mp4", // Fallback video
+    videoUrl: null,
+    comingSoon: true,
   },
 ];
 
@@ -448,29 +449,56 @@ export const SolutionAccelerators = () => {
                   </div>
 
                   {/* CTA */}
-                  <motion.button
-                    className="mt-auto flex items-center justify-center gap-2
-                      rounded-xl px-5 py-3 text-sm font-bold w-full"
-                    style={{
-                      background: isActive ? hexToRgba(accent, 0.07) : "var(--bg-section-alt)",
-                      border: isActive
-                        ? `1px solid ${hexToRgba(accent, 0.18)}`
-                        : "1px solid var(--border-strong)",
-                      color: isActive ? accent : "var(--text-secondary)",
-                      transition: "all 0.25s ease",
-                    }}
-                    onClick={() => {
-                      if (card.videoUrl) {
-                        setActive(card.id);
-                        setIsVideoModalOpen(true);
-                      }
-                    }}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Play className="w-4 h-4" />
-                    Watch Demo
-                  </motion.button>
+                  {card.comingSoon ? (
+                    <div
+                      className="mt-auto flex items-center justify-center gap-2
+                        rounded-xl px-5 py-3 text-sm font-bold w-full cursor-not-allowed"
+                      style={{
+                        background: "var(--bg-section-alt)",
+                        border: "1px solid var(--border-default)",
+                        color: "var(--text-muted)",
+                        opacity: 0.7,
+                      }}
+                    >
+                      <span style={{
+                        display: "inline-block",
+                        fontSize: 9,
+                        fontWeight: 800,
+                        letterSpacing: "0.12em",
+                        textTransform: "uppercase",
+                        padding: "2px 8px",
+                        borderRadius: 100,
+                        background: hexToRgba(accent, 0.10),
+                        border: `1px solid ${hexToRgba(accent, 0.22)}`,
+                        color: accent,
+                        marginRight: 6,
+                      }}>Coming Soon</span>
+                    </div>
+                  ) : (
+                    <motion.button
+                      className="mt-auto flex items-center justify-center gap-2
+                        rounded-xl px-5 py-3 text-sm font-bold w-full"
+                      style={{
+                        background: isActive ? hexToRgba(accent, 0.07) : "var(--bg-section-alt)",
+                        border: isActive
+                          ? `1px solid ${hexToRgba(accent, 0.18)}`
+                          : "1px solid var(--border-strong)",
+                        color: isActive ? accent : "var(--text-secondary)",
+                        transition: "all 0.25s ease",
+                      }}
+                      onClick={() => {
+                        if (card.videoUrl) {
+                          setActive(card.id);
+                          setIsVideoModalOpen(true);
+                        }
+                      }}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <Play className="w-4 h-4" />
+                      Watch Demo
+                    </motion.button>
+                  )}
                 </div>
               </motion.article>
             );

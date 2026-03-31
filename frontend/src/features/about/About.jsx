@@ -1,5 +1,86 @@
 import { useEffect, useRef, useState, useCallback, memo } from "react";
 
+function PinchZoomImage({ src, alt, className, style }) {
+  const [scale, setScale]   = useState(1);
+  const [origin, setOrigin] = useState({ x: 50, y: 50 });
+  const lastTap   = useRef(0);
+  const lastDist  = useRef(null);
+  const lastScale = useRef(1);
+
+  const getTouchDist = (t) =>
+    Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
+
+  const getMidpoint = (t, rect) => ({
+    x: ((t[0].clientX + t[1].clientX) / 2 - rect.left) / rect.width  * 100,
+    y: ((t[0].clientY + t[1].clientY) / 2 - rect.top)  / rect.height * 100,
+  });
+
+  const onTouchStart = useCallback((e) => {
+    if (e.touches.length === 2) {
+      e.preventDefault();
+      lastDist.current  = getTouchDist(e.touches);
+      lastScale.current = scale;
+      const mid = getMidpoint(e.touches, e.currentTarget.getBoundingClientRect());
+      setOrigin(mid);
+    }
+  }, [scale]);
+
+  const onTouchMove = useCallback((e) => {
+    if (e.touches.length === 2) {
+      e.preventDefault();
+      const dist  = getTouchDist(e.touches);
+      const ratio = dist / lastDist.current;
+      const next  = Math.min(4, Math.max(1, lastScale.current * ratio));
+      setScale(next);
+    }
+  }, []);
+
+  const onTouchEnd = useCallback((e) => {
+    if (e.touches.length < 2) lastDist.current = null;
+    if (e.changedTouches.length === 1 && scale <= 1.05) {
+      const now = Date.now();
+      if (now - lastTap.current < 300) {
+        setScale(2);
+        setOrigin({ x: 50, y: 50 });
+      }
+      lastTap.current = now;
+    } else if (scale > 1 && e.touches.length === 0 && lastDist.current === null) {
+      // single tap while zoomed = reset
+      if (Date.now() - lastTap.current < 300) {
+        setScale(1);
+        setOrigin({ x: 50, y: 50 });
+      }
+      if (e.changedTouches.length === 1) lastTap.current = Date.now();
+    }
+  }, [scale]);
+
+  return (
+    <div
+      className="overflow-hidden rounded-lg shadow-lg touch-none"
+      style={{ width: "100%" }}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
+      <img
+        src={src}
+        alt={alt}
+        className={className}
+        style={{
+          ...style,
+          transform: `scale(${scale})`,
+          transformOrigin: `${origin.x}% ${origin.y}%`,
+          transition: scale === 1 ? "transform 0.3s ease" : "none",
+          willChange: "transform",
+          userSelect: "none",
+          WebkitUserSelect: "none",
+        }}
+        draggable={false}
+      />
+    </div>
+  );
+}
+
 const LOCATIONS = [
   { city: "Austin", country: "Texas, USA", coords: [-97.7431, 30.2672], label: "Headquarters" },
   { city: "Hyderabad", country: "Telangana, India", coords: [78.4867, 17.385], label: "GCC" },
@@ -183,16 +264,11 @@ export const About = () => {
                   </div>
                 </div>
                 <div className="mt-6">
-                  <img 
-                    src="/ai_agentic_foundry.png" 
-                    alt="AI Agentic Foundry" 
-                    className="rounded-lg shadow-lg"
-                    style={{ 
-                      display: "block",
-                      width: "100%",
-                      maxWidth: "100%",
-                      height: "auto",
-                    }}
+                  <PinchZoomImage
+                    src="/ai_agentic_foundry.png"
+                    alt="AI Agentic Foundry"
+                    className="rounded-lg"
+                    style={{ display: "block", width: "100%", maxWidth: "100%", height: "auto" }}
                   />
                 </div>
               </FadeIn>

@@ -27,7 +27,7 @@ export const Footer = () => {
           <div className="space-y-4">
             <img src="/logo.png" alt="Zentiti" className="h-9 w-auto" />
             <p className="text-xs leading-relaxed max-w-xs" style={{ color: "var(--text-secondary)" }}>
-              Transforming enterprise integration challenges into intelligent solutions.
+              Turning fragmented enterprise data into integrated and agent-powered intelligence.
             </p>
             <div className="flex space-x-3">
               <a href="https://www.linkedin.com/company/zentiti/" target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-70">
@@ -45,15 +45,6 @@ export const Footer = () => {
               Contact
             </h4>
             <div className="space-y-3">
-              <div className="flex items-start space-x-2">
-                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "var(--accent-blue)" }} />
-                <div>
-                  <p className="text-xs" style={{ color: "var(--text-secondary)" }}>Headquarters</p>
-                  <p className="text-xs" style={{ color: "var(--text-muted)" }}>
-                    1464 E Whitestone Blvd, Ste 1902, Cedar Park, TX 78613
-                  </p>
-                </div>
-              </div>
               <div className="flex items-start space-x-2">
                 <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "var(--accent-blue)" }} />
                 <div>
