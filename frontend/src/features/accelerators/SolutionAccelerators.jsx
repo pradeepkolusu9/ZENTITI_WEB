@@ -462,16 +462,11 @@ export const SolutionAccelerators = () => {
                     >
                       <span style={{
                         display: "inline-block",
-                        fontSize: 9,
-                        fontWeight: 800,
-                        letterSpacing: "0.12em",
-                        textTransform: "uppercase",
                         padding: "2px 8px",
                         borderRadius: 100,
                         background: hexToRgba(accent, 0.10),
                         border: `1px solid ${hexToRgba(accent, 0.22)}`,
                         color: accent,
-                        marginRight: 6,
                       }}>Coming Soon</span>
                     </div>
                   ) : (
