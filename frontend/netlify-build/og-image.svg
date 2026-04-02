@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Zentiti Inc Open Graph Image</title>
+  <desc id="desc">Enterprise cloud, AI, cybersecurity, and digital transformation services by Zentiti Inc.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1d4ed8" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <g fill="#ffffff">
+    <rect x="90" y="90" width="96" height="96" rx="20" fill="#ffffff" fill-opacity="0.18" />
+    <text x="138" y="152" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="52" font-weight="800" fill="#ffffff">Z</text>
+    <text x="90" y="270" font-family="Segoe UI, Arial, sans-serif" font-size="66" font-weight="800">Zentiti Inc</text>
+    <text x="90" y="336" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#e2e8f0">Enterprise Technology Solutions</text>
+    <text x="90" y="400" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#e2e8f0">Cloud • AI • Cybersecurity • Product Engineering</text>
+  </g>
+</svg>

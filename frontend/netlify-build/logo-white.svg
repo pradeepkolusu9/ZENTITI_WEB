@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 90" fill="none">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&amp;display=swap');
+      .logo-z { font-family: 'Nunito', Arial, sans-serif; font-weight: 900; font-size: 80px; fill: #ffffff; }
+      .logo-rest { font-family: 'Nunito', Arial, sans-serif; font-weight: 800; font-size: 80px; fill: #ffffff; }
+    </style>
+  </defs>
+  <!-- z in white -->
+  <text x="2" y="76" class="logo-z">z</text>
+  <!-- entiti in white -->
+  <text x="52" y="76" class="logo-rest">entit</text>
+  <!-- i stem (no dot) -->
+  <rect x="310" y="30" width="16" height="48" rx="3" fill="#ffffff"/>
+  <!-- white right-pointing chevron/arrow as dot of last i -->
+  <polygon points="308,4  330,17  308,30" fill="#ffffff"/>
+</svg>

@@ -62,7 +62,7 @@ const Home = () => {
       "Zentiti Inc helps enterprises accelerate digital transformation with cloud, AI, data, cybersecurity, and product engineering services.",
     keywords:
       "enterprise IT solutions, digital transformation, cloud services, AI consulting, cybersecurity, software engineering",
-    canonicalPath: "/home",
+    canonicalPath: "/",
     ogImage: "/og-image.svg",
     schema: {
       "@context": "https://schema.org",
@@ -70,13 +70,13 @@ const Home = () => {
       name: "Home | Zentiti Inc",
       description:
         "Enterprise technology solutions for transformation, modernization, and growth.",
-      url: `${window.location.origin}/home`,
+      url: `${window.location.origin}/`,
       isPartOf: {
         "@type": "WebSite",
         name: "Zentiti Inc",
         url: window.location.origin,
       },
-      mainEntityOfPage: `${window.location.origin}/home`,
+      mainEntityOfPage: `${window.location.origin}/`,
     },
   });
 
