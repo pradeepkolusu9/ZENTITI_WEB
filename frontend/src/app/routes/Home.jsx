@@ -109,9 +109,11 @@ const Home = () => {
         <DeferredSection minHeight={300}>
           <MuleSoftCOE />
         </DeferredSection>
-        <DeferredSection minHeight={300}>
-          <CaseStudies />
-        </DeferredSection>
+        <div id="case-studies" style={{ scrollMarginTop: "80px" }}>
+          <DeferredSection minHeight={300}>
+            <CaseStudies />
+          </DeferredSection>
+        </div>
         {/* Session 5: Approach */}
         <DeferredSection minHeight={300}>
           <EngagementModel />
