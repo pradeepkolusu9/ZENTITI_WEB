@@ -23,6 +23,12 @@ const DeferredSection = ({ children, minHeight = 480 }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
+    const handleForce = () => setShouldRender(true);
+    window.addEventListener("zentiti:force-render", handleForce);
+    return () => window.removeEventListener("zentiti:force-render", handleForce);
+  }, []);
+
+  useEffect(() => {
     if (!containerRef.current || shouldRender) {
       return undefined;
     }
@@ -87,12 +93,16 @@ const Home = () => {
         <Navbar />
         <Hero />
         {/* Session 2: Challenge / About Zentiti */}
-        <DeferredSection minHeight={300}>
-          <Challenge />
-        </DeferredSection>
-        <DeferredSection minHeight={300}>
-          <About />
-        </DeferredSection>
+        <div id="challenge" style={{ scrollMarginTop: "80px" }}>
+          <DeferredSection minHeight={300}>
+            <Challenge />
+          </DeferredSection>
+        </div>
+        <div id="about" style={{ scrollMarginTop: "80px" }}>
+          <DeferredSection minHeight={300}>
+            <About />
+          </DeferredSection>
+        </div>
         <DeferredSection minHeight={300}>
           <CoreValues />
         </DeferredSection>
@@ -106,18 +116,22 @@ const Home = () => {
           <SolutionAccelerators />
         </DeferredSection>
         {/* Session 5b: MuleSoft COE */}
-        <DeferredSection minHeight={300}>
-          <MuleSoftCOE />
-        </DeferredSection>
+        <div id="managed-services-anchor" style={{ scrollMarginTop: "80px" }}>
+          <DeferredSection minHeight={300}>
+            <MuleSoftCOE />
+          </DeferredSection>
+        </div>
         <div id="case-studies" style={{ scrollMarginTop: "80px" }}>
           <DeferredSection minHeight={300}>
             <CaseStudies />
           </DeferredSection>
         </div>
         {/* Session 5: Approach */}
-        <DeferredSection minHeight={300}>
-          <EngagementModel />
-        </DeferredSection>
+        <div id="engagement-model" style={{ scrollMarginTop: "80px" }}>
+          <DeferredSection minHeight={300}>
+            <EngagementModel />
+          </DeferredSection>
+        </div>
         <DeferredSection minHeight={300}>
           <ProductVisual />
         </DeferredSection>
@@ -128,9 +142,11 @@ const Home = () => {
           </DeferredSection>
         </div>
         {/* Session 7: Careers */}
-        <DeferredSection minHeight={300}>
-          <CareersSection />
-        </DeferredSection>
+        <div id="careers" style={{ scrollMarginTop: "80px" }}>
+          <DeferredSection minHeight={300}>
+            <CareersSection />
+          </DeferredSection>
+        </div>
         <DeferredSection minHeight={250}>
           <FinalCtaSection />
         </DeferredSection>

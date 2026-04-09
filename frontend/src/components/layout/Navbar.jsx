@@ -88,11 +88,12 @@ export const Navbar = React.memo(() => {
 
 
   const scrollTo = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
     setOpenDropdown(null);
+    window.dispatchEvent(new CustomEvent("zentiti:force-render"));
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 150);
   };
 
 

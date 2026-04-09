@@ -1,83 +1,94 @@
-import { useEffect, useRef, useState, useCallback, memo } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 function PinchZoomImage({ src, alt, className, style }) {
-  const [scale, setScale]   = useState(1);
-  const [origin, setOrigin] = useState({ x: 50, y: 50 });
-  const lastTap   = useRef(0);
-  const lastDist  = useRef(null);
-  const lastScale = useRef(1);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const getTouchDist = (t) =>
-    Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
+  const open  = () => setIsOpen(true);
+  const close = () => setIsOpen(false);
 
-  const getMidpoint = (t, rect) => ({
-    x: ((t[0].clientX + t[1].clientX) / 2 - rect.left) / rect.width  * 100,
-    y: ((t[0].clientY + t[1].clientY) / 2 - rect.top)  / rect.height * 100,
-  });
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [isOpen]);
 
-  const onTouchStart = useCallback((e) => {
-    if (e.touches.length === 2) {
-      e.preventDefault();
-      lastDist.current  = getTouchDist(e.touches);
-      lastScale.current = scale;
-      const mid = getMidpoint(e.touches, e.currentTarget.getBoundingClientRect());
-      setOrigin(mid);
-    }
-  }, [scale]);
-
-  const onTouchMove = useCallback((e) => {
-    if (e.touches.length === 2) {
-      e.preventDefault();
-      const dist  = getTouchDist(e.touches);
-      const ratio = dist / lastDist.current;
-      const next  = Math.min(4, Math.max(1, lastScale.current * ratio));
-      setScale(next);
-    }
-  }, []);
-
-  const onTouchEnd = useCallback((e) => {
-    if (e.touches.length < 2) lastDist.current = null;
-    if (e.changedTouches.length === 1 && scale <= 1.05) {
-      const now = Date.now();
-      if (now - lastTap.current < 300) {
-        setScale(2);
-        setOrigin({ x: 50, y: 50 });
-      }
-      lastTap.current = now;
-    } else if (scale > 1 && e.touches.length === 0 && lastDist.current === null) {
-      // single tap while zoomed = reset
-      if (Date.now() - lastTap.current < 300) {
-        setScale(1);
-        setOrigin({ x: 50, y: 50 });
-      }
-      if (e.changedTouches.length === 1) lastTap.current = Date.now();
-    }
-  }, [scale]);
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e) => { if (e.key === "Escape") close(); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isOpen]);
 
   return (
-    <div
-      className="overflow-hidden rounded-lg shadow-lg touch-none"
-      style={{ width: "100%" }}
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
-      onTouchEnd={onTouchEnd}
-    >
-      <img
-        src={src}
-        alt={alt}
-        className={className}
-        style={{
-          ...style,
-          transform: `scale(${scale})`,
-          transformOrigin: `${origin.x}% ${origin.y}%`,
-          transition: scale === 1 ? "transform 0.3s ease" : "none",
-          willChange: "transform",
-          userSelect: "none",
-          WebkitUserSelect: "none",
-        }}
-        draggable={false}
-      />
-    </div>
+    <>
+      {/* ── Inline preview ── */}
+      <div
+        className="relative overflow-hidden rounded-lg shadow-lg cursor-pointer group"
+        style={{ width: "100%", visibility: isOpen ? "hidden" : "visible" }}
+        onClick={open}
+      >
+        <img
+          src={src} alt={alt} className={className}
+          style={{ ...style, display: "block", width: "100%", maxWidth: "100%", height: "auto", userSelect: "none" }}
+          draggable={false}
+        />
+        {/* Expand hint — always on mobile, hover-only on desktop */}
+        <div
+          className="absolute inset-0 flex items-end justify-center pb-3 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200"
+          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 60%)" }}
+        >
+          <span className="md:hidden" style={{ fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.9)", letterSpacing: "0.06em", background: "rgba(0,0,0,0.45)", borderRadius: 100, padding: "3px 12px", border: "1px solid rgba(255,255,255,0.2)" }}>
+            Tap to view
+          </span>
+          <span className="hidden md:inline" style={{ fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.9)", letterSpacing: "0.06em", background: "rgba(0,0,0,0.45)", borderRadius: 100, padding: "3px 12px", border: "1px solid rgba(255,255,255,0.2)" }}>
+            Click to view
+          </span>
+        </div>
+      </div>
+
+      {/* ── Lightbox via portal ── */}
+      {isOpen && createPortal(
+        <div
+          style={{
+            position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh",
+            zIndex: 99999, background: "#000",
+          }}
+          onClick={close}
+        >
+          {/* Close button — large, top-right, always visible */}
+          <button
+            onClick={(e) => { e.stopPropagation(); close(); }}
+            aria-label="Close"
+            style={{
+              position: "absolute", top: 12, right: 12, zIndex: 10,
+              width: 56, height: 56, borderRadius: "50%",
+              background: "#fff",
+              border: "none",
+              color: "#000", display: "flex", alignItems: "center", justifyContent: "center",
+              cursor: "pointer", boxShadow: "0 2px 12px rgba(0,0,0,0.5)",
+            }}
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+
+          {/* Image — object-fit contain fills the full viewport, centered */}
+          <img
+            src={src} alt={alt}
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              position: "absolute", top: 0, left: 0,
+              width: "100%", height: "100%",
+              objectFit: "contain",
+              userSelect: "none", WebkitUserSelect: "none",
+            }}
+            draggable={false}
+          />
+        </div>,
+        document.body
+      )}
+    </>
   );
 }
 
