@@ -257,7 +257,7 @@ export const SolutionAccelerators = () => {
     <section
       id="accelerators"
       data-testid="accelerators-section"
-      className="relative overflow-hidden py-24 sm:py-32 pb-6 sm:pb-8"
+      className="relative overflow-hidden pt-8 sm:pt-10 pb-6 sm:pb-8"
       style={{ background: "var(--bg-section-alt)" }}
     >
       {/* Ghost number */}
@@ -284,11 +284,7 @@ export const SolutionAccelerators = () => {
             style={{ fontFamily: "'Manrope',sans-serif",
               fontSize: "clamp(1.6rem,3.5vw,2.4rem)" }}
           >
-            MuleSoft{" "}
-            <em className="not-italic bg-clip-text text-transparent"
-              style={{ backgroundImage: "linear-gradient(90deg,var(--ember),var(--ember-glow))" }}>
-              Custom
-            </em>{" "}
+            Custom{" "}
             <em className="not-italic bg-clip-text text-transparent"
               style={{ backgroundImage: "linear-gradient(90deg,var(--ember),var(--ember-glow))" }}>
               Accelerators

@@ -1,0 +1,172 @@
+.wte-section {
+  background: var(--bg-section-alt);
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--text-primary);
+  padding: 88px 24px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.wte-section::before {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(255,255,255,0.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.1) 1px,transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.03;
+}
+.wte-section::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 700px; height: 500px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--ember);
+  filter: blur(120px);
+  opacity: 0.07;
+  pointer-events: none;
+}
+.wte-inner { max-width: 1160px; margin: 0 auto; position: relative; z-index: 10; }
+
+/* ── Header (same style as the Success Metrics version) ── */
+.wte-header { margin-bottom: 52px; }
+.wte-heading {
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.06;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  font-family: 'Manrope', sans-serif;
+}
+.wte-heading span { color: var(--ember); }
+.wte-subtext { font-size: 15px; font-weight: 400; color: var(--text-secondary); line-height: 1.7; max-width: 520px; }
+
+/* ── Two tracks stacked vertically ── */
+.wte-grid { display: flex; flex-direction: column; gap: 40px; }
+
+.wte-track { display: flex; flex-direction: column; }
+.wte-track-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 800;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  align-self: flex-start;
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+.wte-track-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.wte-track-ember .wte-track-label {
+  color: var(--ember);
+  background: rgba(232,82,26,0.12);
+  border: 1px solid rgba(232,82,26,0.35);
+  border-radius: 100px;
+  padding: 8px 16px;
+  font-size: 15px;
+}
+.wte-track-ember .wte-track-dot { background: var(--ember); }
+.wte-track-blue  .wte-track-dot { background: #60A5FA; }
+.wte-track-blue .wte-track-label {
+  color: #60A5FA;
+  background: rgba(59,130,246,0.08);
+  border: 1px solid rgba(59,130,246,0.32);
+  border-radius: 100px;
+  padding: 8px 16px;
+  font-size: 15px;
+}
+.wte-track-sub { font-size: 12.5px; color: var(--text-muted); margin-bottom: 16px; }
+
+/* ── Cards — 3 in a row per track ── */
+.wte-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+@media (max-width: 768px) { .wte-cards { grid-template-columns: 1fr; } }
+
+.wte-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: 14px;
+  padding: 28px 26px 26px;
+  position: relative;
+  transition: border-color 0.2s ease;
+  cursor: default;
+  box-shadow: var(--shadow-card);
+}
+.wte-track-ember .wte-card:hover { border-color: var(--ember); }
+.wte-track-blue  .wte-card:hover { border-color: #3B82F6; }
+
+.wte-card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 24px; }
+.wte-icon {
+  width: 42px; height: 42px;
+  background: var(--bg-section-alt);
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.wte-icon svg {
+  width: 20px; height: 20px;
+  stroke: var(--text-secondary);
+  fill: none; stroke-width: 1.7;
+  stroke-linecap: round; stroke-linejoin: round;
+  transition: stroke 0.2s;
+}
+.wte-track-ember .wte-card:hover .wte-icon svg { stroke: var(--ember); }
+.wte-track-blue  .wte-card:hover .wte-icon svg { stroke: #60A5FA; }
+
+.wte-stat-wrap { text-align: right; }
+.wte-stat-num {
+  display: block;
+  font-size: 32px; font-weight: 900;
+  line-height: 1; letter-spacing: -0.04em;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.wte-track-ember .wte-card:hover .wte-stat-num { color: var(--ember); }
+.wte-track-blue  .wte-card:hover .wte-stat-num { color: #60A5FA; }
+.wte-stat-label {
+  display: block;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--text-primary);
+  margin-top: 3px;
+}
+.wte-divider { height: 1px; background: var(--border-default); margin-bottom: 18px; }
+.wte-card-name {
+  font-size: 16px; font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 7px;
+  text-align: center;
+}
+.wte-card-desc {
+  font-size: 13px; font-weight: 400;
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.62;
+}
+
+/* ── Timeline chips ── */
+.wte-chip {
+  align-self: flex-start;
+  margin-top: 10px;
+  margin-bottom: 18px;
+  border-radius: 100px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.wte-chip-ember {
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  padding: 12px 24px;
+}
+.wte-chip-blue {
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+}
+@media (max-width: 520px) {
+  .wte-chip { white-space: normal; text-align: center; }
+}

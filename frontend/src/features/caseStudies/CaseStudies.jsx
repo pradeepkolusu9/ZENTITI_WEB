@@ -1,7 +1,26 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import "./CaseStudies.css";
 
 const CASES = [
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round">
+        <ellipse cx="12" cy="5" rx="9" ry="3" />
+        <path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5" />
+        <path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3" />
+      </svg>
+    ),
+    industry: "Banking & Financial Services",
+    stat: "1.7M",
+    statLabel: "columns cataloged in 30 days",
+    pillar: "Data Management",
+    title: "Enterprise Data Catalog & Runtime Governance",
+    challenge: "Siloed data across 28 applications with no enterprise catalog, forcing manual stewardship and blocking governed AI use cases.",
+    solution: "Deployed an enterprise data catalog with runtime governance (RBAC, ABAC, PBAC, dynamic masking, row-level security) and agent-based data quality rules under human-in-the-loop review.",
+    outcome: "1.7M columns cataloged in 30 days, steward effort cut by 70%. Dozens of governed data products live in 2 weeks; confident, data-driven decisions across all 28 applications.",
+    featured: true,
+  },
   {
     icon: (
       <svg viewBox="0 0 24 24" fill="none" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round">
@@ -12,6 +31,7 @@ const CASES = [
     industry: "Marketing · Print · Supply Chain",
     stat: "40%",
     statLabel: "reduction in maintenance",
+    pillar: "Integration",
     title: "Integration Migration @ Scale",
     challenge: "300+ point-to-point integrations on legacy IBM middleware with limited skills and no software support.",
     solution: "Migration to MuleSoft & converting 300+ legacy connections to API-led architecture.",
@@ -27,6 +47,7 @@ const CASES = [
     industry: "Financial Services",
     stat: "2K+",
     statLabel: "requests per second sustained",
+    pillar: "Integration",
     title: "API Modernization @ Scale",
     challenge: "A system with legacy APIs suffering from throttling, weak security, and downtime under heavy transaction loads.",
     solution: "MuleSoft API facade with identity auth, rate limiting, and enterprise CI/CD for zero downtime deploys.",
@@ -42,6 +63,7 @@ const CASES = [
     industry: "Higher Education",
     stat: "1.3M",
     statLabel: "records orchestrated weekly",
+    pillar: "Integration",
     title: "360 View of Student Record",
     challenge: "Data trapped in disconnected systems causing low visibility into student success and frequent errors.",
     solution: "MuleSoft based integrations unified siloed data into Salesforce Student Success Hub with automated daily delta sync.",
@@ -49,265 +71,31 @@ const CASES = [
   },
 ];
 
-const css = `
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-  .cs-wrap {
-    font-family: 'Inter', system-ui, sans-serif;
-    padding: 80px 32px 40px;
-    background: var(--bg-section-alt);
-    --cs-card: var(--bg-card);
-    --cs-border: var(--border-default);
-    --cs-text-1: var(--text-primary);
-    --cs-text-2: var(--text-secondary);
-    --cs-text-3: var(--text-muted);
-    --cs-icon-bg: var(--icon-bg);
-    --cs-stat-color: var(--text-primary);
-    position: relative;
-    overflow: hidden;
-  }
+const PILLAR_STYLES = {
+  "Data Management": { color: "var(--ember)", bg: "rgba(232,82,26,0.10)", border: "rgba(232,82,26,0.30)" },
+  "Integration":     { color: "#60A5FA",      bg: "rgba(59,130,246,0.10)", border: "rgba(59,130,246,0.30)" },
+  "Agentic AI":      { color: "#34D399",      bg: "rgba(52,211,153,0.10)", border: "rgba(52,211,153,0.30)" },
+};
 
-  /* Grid texture */
-  .cs-wrap::before {
-    content: '';
-    position: absolute; inset: 0; pointer-events: none;
-    background-image: linear-gradient(rgba(255,255,255,0.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.1) 1px,transparent 1px);
-    background-size: 64px 64px;
-    opacity: 0.03;
-  }
-
-  /* Orange radial glow */
-  .cs-wrap::after {
-    content: '';
-    position: absolute;
-    left: 50%; top: 50%;
-    width: 700px; height: 500px;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: var(--ember);
-    filter: blur(120px);
-    opacity: 0.07;
-    pointer-events: none;
-  }
-
-  .cs-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 10;
-  }
-
-  /* ── Header ── */
-  .cs-header {
-    margin-bottom: 48px;
-    animation: cs-up 0.45s ease both;
-  }
-
-  .cs-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    border: 1px solid var(--cs-border);
-    border-radius: 100px;
-    padding: 8px 20px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--cs-text-2);
-    margin-bottom: 22px;
-    background: var(--cs-card);
-  }
-
-  .cs-pill-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #E84E1B;
-    flex-shrink: 0;
-  }
-
-  .cs-heading {
-    font-size: clamp(1.4rem, 2.8vw, 2.2rem);
-    font-weight: 800;
-    line-height: 1.06;
-    letter-spacing: -0.03em;
-    color: var(--cs-text-1);
-    margin-bottom: 16px;
-  }
-
-  .cs-heading-accent { color: #E84E1B; }
-
-  .cs-subtext {
-    font-size: 15px;
-    color: var(--cs-text-2);
-    line-height: 1.7;
-    max-width: 540px;
-  }
-
-  /* ── Grid ── */
-  .cs-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    animation: cs-up 0.45s 0.07s ease both;
-  }
-  @media (max-width: 960px) { .cs-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 560px) { .cs-grid { grid-template-columns: 1fr; } }
-
-  /* ── Card ── */
-  .cs-card {
-    background: var(--cs-card);
-    border: 1px solid var(--cs-border);
-    border-radius: 16px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    cursor: default;
-  }
-  .cs-card:hover {
-    border-color: var(--border-strong);
-    box-shadow: var(--shadow-card);
-  }
-
-  .cs-card-top {
-    padding: 22px 22px 0;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-
-  .cs-icon-box {
-    width: 38px; height: 38px;
-    background: var(--cs-icon-bg);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: background 0.2s;
-  }
-  .cs-icon-box svg {
-    width: 17px; height: 17px;
-    stroke: var(--cs-text-2);
-    fill: none;
-    transition: stroke 0.2s;
-  }
-  .cs-card:hover .cs-icon-box svg { stroke: var(--ember); }
-
-  .cs-industry {
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--cs-text-2);
-    line-height: 1.4;
-    padding-top: 2px;
-  }
-
-  /* Stat */
-  .cs-stat {
-    padding: 0 22px 18px;
-    border-bottom: 1px solid var(--cs-border);
-  }
-  .cs-stat-num {
-    font-size: 32px;
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    color: var(--cs-stat-color);
-    display: block;
-    margin-bottom: 4px;
-    transition: color 0.2s;
-  }
-  .cs-card:hover .cs-stat-num { color: #E84E1B; }
-  .cs-stat-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--cs-text-3);
-  }
-
-  /* Title */
-  .cs-body { padding: 18px 22px 0; }
-  .cs-title {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--cs-text-1);
-    letter-spacing: -0.02em;
-    line-height: 1.3;
-  }
-
-  /* Blocks */
-  .cs-blocks {
-    padding: 14px 22px 22px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-  .cs-block {
-    border-radius: 8px;
-    padding: 13px 14px;
-    border: 1px solid transparent;
-    min-height: 108px;
-  }
-  .cs-block-label {
-    font-size: 11.5px;
-    font-weight: 900;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 7px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .cs-block-dot {
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .cs-block-text {
-    font-size: 12.5px;
-    line-height: 1.62;
-    color: var(--text-primary);
-  }
-
-  /* Block variants — using CSS variables for theme compatibility */
-  .cs-block-c { background: rgba(232,113,74,0.08); border-color: rgba(232,113,74,0.15); }
-  .cs-block-c .cs-block-label { color: rgba(232,113,74,0.8); }
-  .cs-block-c .cs-block-dot   { background: rgba(232,113,74,0.7); }
-
-  .cs-block-s { background: var(--accent-blue, rgba(59,130,246,0.05)); border-color: var(--accent-blue, rgba(59,130,246,0.14)); }
-  .cs-block-s .cs-block-label { color: var(--accent-blue, #1A4A8A); }
-  .cs-block-s .cs-block-dot   { background: var(--accent-blue, #2E6AC8); }
-
-  .cs-block-o { background: var(--accent-green, rgba(34,197,94,0.25)); border-color: var(--accent-green, rgba(34,197,94,0.35)); }
-  .cs-block-o .cs-block-label { color: var(--accent-green, #059669); }
-  .cs-block-o .cs-block-dot   { background: var(--accent-green, #22c55e); }
-
-  /* ── Animation ── */
-  @keyframes cs-up {
-    from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-`;
+function PillarBadge({ pillar }) {
+  if (!pillar) return null;
+  const s = PILLAR_STYLES[pillar] || {};
+  return (
+    <span className="cs-pillar-badge" style={{ color: s.color, background: s.bg, borderColor: s.border }}>
+      {pillar}
+    </span>
+  );
+}
 
 function CaseCard({ data }) {
-  const [hovered, setHovered] = useState(false);
-  void hovered; // used via CSS :hover — state kept for potential JS extensions
-
   return (
-    <div
-      className="cs-card"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
+    <div className={`cs-card${data.featured ? " cs-card-featured" : ""}`}>
       {/* Top row */}
       <div className="cs-card-top">
         <div className="cs-icon-box">{data.icon}</div>
         <span className="cs-industry">{data.industry}</span>
+        <PillarBadge pillar={data.pillar} />
       </div>
 
       {/* Stat */}
@@ -324,24 +112,15 @@ function CaseCard({ data }) {
       {/* Challenge / Solution / Outcome */}
       <div className="cs-blocks">
         <div className="cs-block cs-block-c">
-          <div className="cs-block-label">
-            <span className="cs-block-dot" />
-            Challenge
-          </div>
+          <div className="cs-block-label"><span className="cs-block-dot" />Challenge</div>
           <p className="cs-block-text">{data.challenge}</p>
         </div>
         <div className="cs-block cs-block-s">
-          <div className="cs-block-label">
-            <span className="cs-block-dot" />
-            Solution
-          </div>
+          <div className="cs-block-label"><span className="cs-block-dot" />Solution</div>
           <p className="cs-block-text">{data.solution}</p>
         </div>
         <div className="cs-block cs-block-o">
-          <div className="cs-block-label">
-            <span className="cs-block-dot" />
-            Outcome
-          </div>
+          <div className="cs-block-label"><span className="cs-block-dot" />Outcome</div>
           <p className="cs-block-text">{data.outcome}</p>
         </div>
       </div>
@@ -349,30 +128,84 @@ function CaseCard({ data }) {
   );
 }
 
-export const CaseStudies = () => {
+export const CaseStudies = ({ studies = CASES }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const cardsPerView = 3;
+
+  // Calculate the starting index for the current view
+  const startIndex = Math.min(currentIndex, Math.max(0, studies.length - cardsPerView));
+  const displayedCards = studies.slice(startIndex, startIndex + cardsPerView);
+
+  const handleNext = () => {
+    const newIndex = currentIndex + cardsPerView;
+    if (newIndex >= studies.length) {
+      setCurrentIndex(0); // Loop back to start
+    } else {
+      setCurrentIndex(newIndex);
+    }
+  };
+
+  const handlePrev = () => {
+    const newIndex = currentIndex - cardsPerView;
+    if (newIndex < 0) {
+      setCurrentIndex(Math.max(0, studies.length - cardsPerView)); // Go to last set
+    } else {
+      setCurrentIndex(newIndex);
+    }
+  };
+
   return (
-    <section id="case-studies" className="cs-wrap">
-      <style>{css}</style>
-      <div className="cs-inner">
+    <section className="cs-wrap" id="case-studies">
+      <div className="cs-pin">
+        <div className="cs-inner">
 
-        {/* Header */}
-        <div className="cs-header">
-          <span className="z-pill mb-6 text-lg font-semibold">Zentiti in action</span>
-          <h2 className="cs-heading">
-            Case <span className="cs-heading-accent">Studies</span>
-          </h2>
-          <p className="cs-subtext">
-            Real-world solutions delivering tangible business outcomes across industries.
-          </p>
+          {/* Header */}
+          <div className="cs-header">
+            <span className="z-pill mb-6 text-lg font-semibold">Zentiti in action</span>
+            <h2 className="cs-heading">
+              Case <span className="cs-heading-accent">Studies</span>
+            </h2>
+            <p className="cs-subtext">
+              Real-world solutions delivering tangible business outcomes across industries.
+            </p>
+          </div>
+
+          {/* 1x3 Grid Layout */}
+          <div className="cs-grid-container">
+            <div className="cs-grid">
+              {displayedCards.map((c) => (
+                <div key={c.title} className="cs-grid-item">
+                  <CaseCard data={c} />
+                </div>
+              ))}
+            </div>
+
+            {/* Navigation Controls */}
+            <div className="cs-nav-controls">
+              <button
+                onClick={handlePrev}
+                className="cs-nav-btn cs-nav-prev"
+                aria-label="Previous cases"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M15 19l-7-7 7-7" />
+                </svg>
+                Previous
+              </button>
+              <button
+                onClick={handleNext}
+                className="cs-nav-btn cs-nav-next"
+                aria-label="Next cases"
+              >
+                Next
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
         </div>
-
-        {/* Cards grid */}
-        <div className="cs-grid">
-          {CASES.map((c) => (
-            <CaseCard key={c.title} data={c} />
-          ))}
-        </div>
-
       </div>
     </section>
   );

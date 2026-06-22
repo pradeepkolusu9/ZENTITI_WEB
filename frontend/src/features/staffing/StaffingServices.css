@@ -1,0 +1,132 @@
+.ss-section {
+  background: var(--bg-section-alt);
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--text-primary);
+  padding: 80px 32px 72px;
+  position: relative;
+  overflow: hidden;
+}
+.ss-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.ss-pill-dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--ember);
+  margin-right: 2px;
+  vertical-align: middle;
+}
+
+.ss-heading {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+.ss-heading span { color: var(--ember); }
+
+.ss-subtext {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+/* ── Practice cards — 5 in a row ── */
+.ss-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+@media (max-width: 1024px) { .ss-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 640px)  { .ss-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.ss-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: 14px;
+  padding: 28px 26px 26px;
+  position: relative;
+  transition: border-color 0.2s ease;
+  cursor: default;
+  box-shadow: var(--shadow-card);
+}
+.ss-card:hover { border-color: var(--ember); }
+.ss-card-highlight { border-color: var(--ember); }
+
+.ss-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  font-family: 'Manrope', sans-serif;
+}
+
+.ss-tech-list {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ss-tech-list li {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.62;
+}
+
+/* ── Engagement models strip ── */
+.ss-strip {
+  margin-top: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  border-radius: 16px;
+  padding: 32px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.ss-strip-glow {
+  pointer-events: none;
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 256px; height: 128px;
+  border-radius: 50%;
+  background: var(--ember);
+  filter: blur(60px);
+  opacity: 0.2;
+}
+.ss-strip-text {
+  position: relative;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  font-family: 'Manrope', sans-serif;
+  text-align: center;
+}
+.ss-strip-item {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
+.ss-strip-sep {
+  color: var(--text-muted);
+  font-size: inherit;
+  padding: 0 8px;
+}

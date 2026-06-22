@@ -156,104 +156,32 @@ export const MuleSoftCOE = () => {
       <div className="relative z-10 mx-auto max-w-7xl px-6">
 
         {/* ══════════════════════════════════════════
-            PILL BADGE
+            MuleSoft Center of Excellence
             ══════════════════════════════════════════ */}
-        <motion.span
-            className="z-pill mb-6 text-lg font-semibold"
-            initial={{ opacity: 0, x: -12 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.4 }}
-          >
-          Managed Services
-        </motion.span>
-
-        {/* ══════════════════════════════════════════
-            SUB-SECTION 1: Platform Agnostic Integration Services
-            ══════════════════════════════════════════ */}
-        <motion.h2
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5, delay: 0.05 }}
-          className="mt-2 font-extrabold leading-[1.08] tracking-[-0.04em]"
-          style={{ 
-            fontFamily: "'Manrope',sans-serif", 
-            fontSize: "clamp(1.4rem, 2.8vw, 2.2rem)",
-            color: "var(--text-primary)"
-          }}
-        >
-          Platform-Agnostic{" "}
-          <em
-            className="not-italic"
-            style={{ color: "var(--ember)" }}
-          >
-            Integration Services
-          </em>
-        </motion.h2>
-
-        {/* Platform pills — OUTSIDE max-w-2xl, full width, left-aligned */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={{ visible: { transition: { staggerChildren: 0.06 } } }}
-          className="flex flex-wrap gap-2.5 mt-6 mb-14"
-        >
-          {PLATFORM_PILLS.map((pill) => (
-            <motion.div
-              key={pill}
-              variants={{
-                hidden: { opacity: 0, scale: 0.85, y: 8 },
-                visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.35 } },
-              }}
-              whileHover={{ scale: 1.05, transition: { duration: 0.15 } }}
-              className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 cursor-default
-                text-xs font-semibold transition-colors duration-200"
-              style={{
-                background: "var(--bg-card)",
-                border: "1px solid var(--border-strong)",
-                color: "var(--text-secondary)",
-                boxShadow: "var(--shadow-card)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "var(--ember)";
-                e.currentTarget.style.color = "var(--accent-ember)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "var(--border-strong)";
-                e.currentTarget.style.color = "var(--text-secondary)";
-              }}
-            >
-              <span
-                className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                style={{ background: "var(--ember)", opacity: 0.7 }}
-              />
-              {pill}
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* ══════════════════════════════════════════
-            SUB-SECTION 2: MuleSoft Center of Excellence
-            ══════════════════════════════════════════ */}
-        <div className="pt-10 mb-4 border-t" style={{ borderColor: "var(--border-strong)" }} />
         <div className="mb-10 max-w-2xl">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.45 }}
+          >
+            <span className="z-pill mb-6 text-lg font-semibold">MuleSoft</span>
+          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.05 }}
             className="font-extrabold leading-[1.08] tracking-[-0.04em]
-              text-[var(--text-primary)]"
+              text-[var(--text-primary)] mt-4"
             style={{ fontFamily: "'Manrope',sans-serif", fontSize: "clamp(1.4rem, 2.8vw, 2.2rem)" }}
           >
-            MuleSoft{" "}
+            Center of{" "}
             <em
               className="not-italic"
               style={{ color: "var(--ember)" }}
             >
-              Center of Excellence
+              Excellence
             </em>
           </motion.h2>
 

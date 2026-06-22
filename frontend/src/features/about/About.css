@@ -1,0 +1,24 @@
+.abt { padding: 48px 0 64px; background: var(--bg-page); overflow-x: hidden; scroll-margin-top: 96px; }
+.abt-c { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+.abt-g { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: start; max-width: 1000px; }
+
+.zp { display: inline-block; padding: 6px 18px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--pill-text); background: var(--pill-bg); border: 1px solid var(--pill-border); }
+
+.ah { margin-top: 16px; margin-bottom: 24px; font-size: clamp(24px, 3.5vw, 40px); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: var(--text-primary); }
+.ah .gr { background: linear-gradient(135deg, #3B82F6, #60A5FA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.abody { margin-top: 16px; font-size: 15px; line-height: 1.6; color: var(--text-secondary); max-width: 480px; }
+
+.vc { position: relative; margin-top: 32px; padding: 18px 20px 18px 22px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border-default); }
+.vc::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 12px 0 0 12px; background: linear-gradient(180deg, var(--ember), #f97316); }
+.vlbl { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ember); margin-bottom: 4px; }
+.vtxt { margin-top: 4px; font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+.lhdr { margin-top: 32px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 10px; }
+.ltags { display: flex; flex-wrap: wrap; gap: 8px; }
+.ltag { display: inline-block; padding: 4px 12px; border-radius: 100px; font-size: 11px; font-weight: 500; color: var(--text-secondary); background: var(--bg-card); border: 1px solid var(--border-default); transition: border-color 0.2s, color 0.2s, transform 0.2s; cursor: default; }
+.ltag:hover { border-color: var(--border-blue); color: var(--accent-blue); transform: translateY(-1px); }
+
+.fcard { margin-top: 24px; padding: 16px 18px; border-radius: 12px; border: 1px solid var(--border-blue); background: var(--pill-bg); }
+.flbl { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ember); margin-bottom: 6px; }
+.ftxt { font-size: 12px; line-height: 1.5; color: var(--text-secondary); }

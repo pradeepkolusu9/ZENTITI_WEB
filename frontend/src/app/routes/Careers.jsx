@@ -8,9 +8,9 @@ const Careers = () => {
   const pageSeo = usePageSeo({
     title: "Careers | Zentiti Inc",
     description:
-      "Explore careers at Zentiti Inc and join teams building high-impact enterprise products across cloud, AI, and data platforms.",
+      "Explore careers at Zentiti Inc and join teams building high-impact solutions across data management, integration, and agentic AI.",
     keywords:
-      "IT careers, cloud jobs, AI jobs, software engineer jobs, enterprise technology careers",
+      "IT careers, data engineering jobs, integration jobs, AI jobs, software engineer jobs, enterprise technology careers",
     canonicalPath: "/careers",
     ogImage: "/og-image.svg",
     schema: {

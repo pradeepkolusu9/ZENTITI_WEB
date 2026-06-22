@@ -1,98 +1,11 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ContactModal } from "@/components/ContactModal";
+import "./Industries.css";
 
 /* ── component ────────────────────────────────────────────────── */
 export const Industries = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-  const css = `
-.industries-section {
-  background: var(--bg-section-alt);
-  font-family: 'Inter', system-ui, sans-serif;
-  color: var(--text-primary);
-  padding: 12px 32px 80px;
-  position: relative;
-  overflow: hidden;
-}
-.industries-section::before {
-  content: '';
-  position: absolute; inset: 0; pointer-events: none;
-  background-image: linear-gradient(rgba(255,255,255,0.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.1) 1px,transparent 1px);
-  background-size: 64px 64px;
-  opacity: 0.03;
-}
-.industries-section::after {
-  content: '';
-  position: absolute;
-  left: 50%; top: 50%;
-  width: 700px; height: 500px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: var(--ember);
-  filter: blur(120px);
-  opacity: 0.07;
-  pointer-events: none;
-}
-.industries-inner { max-width: 1160px; margin: 0 auto; position: relative; z-index: 10; }
-
-.ind-header { margin-bottom: 52px; }
-.ind-pill {
-  display: inline-flex; align-items: center; gap: 7px;
-  border: 1px solid var(--border-default); border-radius: 100px;
-  padding: 8px 20px; font-size: 12px; font-weight: 700;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--text-secondary); margin-bottom: 22px;
-}
-.ind-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ember); }
-.ind-heading {
-  font-size: clamp(1.4rem, 2.8vw, 2.2rem); font-weight: 800;
-  line-height: 1.08; letter-spacing: -0.04em;
-  color: var(--text-primary); margin-bottom: 16px;
-  font-family: 'Manrope', sans-serif;
-}
-.ind-heading span { color: var(--ember); }
-.ind-subtext { font-size: 15px; font-weight: 400; color: var(--text-secondary); line-height: 1.7; max-width: 520px; }
-
-.ind-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 10px; }
-@media (max-width: 900px) { .ind-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 520px) { .ind-grid { grid-template-columns: 1fr; } }
-
-.ind-card {
-  background: var(--bg-card); border: 1px solid var(--border-default);
-  border-radius: 14px; padding: 28px 26px 26px; position: relative;
-  transition: border-color 0.2s ease; cursor: default; box-shadow: var(--shadow-card);
-}
-.ind-card:hover { border-color: var(--ember); }
-.ind-card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 24px; }
-.ind-icon {
-  width: 42px; height: 42px; background: var(--bg-section-alt);
-  border-radius: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.ind-icon svg { width: 20px; height: 20px; stroke: var(--text-secondary); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.2s; }
-.ind-card:hover .ind-icon svg { stroke: var(--ember); }
-.ind-stat-wrap { text-align: right; }
-.ind-stat-num { display: block; font-size: 32px; font-weight: 900; line-height: 1; letter-spacing: -0.04em; color: var(--text-secondary); transition: color 0.2s; }
-.ind-card:hover .ind-stat-num { color: var(--ember); }
-.ind-stat-label { display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--text-primary); margin-top: 3px; }
-.ind-divider { height: 1px; background: var(--border-default); margin-bottom: 18px; }
-.ind-card-name { font-size: 16px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: 7px; }
-.ind-card-desc { font-size: 13px; font-weight: 400; color: var(--text-secondary); line-height: 1.62; }
-
-.ind-cta-bar {
-  background: var(--bg-inverse); border-radius: 14px; padding: 26px 32px;
-  display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;
-}
-.ind-cta-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--ember); color: #fff; font-size: 14px; font-weight: 600;
-  font-family: 'Inter', system-ui, sans-serif; border: none; border-radius: 100px;
-  padding: 8px 20px; cursor: pointer; white-space: nowrap;
-  text-decoration: none; letter-spacing: 0.01em; transition: opacity 0.18s;
-}
-.ind-cta-btn:hover { opacity: 0.85; }
-.ind-cta-btn svg { width: 13px; height: 13px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; transition: transform 0.18s; }
-.ind-cta-btn:hover svg { transform: translateX(3px); }
-`;
 
   return (
     <section
@@ -100,8 +13,6 @@ export const Industries = () => {
       data-testid="industries-section"
       className="industries-section"
     >
-      <style>{css}</style>
-      
       <div className="industries-inner">
 
         {/* HEADER */}
@@ -122,11 +33,11 @@ export const Industries = () => {
         </motion.div>
 
         {/* GRID */}
-        <motion.div 
+        <motion.div
           className="ind-grid"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.45, delay: 0.07 }}
         >
           {/* Banking */}

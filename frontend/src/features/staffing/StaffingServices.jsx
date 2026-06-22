@@ -42,7 +42,7 @@ const TECH_BOXES = [
   },
   {
     title: "AI & Agents",
-    techs: "LLM integration · Agent frameworks · RAG · Prompt engineering",
+    techs: "LLM integration · Agent frameworks · RAG · Prompt engineering · LangGraph · LangChain · AWS Bedrock · Agentic AI Specialists",
     accent: false,
   },
   {
@@ -52,12 +52,12 @@ const TECH_BOXES = [
   },
   {
     title: "Data Engineering",
-    techs: "Pipelines · Spark · dbt · Snowflake · Databricks · Warehouses",
+    techs: "Pipelines · Spark · dbt · Snowflake · Databricks · Warehouses · Tableau · Azure Data Factory",
     accent: false,
   },
   {
     title: "Enterprise Platforms",
-    techs: "Salesforce · SAP · Oracle · ServiceNow · Workday",
+    techs: "Salesforce · SAP · Oracle · ServiceNow · Workday · S/4HANA · BTP · Fiori · CPQ · Service Cloud · HCM",
     accent: true,
   },
   {
@@ -245,7 +245,6 @@ export const StaffingServices = () => {
                   style={{
                     background: box.accent ? "rgba(232, 82, 26, 0.85)" : "rgba(37, 99, 235, 0.85)",
                     color: "#fff",
-                    borderBottom: "none",
                   }}
                 >
                   <p

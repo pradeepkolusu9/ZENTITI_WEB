@@ -12,10 +12,14 @@ const Services = lazy(() => import("@/features/services/Services").then((module)
 const MuleSoftCOE = lazy(() => import("@/features/mulesoft/MuleSoftCOE").then((module) => ({ default: module.MuleSoftCOE })));
 const SolutionAccelerators = lazy(() => import("@/features/accelerators/SolutionAccelerators").then((module) => ({ default: module.SolutionAccelerators })));
 const ProductVisual = lazy(() => import("@/features/conversion/ProductVisual").then((module) => ({ default: module.ProductVisual })));
+const WhatToExpect = lazy(() => import("@/features/conversion/WhatToExpect").then((module) => ({ default: module.WhatToExpect })));
 const CaseStudies = lazy(() => import("@/features/caseStudies/CaseStudies").then((module) => ({ default: module.CaseStudies })));
 const EngagementModel = lazy(() => import("@/features/engagement/EngagementModel").then((module) => ({ default: module.EngagementModel })));
+const ManagedServices = lazy(() => import("@/features/managedServices/ManagedServices").then((module) => ({ default: module.ManagedServices })));
+const AgenticFoundry = lazy(() => import("@/features/agenticFoundry/AgenticFoundry").then((module) => ({ default: module.AgenticFoundry })));
 const StaffingServices = lazy(() => import("@/features/staffing/StaffingServices").then((module) => ({ default: module.StaffingServices })));
 const CareersSection = lazy(() => import("@/features/careers/CareersSection").then((module) => ({ default: module.CareersSection })));
+const SprintCta = lazy(() => import("@/features/sprint/SprintCta").then((module) => ({ default: module.SprintCta })));
 const FinalCtaSection = lazy(() => import("@/features/conversion/FinalCtaSection").then((module) => ({ default: module.FinalCtaSection })));
 
 const DeferredSection = ({ children, minHeight = 480 }) => {
@@ -63,19 +67,19 @@ const DeferredSection = ({ children, minHeight = 480 }) => {
 
 const Home = () => {
   const pageSeo = usePageSeo({
-    title: "Home | Zentiti Inc",
+    title: "Zentiti Inc | Data Management, Integration & Agentic AI",
     description:
-      "Zentiti Inc helps enterprises accelerate digital transformation with cloud, AI, data, cybersecurity, and product engineering services.",
+      "Zentiti helps enterprises become AI-ready: data management and governance, API-led integration, and agentic AI, delivered use-case first.",
     keywords:
-      "enterprise IT solutions, digital transformation, cloud services, AI consulting, cybersecurity, software engineering",
+      "data management services, data governance, AI readiness assessment, data products, API integration, MuleSoft, agentic AI, technology staffing",
     canonicalPath: "/",
     ogImage: "/og-image.svg",
     schema: {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      name: "Home | Zentiti Inc",
+      name: "Zentiti Inc | Data Management, Integration & Agentic AI",
       description:
-        "Enterprise technology solutions for transformation, modernization, and growth.",
+        "Trusted data, connected systems, and agentic AI for enterprise transformation and growth.",
       url: `${window.location.origin}/`,
       isPartOf: {
         "@type": "WebSite",
@@ -98,6 +102,16 @@ const Home = () => {
             <Challenge />
           </DeferredSection>
         </div>
+        <div id="managed-services" style={{ scrollMarginTop: "80px" }}>
+          <DeferredSection minHeight={500}>
+            <ManagedServices />
+          </DeferredSection>
+        </div>
+        <div id="agentic-foundry" style={{ scrollMarginTop: "80px" }}>
+          <DeferredSection minHeight={400}>
+            <AgenticFoundry />
+          </DeferredSection>
+        </div>
         <div id="about" style={{ scrollMarginTop: "80px" }}>
           <DeferredSection minHeight={300}>
             <About />
@@ -111,16 +125,15 @@ const Home = () => {
             <Industries />
           </DeferredSection>
         </div>
-        {/* Session 5: Solution Accelerators */}
-        <DeferredSection minHeight={300}>
-          <SolutionAccelerators />
-        </DeferredSection>
-        {/* Session 5b: MuleSoft COE */}
         <div id="managed-services-anchor" style={{ scrollMarginTop: "80px" }}>
           <DeferredSection minHeight={300}>
             <MuleSoftCOE />
           </DeferredSection>
         </div>
+        {/* Solution Accelerators */}
+        <DeferredSection minHeight={300}>
+          <SolutionAccelerators />
+        </DeferredSection>
         <div id="case-studies" style={{ scrollMarginTop: "80px" }}>
           <DeferredSection minHeight={300}>
             <CaseStudies />
@@ -133,7 +146,18 @@ const Home = () => {
           </DeferredSection>
         </div>
         <DeferredSection minHeight={300}>
-          <ProductVisual />
+          <WhatToExpect trackKey="data-management" showHeader={true} />
+        </DeferredSection>
+        {/* One-Week AI-Readiness Sprint CTA */}
+        <div id="your-first-week" style={{ scrollMarginTop: "80px" }}>
+          <SprintCta />
+        </div>
+        <DeferredSection minHeight={300}>
+          <WhatToExpect trackKey="integration-apis" showHeader={false} />
+        </DeferredSection>
+        {/* One-Week AI-Readiness Sprint CTA (below Integration & APIs track) */}
+        <DeferredSection minHeight={300}>
+          <SprintCta />
         </DeferredSection>
         {/* Session 6: Staffing Services */}
         <div id="staffing-services-anchor" style={{ scrollMarginTop: "96px" }}>

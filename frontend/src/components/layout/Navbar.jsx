@@ -28,17 +28,20 @@ const NAV_GROUPS = [
   {
     label: "Services",   id: "services",
     children: [
-      { label: "Managed Services", id: "managed-services-anchor" },
-      { label: "Staffing Services",id: "staffing-services-anchor"},
+      { label: "Managed Services",  id: "managed-services"       },
+      { label: "Agentic Foundry",   id: "agentic-foundry"        },
+      { label: "Staffing Services", id: "staffing-services-anchor"},
+      { label: "MuleSoft COE",       id: "managed-services-anchor" },
     ],
   },
   { label: "Industries",  id: "industries",       children: [] },
   {
     label: "Company",     id: "about",
     children: [
-      { label: "About",        id: "about"       },
-      { label: "Case Studies", id: "case-studies" },
-      { label: "Careers",      id: "careers"     },
+      { label: "About",           id: "about"           },
+      { label: "Your First Week", id: "your-first-week" },
+      { label: "Case Studies",    id: "case-studies"    },
+      { label: "Careers",         id: "careers"         },
     ],
   },
 ];
@@ -90,6 +93,8 @@ export const Navbar = React.memo(() => {
   const scrollTo = (id) => {
     setOpenDropdown(null);
     window.dispatchEvent(new CustomEvent("zentiti:force-render"));
+    // Keep URL clean — remove hash without adding a history entry
+    history.replaceState(null, "", window.location.pathname + window.location.search);
     setTimeout(() => {
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });

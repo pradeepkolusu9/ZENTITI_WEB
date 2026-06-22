@@ -148,34 +148,37 @@ export const ContactModal = ({ isOpen, onClose }) => {
                   color: "var(--text-primary, #E8EAF0)",
                   letterSpacing: "-0.02em",
                 }}>
-                  Get in Touch
+                  Talk to an Expert
                 </h3>
                 <p style={{
                   fontSize: 13, color: "var(--text-secondary, #8890A6)",
                   marginTop: 4, lineHeight: 1.5,
                 }}>
-                  Tell us about your goals — we'll map a clear path forward.
+                  Tell us about your goals. We'll map a clear path forward.
                 </p>
               </div>
               <button
                 onClick={handleClose}
+                aria-label="Close"
                 style={{
                   width: 36, height: 36, borderRadius: 10,
                   display: "flex", alignItems: "center", justifyContent: "center",
-                  background: "transparent",
-                  border: "1px solid var(--border-default, #1e2545)",
-                  color: "var(--text-secondary, #8890A6)",
+                  background: "#2e3a55",
+                  border: "1.5px solid #4a5a80",
+                  color: "#ffffff",
                   cursor: "pointer",
                   transition: "all 0.2s ease",
                   flexShrink: 0,
                 }}
                 onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(232,82,26,0.2)";
                   e.currentTarget.style.borderColor = "var(--ember, #E8521A)";
                   e.currentTarget.style.color = "var(--ember, #E8521A)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "var(--border-default, #1e2545)";
-                  e.currentTarget.style.color = "var(--text-secondary, #8890A6)";
+                  e.currentTarget.style.background = "#2e3a55";
+                  e.currentTarget.style.borderColor = "#4a5a80";
+                  e.currentTarget.style.color = "#ffffff";
                 }}
               >
                 <X style={{ width: 18, height: 18 }} />

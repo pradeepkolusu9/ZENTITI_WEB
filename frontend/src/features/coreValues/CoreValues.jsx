@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import "./CoreValues.css";
 import {
   Building2,
   Target,
@@ -46,53 +47,6 @@ const VALUES = [
   },
 ];
 
-const STYLES = `
-  @keyframes cvReveal {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* Responsive grid for core values */
-  .cv-grid-top {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  .cv-grid-bottom {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-  }
-  .cv-grid-bottom-item {
-    flex: 0 1 calc(33.333% - 14px);
-    max-width: calc(33.333% - 14px);
-  }
-
-  @media (max-width: 900px) {
-    .cv-grid-top {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .cv-grid-bottom-item {
-      flex: 0 1 calc(50% - 10px);
-      max-width: calc(50% - 10px);
-    }
-  }
-
-  @media (max-width: 560px) {
-    .cv-grid-top {
-      grid-template-columns: 1fr;
-    }
-    .cv-grid-bottom {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .cv-grid-bottom-item {
-      flex: 1;
-      max-width: 100%;
-    }
-  }
-`;
 
 const cardVariants = {
   hidden: { opacity: 0, y: 32 },
@@ -270,9 +224,6 @@ export const CoreValues = () => {
       className="relative overflow-hidden py-24 sm:py-32 pb-12 sm:pb-16"
       style={{ background: "var(--bg-section-alt)" }}
     >
-      <style>{STYLES}</style>
-
-      
       {/* Ambient glow */}
       <div
         className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[360px] h-[360px] rounded-full"
@@ -285,25 +236,29 @@ export const CoreValues = () => {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* ── Header ── */}
-        <div
-          style={{
-            textAlign: "center",
-            marginBottom: 60,
-          }}
-        >
+        <div style={{ marginBottom: 60 }}>
           <motion.span
             initial={{ opacity: 0, x: -12 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.4 }}
-            className="z-pill mb-6 text-lg font-semibold"
-            style={{ 
+            style={{
               display: "inline-flex",
-              padding: "0.5rem 1rem",
-              gap: "0.5rem"
+              alignItems: "center",
+              gap: 8,
+              padding: "8px 20px",
+              borderRadius: 100,
+              fontSize: 18,
+              fontWeight: 700,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: "var(--ember)",
+              border: "1px solid var(--border-ember)",
+              background: "var(--pill-bg)",
+              marginBottom: 28,
             }}
           >
-                        Our Core Values
+            Our Core Values
           </motion.span>
 
           <motion.h2
@@ -311,23 +266,19 @@ export const CoreValues = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.05 }}
-            className="mt-5 font-extrabold leading-[1.08] tracking-[-0.04em] text-[var(--text-primary)]"
             style={{
               fontFamily: "'Manrope', sans-serif",
-              fontSize: "clamp(1.4rem, 2.8vw, 2.2rem)",
-              textAlign: "center",
+              fontSize: "clamp(1.8rem, 3.5vw, 3rem)",
+              fontWeight: 900,
+              letterSpacing: "-0.04em",
+              lineHeight: 1.08,
+              color: "var(--text-primary)",
+              textAlign: "left",
+              marginBottom: 0,
             }}
           >
             The Principles That{" "}
-            <em
-              className="not-italic bg-clip-text text-transparent"
-              style={{
-                backgroundImage:
-                  "linear-gradient(90deg, var(--ember), var(--ember-glow))",
-              }}
-            >
-              Guide Us
-            </em>
+            <span style={{ color: "var(--ember)" }}>Guide Us</span>
           </motion.h2>
 
           <motion.p
@@ -336,14 +287,12 @@ export const CoreValues = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.4, delay: 0.1 }}
             style={{
-              marginTop: 20,
+              marginTop: 14,
               fontSize: 16,
               color: "var(--text-secondary)",
-              lineHeight: 1.7,
-              maxWidth: 620,
-              marginLeft: "auto",
-              marginRight: "auto",
-              textAlign: "center",
+              lineHeight: 1.65,
+              maxWidth: 600,
+              textAlign: "left",
             }}
           >
             Our core values define our identity, guide our approach, and underpin how we enable enterprises to transform integration challenges into opportunities.
@@ -351,16 +300,35 @@ export const CoreValues = () => {
         </div>
 
         {/* ── Top Row (3 cards → 2 on tablet → 1 on mobile) ── */}
-        <div className="cv-grid-top">
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "20px",
+          }}
+          className="cv-grid-top"
+        >
           {topRow.map((value, i) => (
             <ValueCard key={value.title} value={value} index={i} />
           ))}
         </div>
 
         {/* ── Bottom Row (2 cards centered → stacked on mobile) ── */}
-        <div className="cv-grid-bottom">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "20px",
+            marginTop: "20px",
+          }}
+          className="cv-grid-bottom"
+        >
           {bottomRow.map((value, i) => (
-            <div key={value.title} className="cv-grid-bottom-item">
+            <div
+              key={value.title}
+              className="cv-grid-bottom-item"
+              style={{ flex: "0 1 calc(33.333% - 14px)", maxWidth: "calc(33.333% - 14px)" }}
+            >
               <ValueCard value={value} index={i + 3} />
             </div>
           ))}

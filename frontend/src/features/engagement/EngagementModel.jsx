@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Search, Link, Zap, Bot, RotateCw } from "lucide-react";
+import "./EngagementModel.css";
 
 const STEPS = [
   { num: "01", title: "Discover", desc: "Assess systems, pain points, and priorities to identify highest-impact opportunities.", icon: Search },
@@ -30,59 +31,10 @@ const ShootArrow = () => (
   </svg>
 );
 
-const KEYFRAMES = `
-  @keyframes emShootRight {
-    0%   { left: 0%;  opacity: 0; }
-    10%  { opacity: 1; }
-    80%  { opacity: 1; }
-    100% { left: calc(100% - 14px); opacity: 0; }
-  }
-  @keyframes emPhaseShootRight {
-    0%   { left: 0%;  opacity: 0; }
-    10%  { opacity: 1; }
-    85%  { opacity: 1; }
-    100% { left: calc(100% - 16px); opacity: 0; }
-  }
-  @keyframes emShimmer {
-    0%   { left: -80%; }
-    100% { left: 180%; }
-  }
-  @keyframes emPhaseGlow {
-    0%   { box-shadow: 0 0 0 0 rgba(232,82,26,0); }
-    50%  { box-shadow: 0 0 20px 3px rgba(232,82,26,0.12); }
-    100% { box-shadow: 0 0 0 0 rgba(232,82,26,0); }
-  }
-
-  /* ── Mobile carousel styles ── */
-  .em-cards-desktop { display: flex; align-items: stretch; gap: 0; }
-  .em-cards-mobile { display: none; }
-  .em-desktop-only { display: block; }
-  .em-mobile-only { display: none; }
-
-  @media (max-width: 768px) {
-    .em-cards-desktop { display: none !important; }
-    .em-cards-mobile {
-      display: flex !important;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      gap: 12px;
-      padding: 8px 0 16px;
-      scrollbar-width: none;
-    }
-    .em-cards-mobile::-webkit-scrollbar { display: none; }
-    .em-mobile-card {
-      flex: 0 0 260px;
-      scroll-snap-align: center;
-    }
-    .em-desktop-only { display: none !important; }
-    .em-mobile-only { display: flex !important; }
-  }
-`;
 
 export const EngagementModel = () => {
-  const [autoStep, setAutoStep] = useState(0);
-  const [litConnectors, setLitConnectors] = useState([false, false, false, false]);
+  const [autoStep, setAutoStep] = useState(3);
+  const [litConnectors, setLitConnectors] = useState([true, true, true, false]);
   const [svgPaths, setSvgPaths] = useState([]);
   const [svgSize, setSvgSize] = useState({ w: 1100, h: 80 });
   const [isMobile, setIsMobile] = useState(false);
@@ -263,9 +215,6 @@ export const EngagementModel = () => {
       className="relative overflow-hidden pt-12 sm:pt-16 pb-24 sm:pb-32"
       style={{ background: "var(--bg-section-alt)", scrollMarginTop: "96px" }}
     >
-      <style>{KEYFRAMES}</style>
-
-      
       {/* Ambient glow */}
       <div
         className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[360px] h-[360px] rounded-full"
@@ -419,7 +368,7 @@ export const EngagementModel = () => {
         </div>
 
         {/* ═══ DESKTOP: SVG Connector Area ═══ */}
-        <div className="em-desktop-only" ref={svgAreaRef} style={{ position: "relative", width: "100%", height: 80, marginTop: 18 }}>
+        <div className="em-desktop-only" ref={svgAreaRef} style={{ position: "relative", width: "100%", height: 120, marginTop: 18 }}>
           <svg
             viewBox={`0 0 ${svgSize.w} ${svgSize.h}`}
             width={svgSize.w}
@@ -429,11 +378,11 @@ export const EngagementModel = () => {
             {svgPaths.map((p) => {
               const isCardActive = autoStep === p.cardIdx;
               const isPhaseActive = activePhase === p.phaseIdx;
-              let stroke = "var(--border-strong)";
-              let opacity = 0.4;
-              let sw = 1.5;
-              if (isCardActive) { stroke = "var(--ember)"; opacity = 1; sw = 2; }
-              else if (isPhaseActive) { stroke = "rgba(232,82,26,0.4)"; opacity = 0.7; }
+              let stroke = "#7a90b4";
+              let opacity = 1;
+              let sw = 2;
+              if (isCardActive) { stroke = "var(--ember)"; opacity = 1; sw = 2.5; }
+              else if (isPhaseActive) { stroke = "rgba(232,82,26,0.8)"; opacity = 1; }
 
               return (
                 <path
@@ -453,7 +402,7 @@ export const EngagementModel = () => {
               <circle
                 key={`td-${p.cardIdx}`}
                 cx={p.srcX} cy={p.topY} r={2.5}
-                fill={autoStep === p.cardIdx ? "var(--ember)" : "var(--border-strong)"}
+                fill={autoStep === p.cardIdx ? "var(--ember)" : "#9aaac4"}
                 style={{ transition: "fill 0.4s ease" }}
               />
             ))}

@@ -8,9 +8,9 @@ const Contact = () => {
   const pageSeo = usePageSeo({
     title: "Contact | Zentiti Inc",
     description:
-      "Get in touch with Zentiti Inc to discuss enterprise cloud, AI, cybersecurity, and digital product transformation initiatives.",
+      "Get in touch with Zentiti Inc to discuss data management, API-led integration, and agentic AI initiatives.",
     keywords:
-      "contact Zentiti, enterprise IT consulting, cloud transformation consulting, AI services contact",
+      "contact Zentiti, data management consulting, enterprise integration consulting, AI readiness assessment, agentic AI services contact",
     canonicalPath: "/contact",
     ogImage: "/og-image.svg",
     schema: {

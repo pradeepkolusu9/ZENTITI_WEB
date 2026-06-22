@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { Helmet } from "react-helmet-async";
 
 const SITE_NAME = "Zentiti Inc";
 const DEFAULT_SITE_URL = "https://www.zentiti.com";
@@ -59,7 +58,7 @@ const buildDefaultSchema = (baseUrl) => {
       applicationCategory: "BusinessApplication",
       operatingSystem: "Web",
       description:
-        "Enterprise software and digital transformation solutions delivered by Zentiti Inc.",
+        "Data management, API-led integration, and agentic AI solutions delivered by Zentiti Inc.",
       url: baseUrl,
       publisher: {
         "@id": orgId,
@@ -68,9 +67,9 @@ const buildDefaultSchema = (baseUrl) => {
     {
       "@type": "Product",
       "@id": productId,
-      name: "Zentiti Digital Transformation Services",
+      name: "Zentiti Data, Integration & AI Services",
       description:
-        "Cloud, AI, cybersecurity, and product engineering services for enterprise growth.",
+        "Data management, integration, agentic AI, and technology staffing services for enterprise growth.",
       brand: {
         "@id": orgId,
       },
@@ -117,7 +116,7 @@ export const usePageSeo = ({
         : null;
 
     return (
-      <Helmet prioritizeSeoTags>
+      <>
         <title>{title}</title>
         <meta name="description" content={description} />
         {keywords ? <meta name="keywords" content={keywords} /> : null}
@@ -138,7 +137,7 @@ export const usePageSeo = ({
         {schemaGraph ? (
           <script type="application/ld+json">{JSON.stringify(schemaGraph)}</script>
         ) : null}
-      </Helmet>
+      </>
     );
   }, [canonicalPath, description, includeDefaultSchema, keywords, ogImage, ogType, schema, title]);
 };

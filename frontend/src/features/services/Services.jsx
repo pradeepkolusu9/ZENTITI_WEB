@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import "./Services.css";
 
 // ─── DATA ────────────────────────────────────────────────────────
 const STEPS = [
@@ -138,13 +139,6 @@ function Arrow({ lit, id }) {
         </>
       )}
 
-      <style>{`
-        @keyframes drawLine${id} { to { stroke-dashoffset: 0; } }
-        @keyframes arrowPop${id} {
-          from { opacity:0; transform:scale(0.3); }
-          to   { opacity:1; transform:scale(1); }
-        }
-      `}</style>
     </svg>
   );
 }
@@ -328,28 +322,6 @@ export const Services = () => {
         position:"relative", overflow:"hidden",
       }}
     >
-      <style>{`
-        @keyframes fadeUp {
-          from { opacity:0; transform:translateY(26px); }
-          to   { opacity:1; transform:translateY(0); }
-        }
-        @keyframes gradShift {
-          0%   { background-position:0%;   }
-          100% { background-position:200%; }
-        }
-        @keyframes blink {
-          0%,100% { opacity:1; }
-          50%     { opacity:0.45; }
-        }
-        @keyframes shimmer {
-          0%   { transform:translateX(-100%); }
-          100% { transform:translateX(200%); }
-        }
-        @keyframes orangePulse {
-          0%,100% { box-shadow: 0 0 0 0 rgba(217,76,26,0.0); }
-          50%     { box-shadow: 0 0 0 8px rgba(217,76,26,0.18); }
-        }
-      `}</style>
 
       {/* grid texture */}
       <div style={{
@@ -411,20 +383,6 @@ export const Services = () => {
         flexDirection: ["column", "row"][0], // Will be overridden by media query
         gap: ["16px", "0"][0], // Will be overridden by media query
       }}>
-        <style>{`
-          @media (max-width: 767px) {
-            .services-flow-row {
-              flex-direction: column !important;
-              gap: 16px !important;
-            }
-            .services-flow-row > div {
-              width: 100% !important;
-            }
-            .services-arrow {
-              display: none !important;
-            }
-          }
-        `}</style>
         <div className="services-flow-row" style={{
           display:"flex",alignItems:"flex-start",
           maxWidth:"1040px",margin:"0 auto",

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Settings, Zap, RefreshCw, Cloud } from "lucide-react";
+import { Settings, Zap, RefreshCw, Cloud, FileText, GitBranch } from "lucide-react";
 import { ContactModal } from "@/components/ContactModal";
 
 const painPoints = [
@@ -23,6 +23,16 @@ const painPoints = [
     title: "Cloud Blockers",
     description: "Cloud efforts stall when legacy systems lack integration",
     icon: Cloud,
+  },
+  {
+    title: "Governance on Paper",
+    description: "Policies are documented but not enforced at runtime",
+    icon: FileText,
+  },
+  {
+    title: "Untraceable AI Outputs",
+    description: "No lineage from AI-generated insight back to a trusted source",
+    icon: GitBranch,
   },
 ];
 
@@ -85,14 +95,14 @@ export const Challenge = () => {
             transition={{ duration: 0.4, delay: 0.1 }}
             className="mt-5 text-lg leading-relaxed text-[var(--text-secondary)]"
           >
-            Fragmentation slows AI execution.{" "}
-            Every enterprise AI initiative hits the same wall. Not strategy. Not talent. Integration debt.
+            Every enterprise AI initiative hits the same two walls. Systems that do not talk to each other,
+            and data that cannot be trusted. Not strategy. Not talent. Foundation debt.
           </motion.p>
         </div>
 
         {/* ── Cards — 4 col, featured card taller with ember treatment ── */}
         <motion.div
-          className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 items-stretch"
+          className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 items-stretch"
           variants={{
             hidden: { opacity: 0 },
             visible: {
@@ -223,11 +233,15 @@ export const Challenge = () => {
             className="relative text-lg font-bold leading-snug tracking-tight sm:text-xl text-center"
             style={{ color: "var(--text-primary)", fontFamily: "'Manrope', sans-serif" }}
           >
-            Integration is the{" "}
+            Integration debt is the{" "}
             <em className="not-italic" style={{ color: "var(--ember)" }}>
               hidden tax
-            </em>{" "}
-            slowing AI-enabled acceleration.
+            </em>
+            . Untrusted data is the{" "}
+            <em className="not-italic" style={{ color: "var(--ember)" }}>
+              silent one
+            </em>
+            . Zentiti removes both.
           </p>
         </motion.div>
 

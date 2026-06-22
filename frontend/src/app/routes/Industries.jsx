@@ -8,9 +8,9 @@ const IndustriesPage = () => {
   const pageSeo = usePageSeo({
     title: "Industries | Zentiti Inc",
     description:
-      "Discover how Zentiti delivers specialized technology solutions for finance, healthcare, retail, manufacturing, insurance, and telecom.",
+      "Discover how Zentiti delivers data management, API-led integration, and agentic AI outcomes for finance, healthcare, retail, manufacturing, insurance, and education.",
     keywords:
-      "technology solutions by industry, fintech IT solutions, healthcare IT services, retail digital transformation",
+      "technology solutions by industry, data management by industry, fintech IT solutions, healthcare IT services, retail digital transformation",
     canonicalPath: "/industries",
     ogImage: "/og-image.svg",
     schema: {

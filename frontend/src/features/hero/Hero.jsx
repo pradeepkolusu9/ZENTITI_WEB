@@ -310,7 +310,7 @@ const HeroOrbit = () => {
         textTransform: "uppercase",
         color: "rgba(255,255,255,0.3)",
       }}>
-        Smart Integration &amp; AI Ecosystem
+        Smart Data, Integration &amp; AI Ecosystem
       </div>
     </div>
   );
@@ -374,7 +374,7 @@ export const Hero = () => {
               transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
             >
               <span className="bg-gradient-to-r from-white via-slate-100 to-white bg-clip-text text-transparent drop-shadow-2xl">
-                Smart Integration &amp; AI Partner for{" "}
+                Smart Data, Integration &amp; AI Partner for{" "}
               </span>
               <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(217,76,26,0.5)]">
                 the Modern Enterprise
@@ -399,23 +399,35 @@ export const Hero = () => {
               className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10"
             >
               <Button
-                data-testid="hero-cta-button"
-                onClick={() => setIsContactModalOpen(true)}
-                size="lg"
-                variant="primary"
-                icon={<ArrowRight className="h-5 w-5" />}
-                iconPosition="right"
-                className="bg-white text-slate-900 shadow-xl shadow-white/10 hover:-translate-y-0.5 hover:bg-gray-100"
-              >
-                Book Consultation
-              </Button>
-              <Button
                 size="lg"
                 variant="outline"
                 onClick={() => scrollToSection("case-studies")}
                 className="border border-white/15 text-white bg-[var(--brand-blue)] hover:bg-[var(--brand-blue-dark)] hover:-translate-y-0.5 hover:border-white/30"
               >
                 See Our Work
+              </Button>
+              <Button
+                data-testid="hero-cta-button"
+                onClick={() => {
+                  window.dispatchEvent(new Event("zentiti:force-render"));
+                  const scrollToTarget = () => {
+                    const el = document.getElementById("what-to-expect");
+                    if (!el) return false;
+                    const top = el.getBoundingClientRect().top + window.scrollY - 80;
+                    window.scrollTo({ top, behavior: "smooth" });
+                    return true;
+                  };
+                  if (!scrollToTarget()) {
+                    setTimeout(scrollToTarget, 150);
+                  }
+                }}
+                size="lg"
+                variant="primary"
+                icon={<ArrowRight className="h-5 w-5" />}
+                iconPosition="right"
+                className="bg-white text-slate-900 shadow-xl shadow-white/10 hover:-translate-y-0.5 hover:bg-gray-100"
+              >
+                Complimentary Assessment
               </Button>
             </motion.div>
           </div>
