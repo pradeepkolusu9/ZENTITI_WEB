@@ -43,9 +43,6 @@ const Blog = () => {
               <Sparkles className="w-3.5 h-3.5" />
               Insights & Perspectives
             </span>
-            <h1>
-              Ideas on data, integration &amp; agentic <em className="ember-accent">AI</em>
-            </h1>
           </header>
 
           {featured && (

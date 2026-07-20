@@ -38,9 +38,9 @@ export const MediumPostCard = ({ post, delay = 0 }) => {
             <span>{post.date}</span>
             <span>·</span>
             <span>{post.readTime}</span>
+            <ArrowRight className="medium-post__arrow" />
           </div>
         </div>
-        <ArrowRight className="medium-post__arrow" />
       </Link>
     </motion.article>
   );
