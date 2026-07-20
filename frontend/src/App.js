@@ -7,6 +7,7 @@ const Home = lazy(() => import("@/app/routes/Home"));
 const Careers = lazy(() => import("@/app/routes/Careers"));
 const Contact = lazy(() => import("@/app/routes/Contact"));
 const Industries = lazy(() => import("@/app/routes/Industries"));
+const BlogRoutes = lazy(() => import("@/app/routes/BlogRoutes"));
 
 function App() {
   useSmoothScroll();
@@ -27,6 +28,8 @@ function App() {
             <Route path="/careers" element={<Careers />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/industries" element={<Industries />} />
+            <Route path="/updates" element={<Navigate to="/blog" replace />} />
+            <Route path="/blog/*" element={<BlogRoutes />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
+import { useNavigate } from "react-router-dom";
 import { X, ChevronDown, ArrowRight } from "lucide-react";
 
 /* ─── Nav structure ─── */
@@ -31,9 +32,11 @@ const MOBILE_ITEMS = [
       { id: "careers", label: "Careers" },
     ],
   },
+  { id: "blog", label: "Blog", route: "/blog" },
 ];
 
 export default function MobileMenu({ isOpen, setIsOpen, scrollTo, setIsContactModalOpen }) {
+  const navigate = useNavigate();
   const [activeId, setActiveId] = useState("hero");
   const [closing, setClosing] = useState(false);
   const [expandedSections, setExpandedSections] = useState({});
@@ -52,10 +55,14 @@ export default function MobileMenu({ isOpen, setIsOpen, scrollTo, setIsContactMo
     }, 350);
   };
 
-  const handleNav = (id) => {
+  const handleNav = (id, route) => {
     setActiveId(id);
     handleClose();
-    if (scrollTo) scrollTo(id);
+    if (route) {
+      navigate(route);
+    } else if (scrollTo) {
+      scrollTo(id);
+    }
   };
 
   const toggleSection = (id) => {
@@ -147,7 +154,7 @@ export default function MobileMenu({ isOpen, setIsOpen, scrollTo, setIsContactMo
                 <div key={item.id}>
                   <button
                     data-testid={`mobile-nav-${item.id}`}
-                    onClick={() => hasChildren ? toggleSection(item.id) : handleNav(item.id)}
+                    onClick={() => hasChildren ? toggleSection(item.id) : handleNav(item.id, item.route)}
                     style={{
                       width: "100%",
                       display: "flex",

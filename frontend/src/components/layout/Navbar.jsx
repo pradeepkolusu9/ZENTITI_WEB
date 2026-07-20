@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import { useNavigate, useLocation } from "react-router-dom";
+
 import { Menu, X, ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/common/Button";
@@ -44,11 +46,15 @@ const NAV_GROUPS = [
       { label: "Careers",         id: "careers"         },
     ],
   },
+  { label: "Blog", id: "blog", route: "/blog", children: [] },
 ];
 
 
 
 export const Navbar = React.memo(() => {
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const [isScrolled,       setIsScrolled]       = useState(false);
 
@@ -93,12 +99,55 @@ export const Navbar = React.memo(() => {
   const scrollTo = (id) => {
     setOpenDropdown(null);
     window.dispatchEvent(new CustomEvent("zentiti:force-render"));
-    // Keep URL clean — remove hash without adding a history entry
-    history.replaceState(null, "", window.location.pathname + window.location.search);
-    setTimeout(() => {
+
+    // This site drives scroll through Lenis (see useSmoothScroll), which
+    // overrides native scroll position every animation frame — a plain
+    // scrollIntoView()/window.scrollTo() gets silently fought and reset.
+    // Section targets keep their per-element scroll-margin-top (used by the
+    // native fallback) and we translate it into Lenis's own offset option.
+    const scrollToElement = (el) => {
+      if (window.__zentitiLenis) {
+        // Lenis measures its scrollable range once and doesn't know the
+        // DeferredSection content we just force-rendered made the page
+        // taller — re-measure first or it clamps the target back to 0.
+        window.__zentitiLenis.resize();
+        // Pass a resolved number rather than the element itself — Lenis's
+        // own element-target resolution silently no-ops for some sections
+        // (multiple nested nodes share the same id, e.g. a wrapper div and
+        // its inner <section>), while a plain scroll offset always works.
+        const marginTop = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+        const targetY = el.getBoundingClientRect().top + window.scrollY - marginTop;
+        window.__zentitiLenis.scrollTo(targetY);
+      } else {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    };
+
+    // The home page's sections settle their real height in multiple async
+    // jumps (animations/lazy content), not one single moment — so instead of
+    // guessing when it's "done", re-issue the scroll a few times, spaced out.
+    // Each call re-measures the element's current position, so it
+    // self-corrects however many times the layout shifts underneath it.
+    // Kept short: each pass calls lenis.resize(), which isn't free, so this
+    // isn't a "poll every 400ms for 6s" loop anymore — 4 spaced-out passes
+    // easily covers how long DeferredSection chunks actually take to mount.
+    const keepScrollingTo = (timestamps) => {
       const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 150);
+      if (el) scrollToElement(el);
+      if (timestamps.length > 0) {
+        setTimeout(() => keepScrollingTo(timestamps.slice(1)), timestamps[0]);
+      }
+    };
+
+    if (location.pathname !== "/") {
+      // Section only exists on the home page — navigate there first.
+      navigate("/");
+      setTimeout(() => keepScrollingTo([500, 700, 1000]), 150);
+    } else {
+      // Keep URL clean — remove hash without adding a history entry
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+      keepScrollingTo([500]);
+    }
   };
 
 
@@ -113,7 +162,11 @@ export const Navbar = React.memo(() => {
 
 
 
-  const linkColor = isScrolled
+  // Transparent (unscrolled) state assumes a dark image behind the nav —
+  // true on the homepage hero, not on other pages' theme-aware backgrounds.
+  const isHome = location.pathname === "/";
+
+  const linkColor = isScrolled || !isHome
 
     ? "text-[var(--nav-text)]"
 
@@ -149,7 +202,7 @@ export const Navbar = React.memo(() => {
 
           >
 
-            <ZentitiLogo white={!isScrolled} height="36px" />
+            <ZentitiLogo white={!isScrolled && isHome} height="36px" />
 
           </div>
 
@@ -171,7 +224,7 @@ export const Navbar = React.memo(() => {
 
                     data-testid={`nav-${group.id}`}
 
-                    onClick={() => scrollTo(group.id)}
+                    onClick={() => (group.route ? navigate(group.route) : scrollTo(group.id))}
 
                     className={`group relative px-3 py-2 text-sm font-medium transition-colors duration-200 rounded-md
 
@@ -326,7 +379,7 @@ export const Navbar = React.memo(() => {
                   onClick={() => setIsMobileMenuOpen(true)}
                   style={{ minHeight: '44px', minWidth: '44px' }}
                 >
-                  <Menu className={isScrolled ? "text-[var(--nav-text)]" : "text-white"} style={{ width: '24px', height: '24px' }} />
+                  <Menu className={isScrolled || !isHome ? "text-[var(--nav-text)]" : "text-white"} style={{ width: '24px', height: '24px' }} />
                 </Button>
               </div>
 

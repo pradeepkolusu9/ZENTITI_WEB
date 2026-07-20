@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { ArrowRight, ChevronDown, Calendar } from "lucide-react";
 import { Button } from "@/shared/ui";
 import { ContactModal } from "@/components/ContactModal";
 
@@ -317,6 +318,7 @@ const HeroOrbit = () => {
 };
 
 export const Hero = () => {
+  const navigate = useNavigate();
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   const scrollToSection = (sectionId) => {
@@ -428,6 +430,26 @@ export const Hero = () => {
                 className="bg-white text-slate-900 shadow-xl shadow-white/10 hover:-translate-y-0.5 hover:bg-gray-100"
               >
                 Complimentary Assessment
+              </Button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.26, ease: "easeOut" }}
+              className="flex mt-3 sm:mt-4"
+            >
+              <Button
+                data-testid="hero-latest-updates-link"
+                onClick={() => navigate("/blog")}
+                size="lg"
+                variant="outline"
+                icon={<Calendar className="h-5 w-5" />}
+                iconPosition="left"
+                className="w-full sm:w-auto sm:min-w-[300px] px-8 sm:px-12 border border-white/15 text-white bg-white/5 hover:bg-white/10 hover:-translate-y-0.5 hover:border-white/30"
+              >
+                Latest Updates
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </motion.div>
           </div>
