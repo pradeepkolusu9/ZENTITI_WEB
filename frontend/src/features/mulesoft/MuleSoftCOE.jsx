@@ -188,7 +188,36 @@ export const MuleSoftCOE = () => {
                   </div>
 
         {/* ── Animated stat counters ── */}
-        <div className="grid grid-cols-2 gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="flex items-center gap-4 py-8 px-6 rounded-2xl"
+            style={{
+              background: "var(--bg-card)",
+              border: "1px solid var(--border-strong)",
+              boxShadow: "var(--shadow-card)",
+            }}
+          >
+            <img
+              src="/logos/salesforce.png"
+              alt="Salesforce"
+              style={{ width: 76, height: 76, objectFit: "contain", flexShrink: 0 }}
+            />
+            <div style={{ width: 1, alignSelf: "stretch", background: "var(--border-strong)" }} />
+            <div>
+              <div
+                className="text-sm font-bold leading-snug"
+                style={{ fontFamily: "'Manrope',sans-serif", color: "var(--text-primary)" }}
+              >
+                Salesforce-Certified
+              </div>
+              <div className="text-sm font-semibold leading-snug" style={{ color: "var(--accent-blue)" }}>
+                MuleSoft Integration Partner
+              </div>
+            </div>
+          </motion.div>
           <StatCard value={100} suffix="%" label="MuleSoft certified engineers" delay={0} inView={inView} />
           <StatCard value={10} suffix="+" label="MuleSoft implementations" delay={0.1} inView={inView} />
         </div>

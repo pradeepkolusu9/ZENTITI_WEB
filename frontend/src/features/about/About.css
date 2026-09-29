@@ -9,10 +9,20 @@
 
 .abody { margin-top: 16px; font-size: 15px; line-height: 1.6; color: var(--text-secondary); max-width: 480px; }
 
-.vc { position: relative; margin-top: 32px; padding: 18px 20px 18px 22px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border-default); }
+.vgrid { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 900px; margin-top: 32px; }
+.vbadges { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 560px) { .vbadges { grid-template-columns: 1fr; } }
+
+.vc { position: relative; padding: 18px 20px 18px 22px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border-default); }
 .vc::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 12px 0 0 12px; background: linear-gradient(180deg, var(--ember), #f97316); }
 .vlbl { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ember); margin-bottom: 4px; }
 .vtxt { margin-top: 4px; font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+.vc-badge { display: flex; align-items: center; gap: 12px; padding-right: 14px; min-height: 104px; }
+.vblogo { object-fit: contain; flex-shrink: 0; }
+.vblogo-salesforce { width: 76px; height: 76px; }
+.vblogo-claude { width: 64px; height: 64px; }
+.vbtxt { font-size: 12px; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; color: var(--text-secondary); line-height: 1.4; }
 
 .lhdr { margin-top: 32px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 10px; }
 .ltags { display: flex; flex-wrap: wrap; gap: 8px; }

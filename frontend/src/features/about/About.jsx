@@ -199,12 +199,26 @@ export const About = () => {
               </FadeIn>
 
               <FadeIn delay={0.28}>
-                <div className="vc">
-                  <p className="vlbl">Our Vision</p>
-                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                    Turning fragmented enterprise data into integrated and
-                    agent-powered intelligence.
-                  </p>
+                <div className="vgrid">
+                  <div className="vc">
+                    <p className="vlbl">Our Vision</p>
+                    <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                      Turning fragmented enterprise data into integrated and
+                      agent-powered intelligence.
+                    </p>
+                  </div>
+
+                  <div className="vbadges">
+                    <div className="vc vc-badge">
+                      <img src="/logos/salesforce.png" alt="Salesforce" className="vblogo vblogo-salesforce" />
+                      <p className="vbtxt">Salesforce-Certified MuleSoft Integration Partner</p>
+                    </div>
+
+                    <div className="vc vc-badge">
+                      <img src="/logos/claude.png" alt="Claude" className="vblogo vblogo-claude" />
+                      <p className="vbtxt">Claude Partner</p>
+                    </div>
+                  </div>
                 </div>
               </FadeIn>
 
